@@ -92,3 +92,84 @@ footer div{display:flex;gap:12px;flex-direction:column}
   .drink-row{gap:5px}
   .drink{height:190px}
 }
+/* Bobacita mobile polish */
+@media(max-width:560px){
+  .site-header{
+    padding:10px 20px;
+    min-height:78px;
+  }
+
+  .brand img{
+    width:68px;
+    height:68px;
+  }
+
+  .lang-switch button{
+    padding:10px 15px;
+    font-size:.95rem;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:42px 20px 24px;
+    gap:12px;
+  }
+
+  h1{
+    font-size:clamp(2.65rem,13vw,4.15rem);
+    line-height:.92;
+    margin:.16em 0 .28em;
+  }
+
+  .lead{
+    font-size:1.05rem;
+    line-height:1.5;
+  }
+
+  .hero-actions{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+  }
+
+  .btn{
+    padding:12px 18px;
+    font-size:.96rem;
+  }
+
+  .hero-art{
+    min-height:0;
+    padding-top:4px;
+  }
+
+  .hero-art img{
+    width:min(360px,88vw);
+  }
+
+  .sun{
+    width:min(330px,82vw);
+    height:min(330px,82vw);
+  }
+
+  .intro-strip{
+    margin:-2px auto 0;
+    width:calc(100% - 28px);
+  }
+
+  .intro-strip>div{
+    padding:18px 20px;
+  }
+
+  .section{
+    padding:52px 18px;
+  }
+
+  .menu-card{
+    padding:22px 16px;
+  }
+
+  .drink{
+    height:175px;
+  }
+}

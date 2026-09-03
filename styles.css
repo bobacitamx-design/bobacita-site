@@ -173,3 +173,35 @@ footer div{display:flex;gap:12px;flex-direction:column}
     height:175px;
   }
 }
+
+  }
+}
+
+/* PASTE NEW CODE HERE */
+@media(max-width:560px){
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:100%;
+    max-width:390px;
+    gap:10px;
+  }
+
+  .hero-actions .btn{
+    text-align:center;
+    padding:12px 10px;
+  }
+
+  .hero-art img{
+    width:min(320px,78vw);
+  }
+
+  .sun{
+    width:min(300px,74vw);
+    height:min(300px,74vw);
+  }
+
+  .hero{
+    padding-bottom:18px;
+  }
+}

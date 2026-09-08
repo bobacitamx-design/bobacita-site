@@ -12,13 +12,14 @@ const translations = {
     lemonade:"Limonada", lemonade_desc:"Refrescante y deliciosa con sabores frutales.",
     original:"Original", strawberry:"Fresa", blueberry:"Blueberry",
     aguas:"Aguas Frescas", aguas_desc:"Clásicos mexicanos que siempre refrescan.",
-    boba_desc:"Tres bebidas con influencia asiática y el toque Bobacita.",
-    thai:"Thai Tea", brulee:"Brown Sugar Brûlée", saigon:"Saigon Vietnamese",
+    boba_title:"Boba Tea y Café", boba_desc:"Tés y café con influencia asiática y el toque Bobacita.",
+    thai:"Sube el Thai – Té Tailandés", brulee:"Brûlée de Azúcar", saigon:"Sueño Saigón – Café Vietnamita",
+    lemonade_alt:"Tres limonadas Bobacita: original, fresa y blueberry", aguas_alt:"Agua de jamaica y horchata Bobacita", boba_alt:"Té tailandés, boba brûlée de azúcar y café vietnamita",
     story_kicker:"NUESTRA HISTORIA", story_title:"De nuestra familia para la tuya.",
     story_p1:"Hace 7 años nuestra familia se mudó a Tijuana, México. Antes habíamos comenzado nuestro camino en el mundo del boba con una tienda en el sur de California, donde aprendimos a servir a nuestra comunidad y a desarrollar nuestra pasión por las bebidas.",
     story_p2:"Después de vender nuestro primer negocio, decidimos comenzar una nueva aventura: Bobacita. Nuestro sueño es combinar bebidas con influencia asiática con los sabores mexicanos que disfrutamos, y construir este proyecto junto a nuestros cinco hijos.",
     story_close:"Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥",
-    uber_text:"Próximamente podrás pedir tus bebidas favoritas por Uber Eats.",
+    coming_soon:"Próximamente", uber_text:"Próximamente podrás pedir tus bebidas favoritas por Uber Eats.",
     online_title:"Orden en línea", online_text:"Más adelante podrás ordenar directamente desde bobacita.com.",
     location_text:"Síguenos en redes sociales para saber dónde encontrarnos.",
     social_kicker:"SÍGUENOS", social_title:"Encuentra a Bobacita en redes."
@@ -35,13 +36,14 @@ const translations = {
     lemonade:"Lemonade", lemonade_desc:"Refreshing lemonade with fruity flavors.",
     original:"Original", strawberry:"Strawberry", blueberry:"Blueberry",
     aguas:"Aguas Frescas", aguas_desc:"Refreshing Mexican classics.",
-    boba_desc:"Three Asian-inspired drinks with the Bobacita touch.",
-    thai:"Thai Tea", brulee:"Brown Sugar Brûlée", saigon:"Saigon Vietnamese",
+    boba_title:"Boba Tea & Coffee", boba_desc:"Asian-inspired teas and coffee with the Bobacita touch.",
+    thai:"Rise with Thai – Thai Tea", brulee:"Brown Sugar Brûlée", saigon:"Saigon Dream – Vietnamese Coffee",
+    lemonade_alt:"Three Bobacita lemonades: original, strawberry, and blueberry", aguas_alt:"Bobacita hibiscus agua fresca and horchata", boba_alt:"Thai tea, brown sugar brûlée boba, and Vietnamese coffee",
     story_kicker:"OUR STORY", story_title:"From our family to yours.",
     story_p1:"Seven years ago our family moved to Tijuana, Mexico. Before that, we began our boba journey with a shop in Southern California, where we learned to serve our community and build our passion for drinks.",
     story_p2:"After selling our first business, we decided to start a new adventure: Bobacita. Our dream is to combine Asian-inspired drinks with the Mexican flavors we enjoy, and to build this business together with our five children.",
     story_close:"Welcome to our family. Welcome to Bobacita. ♥",
-    uber_text:"Soon you’ll be able to order your favorite drinks through Uber Eats.",
+    coming_soon:"Coming soon", uber_text:"Soon you’ll be able to order your favorite drinks through Uber Eats.",
     online_title:"Online ordering", online_text:"Later, you’ll be able to order directly from bobacita.com.",
     location_text:"Follow us on social media to see where to find us.",
     social_kicker:"FOLLOW US", social_title:"Find Bobacita on social media."
@@ -53,6 +55,10 @@ function setLanguage(lang){
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.dataset.i18n;
     if(translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach(el=>{
+    const key = el.dataset.i18nAlt;
+    if(translations[lang][key]) el.alt = translations[lang][key];
   });
   document.querySelectorAll(".lang-switch button").forEach(btn=>{
     btn.classList.toggle("active", btn.dataset.lang === lang);

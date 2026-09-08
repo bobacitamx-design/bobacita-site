@@ -5,7 +5,7 @@ Static bilingual website for bobacita.com.
 ## Current menu
 - Limonada: Original, Fresa/Strawberry, Blueberry
 - Aguas Frescas: Jamaica, Horchata
-- Boba: Thai Tea, Brown Sugar Brûlée, Saigon Vietnamese
+- Boba Tea y Café: Sube el Thai – Té Tailandés, Brûlée de Azúcar, Sueño Saigón – Café Vietnamita
 - Size/price: 1 litro / 1 liter — $100 MXN
 
 ## Publish free with GitHub Pages

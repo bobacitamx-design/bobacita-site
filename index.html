@@ -49,7 +49,7 @@ summary::-webkit-details-marker{display:none}
 h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,9vw,3.3rem);line-height:1.02;letter-spacing:-.035em}
 .hero-text{max-width:520px;margin:auto;color:#5e4c45;font-size:1rem;line-height:1.5}
 .hero-drinks{position:relative;z-index:2;margin:0;overflow:hidden;border-radius:28px;background:#eaded7;box-shadow:var(--shadow)}
-.hero-drinks img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.hero-drinks img{width:100%;height:360px;object-fit:cover;object-position:center 42%}
 
 .category-dock{position:relative;z-index:3;margin:-12px 14px 0;padding:22px 14px 16px;border:1px solid var(--line);border-radius:28px;background:var(--paper);box-shadow:var(--shadow)}
 .menu-intro{text-align:center}
@@ -150,7 +150,7 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 .topping-classic .topping-photo img{object-position:left center}
 .topping-mango .topping-photo img{margin-left:-100%;object-position:center}
 .topping-blueberry .topping-photo img{margin-left:-200%;object-position:right center}
-.topping-strawberry .topping-photo img{width:100%;max-width:100%;object-fit:cover;object-position:center 12%}
+.topping-strawberry .topping-photo img{width:100%;max-width:100%;object-fit:cover;object-position:center}
 .topping-card summary{position:relative;display:flex;min-height:112px;flex-direction:column;align-items:center;gap:4px;padding:12px 8px 40px;text-align:center}
 .topping-card summary strong{font-size:.78rem;line-height:1.15}
 .topping-card small{color:var(--muted);font-size:.68rem;line-height:1.2}
@@ -179,6 +179,12 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 .social-gallery a:hover img{transform:scale(1.03)}
 .social-links{display:flex;max-width:800px;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px auto 0}
 .social-links a{display:flex;min-height:48px;align-items:center;gap:8px;padding:0 14px;border:1px solid #efcada;border-radius:999px;background:#fff7fa;color:var(--pink-dark);font-size:.83rem;font-weight:900}
+.collaboration-card{display:grid;max-width:800px;grid-template-columns:78px 1fr;gap:14px;align-items:center;margin:18px auto 0;padding:16px;border:1px solid #efcada;border-radius:22px;background:#fff7fa;box-shadow:0 10px 26px rgba(109,49,49,.08);text-align:left}
+.collaboration-card>img{width:78px;height:78px;border-radius:50%;object-fit:cover}
+.collaboration-card h3{margin:3px 0 6px;font-family:Georgia,serif;font-size:1.08rem;line-height:1.18}
+.collaboration-card p{margin:0;color:#67483d;font-size:.82rem;line-height:1.42}
+.collaboration-card .section-kicker{color:var(--pink-dark);font-size:.65rem}
+.collaboration-card a{display:inline-flex;margin-top:8px;color:var(--pink-dark);font-weight:900}
 .platform-icon{display:grid;width:28px;height:28px;place-items:center;border-radius:50%;color:#fff;font-family:Arial,sans-serif;font-size:1rem;font-style:normal;font-weight:900;line-height:1}
 .instagram .platform-icon{background:linear-gradient(145deg,#7d2ae8,#f22970,#ffb438)}
 .facebook .platform-icon{background:#1877f2}
@@ -292,7 +298,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
         <p class="hero-text" data-i18n="hero_text">Limonadas, aguas frescas y café con sabores mexicanos e inspiración asiática.</p>
       </div>
       <figure class="hero-drinks">
-        <img src="assets/web/lemonades-fruit.webp" width="1200" height="800" alt="Tres limonadas Bobacita con limones, fresas y arándanos" data-i18n-alt="hero_drinks_alt" decoding="async" fetchpriority="high">
+        <img src="assets/web/three-category-hero.webp" width="1024" height="1536" alt="Bobacita con Limonadas, Café y Aguas Frescas" data-i18n-alt="hero_drinks_alt" decoding="async" fetchpriority="high">
       </figure>
     </section>
 
@@ -516,7 +522,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
           <p data-i18n="blueberry_details">Perlas explosivas rellenas de jugo con un sabor fresco y frutal a arándano.</p>
         </details>
         <details class="topping-card topping-strawberry">
-          <summary><div class="topping-photo"><img src="assets/web/strawberry-lemonade.webp" width="1200" height="1174" alt="Popping boba de fresa" data-i18n-alt="strawberry_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="strawberry_popping">Popping Boba de Fresa</strong><small data-i18n="strawberry_popping_en">Strawberry Popping Boba</small><span class="plus">+</span></summary>
+          <summary><div class="topping-photo"><img src="assets/web/strawberry-popping-boba.webp" width="900" height="900" alt="Popping boba de fresa" data-i18n-alt="strawberry_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="strawberry_popping">Popping Boba de Fresa</strong><small data-i18n="strawberry_popping_en">Strawberry Popping Boba</small><span class="plus">+</span></summary>
           <p data-i18n="strawberry_details">Perlas explosivas rellenas de jugo con un sabor dulce y frutal a fresa.</p>
         </details>
       </div>
@@ -540,17 +546,21 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
         <h2 data-i18n="follow_title">Más sabor en @bobacita.mx</h2>
         <p data-i18n="follow_text">Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.</p>
       </div>
-      <div class="social-gallery">
-        <a class="social-feature social-feature-wide social-saigon" href="https://www.instagram.com/bobacita.mx/" target="_blank" rel="noopener" aria-label="Bobacita en Instagram"><img src="assets/web/sueno-saigon.webp" width="502" height="1024" alt="Sueño Saigón con filtro vietnamita phin" loading="lazy" decoding="async"><span data-i18n="social_saigon">Sueño Saigón · Café Vietnamita</span></a>
-        <a class="social-feature" href="https://www.tiktok.com/@bobacita.mx" target="_blank" rel="noopener" aria-label="Bobacita en TikTok"><img src="assets/web/dragon-fruit-lemonade.webp" width="800" height="1200" alt="Dragon Fruit Lemonade Bobacita" loading="lazy" decoding="async"><span>Dragon Fruit Lemonade</span></a>
-        <a class="social-feature" href="https://www.facebook.com/bobacita.mx" target="_blank" rel="noopener" aria-label="Bobacita en Facebook"><img src="assets/web/jamaica.webp" width="760" height="1021" alt="Agua fresca de Jamaica" loading="lazy" decoding="async"><span data-i18n="social_aguas">Jamaica</span></a>
-      </div>
       <div class="social-links">
         <a class="social-button instagram" href="https://www.instagram.com/bobacita.mx/" target="_blank" rel="noopener" aria-label="Instagram de Bobacita"><span class="platform-icon" aria-hidden="true">◎</span><span>Instagram</span></a>
         <a class="social-button facebook" href="https://www.facebook.com/bobacita.mx" target="_blank" rel="noopener" aria-label="Facebook de Bobacita"><span class="platform-icon" aria-hidden="true">f</span><span>Facebook</span></a>
         <a class="social-button tiktok" href="https://www.tiktok.com/@bobacita.mx" target="_blank" rel="noopener" aria-label="TikTok de Bobacita"><span class="platform-icon" aria-hidden="true">♪</span><span>TikTok</span></a>
         <a class="social-button youtube" href="https://www.youtube.com/@bobacita" target="_blank" rel="noopener" aria-label="YouTube de Bobacita"><span class="platform-icon" aria-hidden="true">▶</span><span>YouTube</span></a>
       </div>
+      <article class="collaboration-card">
+        <img src="assets/web/chica-chun-kun.webp" width="360" height="360" alt="Logo de Chica Chun Kun" data-i18n-alt="chica_alt" loading="lazy" decoding="async">
+        <div>
+          <p class="section-kicker" data-i18n="collab_heading">COLABORACIONES LOCALES</p>
+          <h3 data-i18n="collab_title">También nos encuentras junto a Chica Chun Kun</h3>
+          <p data-i18n="collab_description">Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.</p>
+          <a href="https://www.instagram.com/chicachunkun/" target="_blank" rel="noopener">@chicachunkun</a>
+        </div>
+      </article>
     </section>
 
     <section class="contact-section" id="contacto">

@@ -7,7 +7,7 @@ const translations = {
     love_note:"Hecho con Amor para Ti ❤️",
     hero_title:"Bebidas únicas, sabores que te hacen sonreír.",
     hero_text:"Limonadas, aguas frescas y café con sabores mexicanos e inspiración asiática.",
-    hero_drinks_alt:"Limonadas Bobacita coloridas con fruta fresca",
+    hero_drinks_alt:"Bobacita con Limonadas, Café y Aguas Frescas",
     browse_menu:"Explorar el menú", menu_kicker:"ENCUENTRA TU FAVORITA", menu_title:"¿Qué se te antoja?",
     category_lemonades:"Limonadas", category_aguas:"Aguas Frescas", category_cafe:"Café", category_toppings:"Toppings",
     category_lemonades_desc:"Frescas y frutales", category_aguas_desc:"Tradición en cada sorbo", category_cafe_desc:"Inspiración asiática",
@@ -57,6 +57,7 @@ const translations = {
     story_p2:"Después de vender nuestro primer negocio, decidimos comenzar una nueva aventura: Bobacita. Nuestro sueño es combinar bebidas con influencia asiática con los sabores mexicanos que disfrutamos, y construir este proyecto junto a nuestros cinco hijos.",
     story_close:"Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥",
     follow_kicker:"SÍGUENOS", follow_title:"Más sabor en @bobacita.mx", follow_text:"Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.",
+    collab_heading:"COLABORACIONES LOCALES", collab_title:"También nos encuentras junto a Chica Chun Kun", collab_description:"Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.", chica_alt:"Logo de Chica Chun Kun",
     contact_kicker:"CONTACTO", contact_title:"Estamos cerca de ti.", contact_intro:"Escríbenos, llámanos o visítanos en Tijuana.",
     contact_phone:"TELÉFONO", contact_email:"CORREO", contact_location:"UBICACIÓN", open_map:"Abrir ubicación de Bobacita en mapas", contact_social:"REDES SOCIALES",
     social_lemonades:"Limonadas llenas de fruta", social_cafe:"Café al estilo Bobacita", social_saigon:"Sueño Saigón · Café Vietnamita", social_aguas:"Jamaica", qr_label:"Escanea y visita Bobacita", qr_alt:"Código QR de bobacita.com"
@@ -69,7 +70,7 @@ const translations = {
     love_note:"Made with love for you ❤️",
     hero_title:"Unique drinks, flavors that make you smile.",
     hero_text:"Lemonades, aguas frescas, and coffee with Mexican flavors and Asian inspiration.",
-    hero_drinks_alt:"Colorful Bobacita lemonades with fresh fruit",
+    hero_drinks_alt:"Bobacita with Lemonades, Coffee, and Aguas Frescas",
     browse_menu:"Explore the menu", menu_kicker:"FIND YOUR FAVORITE", menu_title:"What are you craving?",
     category_lemonades:"Lemonades", category_aguas:"Aguas Frescas", category_cafe:"Coffee", category_toppings:"Toppings",
     category_lemonades_desc:"Fresh and fruity", category_aguas_desc:"Tradition in every sip", category_cafe_desc:"Asian-inspired",
@@ -119,6 +120,7 @@ const translations = {
     story_p2:"After selling our first business, we decided to start a new adventure: Bobacita. Our dream is to combine Asian-inspired drinks with the Mexican flavors we enjoy, and to build this business together with our five children.",
     story_close:"Welcome to our family. Welcome to Bobacita. ♥",
     follow_kicker:"FOLLOW US", follow_title:"More flavor at @bobacita.mx", follow_text:"New drinks, locations, and moments from the Bobacita family.",
+    collab_heading:"LOCAL COLLABORATIONS", collab_title:"Find us together with Chica Chun Kun", collab_description:"Bobacita drinks and authentic Vietnamese Chun Kun, sharing good moments in Tijuana.", chica_alt:"Chica Chun Kun logo",
     contact_kicker:"CONTACT", contact_title:"We’re close by.", contact_intro:"Message us, call us, or visit us in Tijuana.",
     contact_phone:"PHONE", contact_email:"EMAIL", contact_location:"LOCATION", open_map:"Open Bobacita location in maps", contact_social:"SOCIAL MEDIA",
     social_lemonades:"Fruit-filled lemonades", social_cafe:"Coffee, Bobacita style", social_saigon:"Sueño Saigón · Vietnamese Coffee", social_aguas:"Jamaica", qr_label:"Scan to visit Bobacita", qr_alt:"QR code for bobacita.com"

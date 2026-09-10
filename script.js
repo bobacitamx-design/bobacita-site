@@ -1,93 +1,113 @@
 const translations = {
   es: {
     page_title:"Bobacita | Limonadas, Aguas Frescas y Café",
-    page_description:"Bobacita en Tijuana: limonadas, aguas frescas, café y boba con sabores mexicanos y un toque asiático.",
-    nav_home:"Inicio", nav_menu:"Menú", nav_story:"Nuestra Historia", nav_follow:"Síguenos", nav_contact:"Contacto",
-    hero_kicker:"BOBA • AGUAS FRESCAS • LIMONADA", hero_title_1:"Sabores frescos", hero_title_2:"con un toque especial.",
-    hero_desc:"Sabores mexicanos con inspiración asiática, hechos para compartir en familia.",
-    view_menu:"Ver menú", follow_us:"Síguenos",
-    quality_title:"Ingredientes de calidad", quality_text:"Bebidas frescas y llenas de sabor.",
-    love_title:"Hecho con amor", love_text:"Un proyecto familiar en Tijuana.",
-    fusion_title:"México + Asia", fusion_text:"Sabores que unen dos culturas.",
-    menu_kicker:"NUESTRO MENÚ", menu_note:"Menú inicial. Sabores y disponibilidad pueden cambiar.",
-    menu_categories:"Categorías del menú",
+    page_description:"Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.",
+    main_navigation:"Navegación principal", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
+    nav_menu:"Menú", nav_story:"Nuestra historia", nav_follow:"Síguenos",
+    love_note:"Hecho con Amor para Ti ❤️",
+    hero_title:"Bebidas únicas, sabores que te hacen sonreír.",
+    hero_text:"Limonadas, aguas frescas y café con sabores mexicanos e inspiración asiática.",
+    hero_drinks_alt:"Limonadas Bobacita coloridas con fruta fresca",
+    browse_menu:"Explorar el menú", menu_kicker:"ENCUENTRA TU FAVORITA", menu_title:"¿Qué se te antoja?",
     category_lemonades:"Limonadas", category_aguas:"Aguas Frescas", category_cafe:"Café", category_toppings:"Toppings",
-    lemonades_intro:"Hechas al momento con limón real y sabores brillantes.",
-    limited_drink:"Especial de temporada", dragon_summary:"Una limonada vibrante, frutal y refrescante.",
-    dragon_details:"Limonada preparada con limón real y el sabor tropical de la pitahaya. Dulce, cítrica y hecha al momento.",
-    classic_flavors:"Sabores clásicos", lemonade_selection:"Limonadas Bobacita", lemonade_selection_summary:"Original, fresa y blueberry.",
-    lemonade_selection_details:"Elige una limonada clásica o frutal, preparada fría y con el toque Bobacita.",
-    aguas_intro:"Clásicos mexicanos, fríos y llenos de sabor.", mexican_classics:"Clásicos mexicanos",
-    jamaica_horchata:"Jamaica y Horchata", aguas_summary:"Una opción frutal y refrescante o una opción cremosa con canela.",
-    aguas_details:"Jamaica con sabor vivo y refrescante; horchata tradicional, cremosa y con el toque perfecto de canela.",
-    cafe_intro:"Té y café cremosos con inspiración asiática.", thai_type:"Té tailandés", signature_drink:"Especialidad Bobacita", vietnamese_coffee:"Café vietnamita",
-    thai:"Sube el Thai – Té Tailandés", thai_summary:"Auténtico, cremoso y rico.",
-    thai_details:"Té tailandés de sabor intenso mezclado con leche cremosa y servido frío. Agrega tu topping favorito.",
-    brulee:"Brûlée de Azúcar", brulee_summary:"Cremosa, caramelizada y reconfortante.",
-    brulee_details:"Té negro con leche, azúcar morena caramelizada estilo brûlée y un final suave y dulce.",
-    saigon:"Sueño Saigón – Café Vietnamita", saigon_summary:"Intenso, cremoso y suave.",
-    saigon_details:"Café vietnamita robusto con leche condensada, servido sobre hielo para un sabor dulce e intenso.",
-    see_details:"Ver descripción", hide_details:"Ocultar descripción",
-    toppings_intro:"Personaliza tu bebida con uno de nuestros tres toppings.", tap_description:"Toca para ver la descripción", tap_hide_description:"Toca para ocultar la descripción",
-    original_boba:"Original Boba", original_boba_desc:"Perlas de tapioca suaves y masticables con un delicado sabor a azúcar morena.",
-    mango_boba:"Mango Popping Boba", mango_boba_desc:"Perlas explosivas rellenas de jugo con un sabor dulce y tropical a mango.",
-    blueberry_boba:"Blueberry Popping Boba", blueberry_boba_desc:"Perlas explosivas rellenas de jugo con un sabor fresco y frutal a blueberry.",
-    dragon_alt:"Limonada Dragon Fruit de Bobacita", lemonades_alt:"Selección de limonadas Bobacita",
-    aguas_alt:"Agua de jamaica y horchata Bobacita", thai_alt:"Sube el Thai, té tailandés de Bobacita",
-    brulee_alt:"Brûlée de Azúcar Bobacita", saigon_alt:"Sueño Saigón, café vietnamita de Bobacita",
+    category_lemonades_desc:"Frescas y frutales", category_aguas_desc:"Tradición en cada sorbo", category_cafe_desc:"Inspiración asiática",
+    toppings_personalize:"Toppings · Personaliza tu bebida", category_toppings_desc:"Dale tu toque especial",
+    all_categories:"Categorías ↑", fresh_real_lemons:"LIMONES REALES · HECHAS AL MOMENTO",
+    lemonades_alt:"Limonadas Bobacita en sabores original, fresa y arándano",
+    dragon_alt:"Limonada de pitahaya Bobacita con hielo, limón y fruta del dragón",
+    lemonade_photo_note:"Frescas, frutales y preparadas para ti.", featured:"DESTACADA",
+    dragon_short:"Pitahaya, limón y un sabor tropical de color vibrante.", view_details:"Ver detalles",
+    dragon_details:"Limonada cítrica con sabor tropical a pitahaya, servida bien fría. Combínala con popping boba de mango o arándano.",
+    base_flavors:"Sabores base", nine_flavors:"9 sabores", flavor_original:"Original", flavor_blueberry:"Arándano",
+    flavor_strawberry:"Fresa", flavor_lavender:"Lavanda", flavor_vanilla:"Vainilla", flavor_raspberry:"Frambuesa", flavor_coconut:"Coco", flavor_pineapple:"Piña",
+    our_combinations:"NUESTRAS COMBINACIONES", special_mixes:"Mezclas especiales", view_fourteen:"Ver 14",
+    mix_fresa_tropical:"fresa + mango + limonada", mix_berry_azul:"arándano + frambuesa + limonada",
+    mix_lavanda_berry:"lavanda + arándano + limonada", mix_mango_fresco:"mango + limonada + Tajín",
+    mix_berry_rosa:"fresa + frambuesa + limonada", mix_lavanda_fresa:"lavanda + fresa + limonada",
+    mix_mango_azul:"mango + arándano + limonada", mix_fresa_tajin:"fresa + limonada + Tajín",
+    mix_lavanda_vanilla:"lavanda + vainilla + limonada", mix_pina_colada:"piña + coco + limonada",
+    mix_mango_pina:"mango + piña + limonada", mix_coco_berry:"coco + fresa + limonada",
+    mix_pina_azul:"piña + arándano + limonada", mix_tropical_rosa:"piña + mango + frambuesa + limonada",
+    mexican_classics:"CLÁSICOS MEXICANOS", aguas_alt:"Agua de Jamaica y Horchata Bobacita", jamaica_alt:"Agua de Jamaica Bobacita", horchata_alt:"Horchata Bobacita",
+    jamaica_short:"Floral, frutal y refrescante.", jamaica_details:"Agua fresca de flor de jamaica con un sabor vivo, ligeramente ácido y muy refrescante.",
+    horchata_short:"Cremosa, suave y con canela.", horchata_details:"Horchata tradicional, cremosa y suave, terminada con el toque perfecto de canela.",
+    cold_creamy:"FRÍO · CREMOSO · INTENSO", thai_clean_alt:"Vaso de té tailandés frío con boba",
+    thai_tea_label:"TÉ TAILANDÉS", thai_name:"Sube el Thai", thai_short:"Té tailandés cremoso, intenso y refrescante servido frío.",
+    thai_details:"Té negro tailandés con notas especiadas y una mezcla cremosa. Recomendado con Boba Clásica. Presentación: 590 mL.",
+    saigon_clean_alt:"Vaso de café vietnamita frío junto a un filtro phin", vietnamese_coffee_label:"CAFÉ VIETNAMITA", saigon_name:"Sueño Saigón",
+    saigon_short:"Café vietnamita intenso, dulce y cremoso, preparado para disfrutarse bien frío.",
+    saigon_details:"Café vietnamita robusto con leche condensada. Disfrútalo solo o agrega Boba Clásica para más textura. Presentación: 590 mL.",
+    brulee_clean_alt:"Vaso de Brûlée de Azúcar con vetas de azúcar morena", brulee_label:"BROWN SUGAR CRÈME BRÛLÉE", brulee_name:"Brûlée de Azúcar",
+    brulee_short:"Té cremoso con leche, azúcar morena y un toque de crème brûlée.",
+    brulee_details:"Una mezcla suave y caramelizada con notas de azúcar morena y flan. Recomendado con Boba Clásica. Presentación: 590 mL.",
+    make_it_yours:"HAZLA A TU GUSTO", toppings_intro:"Elige una textura extra para completar tu bebida.",
+    classic_boba:"Boba Clásica", original_boba:"Original Boba", classic_boba_alt:"Boba clásica de tapioca", mango_boba_alt:"Popping boba de mango", blueberry_boba_alt:"Popping boba de arándano", classic_boba_details:"Perlas de tapioca suaves y masticables con un delicado sabor a azúcar morena.",
+    mango_popping_es:"Popping Boba de Mango", mango_details:"Perlas explosivas rellenas de jugo con sabor dulce y tropical a mango.",
+    blueberry_popping_es:"Popping Boba de Arándano", blueberry_details:"Perlas explosivas rellenas de jugo con un sabor fresco y frutal a arándano.",
+    tajin_note:"Tajín está disponible en combinaciones seleccionadas de limonada; no es un topping de boba.",
     story_kicker:"NUESTRA HISTORIA", story_title:"De nuestra familia para la tuya.",
     story_p1:"Hace 7 años nuestra familia se mudó a Tijuana, México. Antes habíamos comenzado nuestro camino en el mundo del boba con una tienda en el sur de California, donde aprendimos a servir a nuestra comunidad y a desarrollar nuestra pasión por las bebidas.",
     story_p2:"Después de vender nuestro primer negocio, decidimos comenzar una nueva aventura: Bobacita. Nuestro sueño es combinar bebidas con influencia asiática con los sabores mexicanos que disfrutamos, y construir este proyecto junto a nuestros cinco hijos.",
     story_close:"Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥",
-    coming_soon:"Próximamente", uber_text:"Próximamente podrás pedir tus bebidas favoritas por Uber Eats.",
-    online_title:"Orden en línea", online_text:"Más adelante podrás ordenar directamente desde bobacita.com.",
-    location_text:"Síguenos en redes sociales para saber dónde encontrarnos.",
-    social_kicker:"SÍGUENOS", social_title:"Encuentra a Bobacita en redes."
+    follow_kicker:"SÍGUENOS", follow_title:"Más sabor en @bobacita.mx", follow_text:"Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.",
+    contact_kicker:"CONTACTO", contact_title:"Estamos cerca de ti.", contact_intro:"Escríbenos, llámanos o visítanos en Tijuana.",
+    contact_phone:"TELÉFONO", contact_email:"CORREO", contact_location:"UBICACIÓN", open_map:"Abrir ubicación de Bobacita en mapas", contact_social:"REDES SOCIALES",
+    social_lemonades:"Limonadas llenas de fruta", social_cafe:"Café al estilo Bobacita", social_saigon:"Sueño Saigón · Café Vietnamita", social_aguas:"Jamaica", qr_label:"Escanea y visita Bobacita", qr_alt:"Código QR de bobacita.com"
   },
   en: {
     page_title:"Bobacita | Lemonades, Aguas Frescas & Coffee",
-    page_description:"Bobacita in Tijuana: lemonades, aguas frescas, coffee, and boba with Mexican flavors and an Asian-inspired twist.",
-    nav_home:"Home", nav_menu:"Menu", nav_story:"Our Story", nav_follow:"Follow Us", nav_contact:"Contact",
-    hero_kicker:"BOBA • AGUAS FRESCAS • LEMONADE", hero_title_1:"Fresh flavors", hero_title_2:"with a special twist.",
-    hero_desc:"Mexican flavors with Asian inspiration, made to share with family.",
-    view_menu:"View menu", follow_us:"Follow us",
-    quality_title:"Quality ingredients", quality_text:"Fresh drinks full of flavor.",
-    love_title:"Made with love", love_text:"A family project in Tijuana.",
-    fusion_title:"Mexico + Asia", fusion_text:"Flavors that bring two cultures together.",
-    menu_kicker:"OUR MENU", menu_note:"Opening menu. Flavors and availability may change.",
-    menu_categories:"Menu categories",
+    page_description:"Bobacita in Tijuana: lemonades, aguas frescas, coffee, and boba, made with love for you.",
+    main_navigation:"Main navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
+    nav_menu:"Menu", nav_story:"Our story", nav_follow:"Follow us",
+    love_note:"Made with love for you ❤️",
+    hero_title:"Unique drinks, flavors that make you smile.",
+    hero_text:"Lemonades, aguas frescas, and coffee with Mexican flavors and Asian inspiration.",
+    hero_drinks_alt:"Colorful Bobacita lemonades with fresh fruit",
+    browse_menu:"Explore the menu", menu_kicker:"FIND YOUR FAVORITE", menu_title:"What are you craving?",
     category_lemonades:"Lemonades", category_aguas:"Aguas Frescas", category_cafe:"Coffee", category_toppings:"Toppings",
-    lemonades_intro:"Made to order with real lemon and bright fruit flavors.",
-    limited_drink:"Seasonal special", dragon_summary:"A vibrant, fruity, and refreshing lemonade.",
-    dragon_details:"Lemonade made with real lemon and tropical dragon fruit flavor. Sweet, citrusy, and made to order.",
-    classic_flavors:"Classic flavors", lemonade_selection:"Bobacita Lemonades", lemonade_selection_summary:"Original, strawberry, and blueberry.",
-    lemonade_selection_details:"Choose a classic or fruity lemonade, served cold with the Bobacita touch.",
-    aguas_intro:"Cold Mexican classics full of flavor.", mexican_classics:"Mexican classics",
-    jamaica_horchata:"Hibiscus & Horchata", aguas_summary:"A fruity, refreshing choice or a creamy cinnamon classic.",
-    aguas_details:"Bright and refreshing hibiscus agua fresca; or traditional, creamy horchata with the perfect touch of cinnamon.",
-    cafe_intro:"Creamy Asian-inspired tea and coffee.", thai_type:"Thai tea", signature_drink:"Bobacita signature", vietnamese_coffee:"Vietnamese coffee",
-    thai:"Rise with Thai – Thai Tea", thai_summary:"Authentic, creamy, and rich.",
-    thai_details:"Bold Thai tea blended with creamy milk and served cold. Add your favorite topping.",
-    brulee:"Brown Sugar Brûlée", brulee_summary:"Creamy, caramelized, and comforting.",
-    brulee_details:"Black tea with milk, brûlée-style caramelized brown sugar, and a smooth, sweet finish.",
-    saigon:"Saigon Dream – Vietnamese Coffee", saigon_summary:"Bold, creamy, and smooth.",
-    saigon_details:"Robust Vietnamese coffee with condensed milk, served over ice for a bold and sweet flavor.",
-    see_details:"View description", hide_details:"Hide description",
-    toppings_intro:"Customize your drink with one of our three toppings.", tap_description:"Tap to view description", tap_hide_description:"Tap to hide description",
-    original_boba:"Original Boba", original_boba_desc:"Soft and chewy tapioca pearls with a delicate brown sugar flavor.",
-    mango_boba:"Mango Popping Boba", mango_boba_desc:"Juice-filled popping pearls with a sweet tropical mango flavor.",
-    blueberry_boba:"Blueberry Popping Boba", blueberry_boba_desc:"Juice-filled popping pearls with a fresh, fruity blueberry flavor.",
-    dragon_alt:"Bobacita Dragon Fruit Lemonade", lemonades_alt:"Selection of Bobacita lemonades",
-    aguas_alt:"Bobacita hibiscus agua fresca and horchata", thai_alt:"Rise with Thai, Bobacita Thai tea",
-    brulee_alt:"Bobacita Brown Sugar Brûlée", saigon_alt:"Saigon Dream, Bobacita Vietnamese coffee",
+    category_lemonades_desc:"Fresh and fruity", category_aguas_desc:"Tradition in every sip", category_cafe_desc:"Asian-inspired",
+    toppings_personalize:"Toppings · Customize your drink", category_toppings_desc:"Give it your special touch",
+    all_categories:"Categories ↑", fresh_real_lemons:"REAL LEMONS · MADE TO ORDER",
+    lemonades_alt:"Bobacita original, strawberry, and blueberry lemonades",
+    dragon_alt:"Bobacita dragon fruit lemonade with ice, lemon, and dragon fruit",
+    lemonade_photo_note:"Fresh, fruity, and made for you.", featured:"FEATURED",
+    dragon_short:"Dragon fruit, lemon, and vibrant tropical flavor.", view_details:"View details",
+    dragon_details:"Citrusy lemonade with tropical dragon fruit flavor, served ice cold. Pair it with mango or blueberry popping boba.",
+    base_flavors:"Base flavors", nine_flavors:"9 flavors", flavor_original:"Original", flavor_blueberry:"Blueberry",
+    flavor_strawberry:"Strawberry", flavor_lavender:"Lavender", flavor_vanilla:"Vanilla", flavor_raspberry:"Raspberry", flavor_coconut:"Coconut", flavor_pineapple:"Pineapple",
+    our_combinations:"OUR COMBINATIONS", special_mixes:"Special mixes", view_fourteen:"View 14",
+    mix_fresa_tropical:"strawberry + mango + lemonade", mix_berry_azul:"blueberry + raspberry + lemonade",
+    mix_lavanda_berry:"lavender + blueberry + lemonade", mix_mango_fresco:"mango + lemonade + Tajín",
+    mix_berry_rosa:"strawberry + raspberry + lemonade", mix_lavanda_fresa:"lavender + strawberry + lemonade",
+    mix_mango_azul:"mango + blueberry + lemonade", mix_fresa_tajin:"strawberry + lemonade + Tajín",
+    mix_lavanda_vanilla:"lavender + vanilla + lemonade", mix_pina_colada:"pineapple + coconut + lemonade",
+    mix_mango_pina:"mango + pineapple + lemonade", mix_coco_berry:"coconut + strawberry + lemonade",
+    mix_pina_azul:"pineapple + blueberry + lemonade", mix_tropical_rosa:"pineapple + mango + raspberry + lemonade",
+    mexican_classics:"MEXICAN CLASSICS", aguas_alt:"Bobacita hibiscus agua fresca and horchata", jamaica_alt:"Bobacita hibiscus agua fresca", horchata_alt:"Bobacita horchata",
+    jamaica_short:"Floral, fruity, and refreshing.", jamaica_details:"Hibiscus agua fresca with a bright, lightly tart, and refreshing flavor.",
+    horchata_short:"Creamy, smooth, and cinnamon-spiced.", horchata_details:"Traditional creamy horchata finished with the perfect touch of cinnamon.",
+    cold_creamy:"COLD · CREAMY · BOLD", thai_clean_alt:"Cold Thai tea with boba",
+    thai_tea_label:"THAI TEA", thai_name:"Sube el Thai", thai_short:"Creamy, bold, and refreshing Thai tea served cold.",
+    thai_details:"Thai black tea with warm spice notes and a creamy blend. Recommended with Original Boba. Serving: 590 mL.",
+    saigon_clean_alt:"Cold Vietnamese coffee beside a phin filter", vietnamese_coffee_label:"VIETNAMESE COFFEE", saigon_name:"Sueño Saigón",
+    saigon_short:"Bold, sweet, and creamy Vietnamese coffee prepared to enjoy ice cold.",
+    saigon_details:"Robust Vietnamese coffee with condensed milk. Enjoy it alone or add Original Boba for extra texture. Serving: 590 mL.",
+    brulee_clean_alt:"Brûlée de Azúcar drink with brown-sugar streaks", brulee_label:"BROWN SUGAR CRÈME BRÛLÉE", brulee_name:"Brûlée de Azúcar",
+    brulee_short:"Creamy tea with milk, brown sugar, and a crème brûlée finish.",
+    brulee_details:"A smooth caramelized blend with brown sugar and flan notes. Recommended with Original Boba. Serving: 590 mL.",
+    make_it_yours:"MAKE IT YOURS", toppings_intro:"Choose an extra texture to complete your drink.",
+    classic_boba:"Original Boba", original_boba:"Classic tapioca pearls", classic_boba_alt:"Classic tapioca boba", mango_boba_alt:"Mango popping boba", blueberry_boba_alt:"Blueberry popping boba", classic_boba_details:"Soft and chewy tapioca pearls with a delicate brown sugar flavor.",
+    mango_popping_es:"Mango Popping Boba", mango_details:"Juice-filled popping pearls with sweet tropical mango flavor.",
+    blueberry_popping_es:"Blueberry Popping Boba", blueberry_details:"Juice-filled popping pearls with a fresh, fruity blueberry flavor.",
+    tajin_note:"Tajín is available with selected lemonade combinations; it is not one of the three boba toppings.",
     story_kicker:"OUR STORY", story_title:"From our family to yours.",
     story_p1:"Seven years ago our family moved to Tijuana, Mexico. Before that, we began our boba journey with a shop in Southern California, where we learned to serve our community and build our passion for drinks.",
     story_p2:"After selling our first business, we decided to start a new adventure: Bobacita. Our dream is to combine Asian-inspired drinks with the Mexican flavors we enjoy, and to build this business together with our five children.",
     story_close:"Welcome to our family. Welcome to Bobacita. ♥",
-    coming_soon:"Coming soon", uber_text:"Soon you’ll be able to order your favorite drinks through Uber Eats.",
-    online_title:"Online ordering", online_text:"Later, you’ll be able to order directly from bobacita.com.",
-    location_text:"Follow us on social media to see where to find us.",
-    social_kicker:"FOLLOW US", social_title:"Find Bobacita on social media."
+    follow_kicker:"FOLLOW US", follow_title:"More flavor at @bobacita.mx", follow_text:"New drinks, locations, and moments from the Bobacita family.",
+    contact_kicker:"CONTACT", contact_title:"We’re close by.", contact_intro:"Message us, call us, or visit us in Tijuana.",
+    contact_phone:"PHONE", contact_email:"EMAIL", contact_location:"LOCATION", open_map:"Open Bobacita location in maps", contact_social:"SOCIAL MEDIA",
+    social_lemonades:"Fruit-filled lemonades", social_cafe:"Coffee, Bobacita style", social_saigon:"Sueño Saigón · Vietnamese Coffee", social_aguas:"Jamaica", qr_label:"Scan to visit Bobacita", qr_alt:"QR code for bobacita.com"
   }
 };
 
@@ -96,80 +116,29 @@ function setLanguage(lang){
   document.documentElement.lang = lang;
   document.title = dictionary.page_title;
   document.querySelector('meta[name="description"]').content = dictionary.page_description;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key = el.dataset.i18n;
-    if(dictionary[key]) el.textContent = dictionary[key];
+
+  document.querySelectorAll("[data-i18n]").forEach(element=>{
+    const key = element.dataset.i18n;
+    if(dictionary[key]) element.textContent = dictionary[key];
   });
-  document.querySelectorAll("[data-i18n-alt]").forEach(el=>{
-    const key = el.dataset.i18nAlt;
-    if(dictionary[key]) el.alt = dictionary[key];
+  document.querySelectorAll("[data-i18n-alt]").forEach(element=>{
+    const key = element.dataset.i18nAlt;
+    if(dictionary[key]) element.alt = dictionary[key];
   });
-  document.querySelectorAll("[data-i18n-aria]").forEach(el=>{
-    const key = el.dataset.i18nAria;
-    if(dictionary[key]) el.setAttribute("aria-label", dictionary[key]);
+  document.querySelectorAll("[data-i18n-aria]").forEach(element=>{
+    const key = element.dataset.i18nAria;
+    if(dictionary[key]) element.setAttribute("aria-label", dictionary[key]);
   });
-  document.querySelectorAll(".lang-switch button").forEach(btn=>{
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+  document.querySelectorAll(".lang-switch button").forEach(button=>{
+    const active = button.dataset.lang === lang;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
   localStorage.setItem("bobacita-lang", lang);
 }
 
-document.querySelectorAll(".lang-switch button").forEach(btn=>{
-  btn.addEventListener("click",()=>setLanguage(btn.dataset.lang));
-});
-
-const menuTabs = [...document.querySelectorAll(".menu-tab")];
-
-function showMenuPanel(tab){
-  menuTabs.forEach(item=>{
-    const selected = item === tab;
-    item.classList.toggle("active", selected);
-    item.setAttribute("aria-selected", String(selected));
-    item.tabIndex = selected ? 0 : -1;
-  });
-  document.querySelectorAll(".menu-panel").forEach(panel=>{
-    const selected = panel.dataset.panel === tab.dataset.category;
-    panel.classList.toggle("active", selected);
-    panel.hidden = !selected;
-  });
-}
-
-menuTabs.forEach((tab,index)=>{
-  tab.addEventListener("click",()=>showMenuPanel(tab));
-  tab.addEventListener("keydown",event=>{
-    if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key)) return;
-    event.preventDefault();
-    let nextIndex = index;
-    if(event.key === "ArrowRight") nextIndex = (index + 1) % menuTabs.length;
-    if(event.key === "ArrowLeft") nextIndex = (index - 1 + menuTabs.length) % menuTabs.length;
-    if(event.key === "Home") nextIndex = 0;
-    if(event.key === "End") nextIndex = menuTabs.length - 1;
-    showMenuPanel(menuTabs[nextIndex]);
-    menuTabs[nextIndex].focus();
-  });
-});
-
-document.querySelectorAll(".item-toggle").forEach(button=>{
-  button.addEventListener("click",()=>{
-    const details = document.getElementById(button.getAttribute("aria-controls"));
-    const expanded = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", String(!expanded));
-    button.dataset.i18n = expanded ? "see_details" : "hide_details";
-    details.hidden = expanded;
-    setLanguage(document.documentElement.lang);
-  });
-});
-
-document.querySelectorAll(".topping-card").forEach(button=>{
-  button.addEventListener("click",()=>{
-    const details = document.getElementById(button.getAttribute("aria-controls"));
-    const expanded = button.getAttribute("aria-expanded") === "true";
-    const instruction = button.querySelector("span:last-child");
-    button.setAttribute("aria-expanded", String(!expanded));
-    details.hidden = expanded;
-    instruction.dataset.i18n = expanded ? "tap_description" : "tap_hide_description";
-    setLanguage(document.documentElement.lang);
-  });
+document.querySelectorAll(".lang-switch button").forEach(button=>{
+  button.addEventListener("click",()=>setLanguage(button.dataset.lang));
 });
 
 setLanguage(localStorage.getItem("bobacita-lang") || "es");

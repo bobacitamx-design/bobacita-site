@@ -4,250 +4,307 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Bobacita | Limonadas, Aguas Frescas y Café</title>
-  <meta name="description" content="Bobacita en Tijuana: limonadas, aguas frescas, café y boba con sabores mexicanos y un toque asiático.">
+  <meta name="description" content="Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#inicio" aria-label="Bobacita home">
+    <a class="brand" href="#inicio" aria-label="Bobacita">
       <img src="bobacita-logo.png" alt="Bobacita">
-      <span>Bobacita</span>
     </a>
-    <nav>
-      <a href="#inicio" data-i18n="nav_home">Inicio</a>
+    <nav class="desktop-nav" aria-label="Navegación principal" data-i18n-aria="main_navigation">
       <a href="#menu" data-i18n="nav_menu">Menú</a>
-      <a href="#historia" data-i18n="nav_story">Nuestra Historia</a>
+      <a href="#historia" data-i18n="nav_story">Nuestra historia</a>
       <a href="#siguenos" data-i18n="nav_follow">Síguenos</a>
-      <a href="#contacto" data-i18n="nav_contact">Contacto</a>
     </nav>
-    <div class="lang-switch" aria-label="Language switcher">
-      <button class="active" data-lang="es">ES</button>
-      <button data-lang="en">EN</button>
+    <div class="lang-switch" aria-label="Cambiar idioma" data-i18n-aria="language_switch">
+      <button class="active" type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
+    <a class="menu-toggle" href="#menu" aria-label="Abrir menú" data-i18n-aria="open_menu"><span></span><span></span><span></span></a>
   </header>
 
   <main>
     <section class="hero" id="inicio">
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="hero_kicker">BOBA • AGUAS FRESCAS • LIMONADA</p>
-        <h1><span data-i18n="hero_title_1">Sabores frescos</span><br><em data-i18n="hero_title_2">con un toque especial.</em></h1>
-        <p class="lead" data-i18n="hero_desc">Sabores mexicanos con inspiración asiática, hechos para compartir en familia.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#menu" data-i18n="view_menu">Ver menú</a>
-          <a class="btn secondary" href="#siguenos" data-i18n="follow_us">Síguenos</a>
+        <p class="love-note" data-i18n="love_note">Hecho con Amor para Ti ❤️</p>
+        <h1 data-i18n="hero_title">Bebidas únicas, sabores que te hacen sonreír.</h1>
+        <p class="hero-text" data-i18n="hero_text">Limonadas, aguas frescas y café con sabores mexicanos e inspiración asiática.</p>
+      </div>
+      <figure class="hero-drinks">
+        <img src="assets/lemonades-fruit-v2.jpg" alt="Tres limonadas Bobacita con limones, fresas y arándanos" data-i18n-alt="hero_drinks_alt">
+      </figure>
+    </section>
+
+    <section class="category-dock" id="menu" aria-labelledby="menu-title">
+      <div class="menu-intro">
+        <p class="section-kicker" data-i18n="menu_kicker">ENCUENTRA TU FAVORITA</p>
+        <h2 id="menu-title" data-i18n="menu_title">¿Qué se te antoja?</h2>
+      </div>
+      <nav class="category-links" aria-label="Categorías del menú" data-i18n-aria="menu_categories">
+        <div class="drink-categories">
+          <a class="category-lemonades" href="#limonadas"><span class="category-icon" aria-hidden="true">🍋</span><span class="category-copy"><strong data-i18n="category_lemonades">Limonadas</strong><small data-i18n="category_lemonades_desc">Frescas y frutales</small></span><span class="category-arrow" aria-hidden="true">›</span></a>
+          <a class="category-aguas" href="#aguas"><span class="category-icon" aria-hidden="true">🌺</span><span class="category-copy"><strong data-i18n="category_aguas">Aguas Frescas</strong><small data-i18n="category_aguas_desc">Tradición en cada sorbo</small></span><span class="category-arrow" aria-hidden="true">›</span></a>
+          <a class="category-cafe" href="#cafe"><span class="category-icon" aria-hidden="true">☕</span><span class="category-copy"><strong data-i18n="category_cafe">Café</strong><small data-i18n="category_cafe_desc">Inspiración asiática</small></span><span class="category-arrow" aria-hidden="true">›</span></a>
+        </div>
+        <a class="toppings-addon" href="#toppings"><span class="category-icon" aria-hidden="true">🧋</span><span class="addon-plus" aria-hidden="true">+</span><span class="category-copy"><strong data-i18n="toppings_personalize">Toppings · Personaliza tu bebida</strong><small data-i18n="category_toppings_desc">Dale tu toque especial</small></span><span class="category-arrow" aria-hidden="true">›</span></a>
+      </nav>
+    </section>
+
+    <section class="menu-section lemonades-section" id="limonadas">
+      <div class="section-title-row">
+        <div>
+          <p class="section-kicker" data-i18n="fresh_real_lemons">LIMONES REALES · HECHAS AL MOMENTO</p>
+          <h2 data-i18n="category_lemonades">Limonadas</h2>
+        </div>
+        <a class="back-link" href="#menu" data-i18n="all_categories">Categorías ↑</a>
+      </div>
+
+      <figure class="section-hero-photo">
+        <img src="assets/lemonades-fruit-v2.jpg" alt="Limonadas Bobacita con limones, fresas, frambuesas y arándanos" data-i18n-alt="lemonades_alt">
+        <figcaption>
+          <span data-i18n="lemonade_photo_note">Frescas, frutales y preparadas para ti.</span>
+        </figcaption>
+      </figure>
+
+      <article class="spotlight-card dragon-spotlight">
+        <figure class="spotlight-photo">
+          <img src="assets/dragon-fruit-lemonade-clean.jpg" alt="Limonada de pitahaya Bobacita con hielo, limón y fruta del dragón" data-i18n-alt="dragon_alt">
+        </figure>
+        <div class="spotlight-mark" aria-hidden="true">✦</div>
+        <div>
+          <p class="mini-label" data-i18n="featured">DESTACADA</p>
+          <h3>Dragon Fruit Lemonade</h3>
+          <p data-i18n="dragon_short">Pitahaya, limón y un sabor tropical de color vibrante.</p>
+        </div>
+        <details>
+          <summary data-i18n="view_details">Ver detalles</summary>
+          <p data-i18n="dragon_details">Limonada cítrica con sabor tropical a pitahaya, servida bien fría. Combínala con popping boba de mango o arándano.</p>
+        </details>
+      </article>
+
+      <div class="flavor-block">
+        <div class="subheading-row">
+          <h3 data-i18n="base_flavors">Sabores base</h3>
+          <span data-i18n="nine_flavors">9 sabores</span>
+        </div>
+        <div class="flavor-chips">
+          <span data-i18n="flavor_original">Original</span>
+          <span data-i18n="flavor_blueberry">Arándano</span>
+          <span data-i18n="flavor_strawberry">Fresa</span>
+          <span>Mango</span>
+          <span data-i18n="flavor_lavender">Lavanda</span>
+          <span data-i18n="flavor_vanilla">Vainilla</span>
+          <span data-i18n="flavor_raspberry">Frambuesa</span>
+          <span data-i18n="flavor_coconut">Coco</span>
+          <span data-i18n="flavor_pineapple">Piña</span>
         </div>
       </div>
-      <div class="hero-art">
-        <div class="sun"></div>
-        <img src="bobacita-logo.png" alt="Bobacita logo">
+
+      <details class="mixes-accordion">
+        <summary>
+          <span>
+            <small data-i18n="our_combinations">NUESTRAS COMBINACIONES</small>
+            <strong data-i18n="special_mixes">Mezclas especiales</strong>
+          </span>
+          <span class="summary-action" data-i18n="view_fourteen">Ver 14</span>
+        </summary>
+        <div class="mix-grid">
+          <article><h4>Fresa Tropical</h4><p data-i18n="mix_fresa_tropical">fresa + mango + limonada</p></article>
+          <article><h4>Berry Azul</h4><p data-i18n="mix_berry_azul">arándano + frambuesa + limonada</p></article>
+          <article><h4>Lavanda Berry</h4><p data-i18n="mix_lavanda_berry">lavanda + arándano + limonada</p></article>
+          <article><h4>Mango Fresco</h4><p data-i18n="mix_mango_fresco">mango + limonada + Tajín</p></article>
+          <article><h4>Berry Rosa</h4><p data-i18n="mix_berry_rosa">fresa + frambuesa + limonada</p></article>
+          <article><h4>Lavanda Fresa</h4><p data-i18n="mix_lavanda_fresa">lavanda + fresa + limonada</p></article>
+          <article><h4>Mango Azul</h4><p data-i18n="mix_mango_azul">mango + arándano + limonada</p></article>
+          <article><h4>Fresa con Tajín</h4><p data-i18n="mix_fresa_tajin">fresa + limonada + Tajín</p></article>
+          <article><h4>Lavanda Vainilla</h4><p data-i18n="mix_lavanda_vanilla">lavanda + vainilla + limonada</p></article>
+          <article><h4>Piña Colada Lemonade</h4><p data-i18n="mix_pina_colada">piña + coco + limonada</p></article>
+          <article><h4>Mango Piña</h4><p data-i18n="mix_mango_pina">mango + piña + limonada</p></article>
+          <article><h4>Coco Berry</h4><p data-i18n="mix_coco_berry">coco + fresa + limonada</p></article>
+          <article><h4>Piña Azul</h4><p data-i18n="mix_pina_azul">piña + arándano + limonada</p></article>
+          <article><h4>Tropical Rosa</h4><p data-i18n="mix_tropical_rosa">piña + mango + frambuesa + limonada</p></article>
+        </div>
+      </details>
+    </section>
+
+    <section class="menu-section aguas-section" id="aguas">
+      <div class="section-title-row">
+        <div>
+          <p class="section-kicker" data-i18n="mexican_classics">CLÁSICOS MEXICANOS</p>
+          <h2 data-i18n="category_aguas">Aguas Frescas</h2>
+        </div>
+        <a class="back-link" href="#menu" data-i18n="all_categories">Categorías ↑</a>
+      </div>
+      <div class="agua-cards">
+        <details class="agua-card agua-jamaica">
+          <summary>
+            <div class="agua-photo"><img src="assets/jamaica.png" alt="Agua de Jamaica fría con hielo y flores de jamaica" data-i18n-alt="jamaica_alt"></div>
+            <span><strong>Jamaica</strong><small data-i18n="jamaica_short">Floral, frutal y refrescante.</small></span>
+            <span class="details-label" data-i18n="view_details">Ver detalles</span>
+          </summary>
+          <p data-i18n="jamaica_details">Agua fresca de flor de jamaica con un sabor vivo, ligeramente ácido y muy refrescante.</p>
+        </details>
+        <details class="agua-card agua-horchata">
+          <summary>
+            <div class="agua-photo"><img src="assets/horchata.png" alt="Horchata fría con hielo y canela" data-i18n-alt="horchata_alt"></div>
+            <span><strong>Horchata</strong><small data-i18n="horchata_short">Cremosa, suave y con canela.</small></span>
+            <span class="details-label" data-i18n="view_details">Ver detalles</span>
+          </summary>
+          <p data-i18n="horchata_details">Horchata tradicional, cremosa y suave, terminada con el toque perfecto de canela.</p>
+        </details>
       </div>
     </section>
 
-    <section class="intro-strip">
-      <div><strong data-i18n="quality_title">Ingredientes de calidad</strong><span data-i18n="quality_text">Bebidas frescas y llenas de sabor.</span></div>
-      <div><strong data-i18n="love_title">Hecho con amor</strong><span data-i18n="love_text">Un proyecto familiar en Tijuana.</span></div>
-      <div><strong data-i18n="fusion_title">México + Asia</strong><span data-i18n="fusion_text">Sabores que unen dos culturas.</span></div>
-    </section>
-
-    <section class="section menu-section" id="menu">
-      <div class="section-heading">
-        <p class="eyebrow" data-i18n="menu_kicker">NUESTRO MENÚ</p>
-  <h2>$100 MXN</h2>
-        <p data-i18n="menu_note">Menú inicial. Sabores y disponibilidad pueden cambiar.</p>
+    <section class="menu-section cafe-section" id="cafe">
+      <div class="section-title-row">
+        <div>
+          <p class="section-kicker" data-i18n="cold_creamy">FRÍO · CREMOSO · INTENSO</p>
+          <h2 data-i18n="category_cafe">Café</h2>
+        </div>
+        <a class="back-link" href="#menu" data-i18n="all_categories">Categorías ↑</a>
       </div>
-
-      <div class="menu-tabs" role="tablist" aria-label="Categorías del menú" data-i18n-aria="menu_categories">
-        <button class="menu-tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-lemonades" id="tab-lemonades" data-category="lemonades" data-i18n="category_lemonades">Limonadas</button>
-        <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-aguas" id="tab-aguas" data-category="aguas" data-i18n="category_aguas">Aguas Frescas</button>
-        <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-cafe" id="tab-cafe" data-category="cafe" data-i18n="category_cafe">Café</button>
-        <button class="menu-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-toppings" id="tab-toppings" data-category="toppings" data-i18n="category_toppings">Toppings</button>
-      </div>
-
-      <div class="menu-panels">
-        <section class="menu-panel active" id="panel-lemonades" role="tabpanel" aria-labelledby="tab-lemonades" data-panel="lemonades">
-          <div class="category-heading">
-            <h3 data-i18n="category_lemonades">Limonadas</h3>
-            <p data-i18n="lemonades_intro">Hechas al momento con limón real y sabores brillantes.</p>
+      <div class="featured-drinks">
+        <article class="featured-drink thai-card">
+          <div class="clean-photo clean-photo-thai">
+            <img src="assets/sube-el-thai.png" alt="Vaso de té tailandés frío con boba" data-i18n-alt="thai_clean_alt">
           </div>
-          <div class="item-grid two-up">
-            <article class="drink-card featured-card">
-              <img src="assets/dragon-fruit-lemonade.jpeg" alt="Limonada Dragon Fruit de Bobacita" data-i18n-alt="dragon_alt">
-              <div class="drink-card-copy">
-                <p class="item-type" data-i18n="limited_drink">Especial de temporada</p>
-                <h4>Dragon Fruit Lemonade</h4>
-                <p class="item-summary" data-i18n="dragon_summary">Una limonada vibrante, frutal y refrescante.</p>
-                <button class="item-toggle" type="button" aria-expanded="false" aria-controls="details-dragon" data-i18n="see_details">Ver descripción</button>
-                <div class="item-details" id="details-dragon" hidden>
-                  <p data-i18n="dragon_details">Limonada preparada con limón real y el sabor tropical de la pitahaya. Dulce, cítrica y hecha al momento.</p>
-                </div>
-              </div>
-            </article>
-            <article class="drink-card">
-              <img src="assets/lemonadas.jpg" alt="Selección de limonadas Bobacita" data-i18n-alt="lemonades_alt">
-              <div class="drink-card-copy">
-                <p class="item-type" data-i18n="classic_flavors">Sabores clásicos</p>
-                <h4 data-i18n="lemonade_selection">Limonadas Bobacita</h4>
-                <p class="item-summary" data-i18n="lemonade_selection_summary">Original, fresa y blueberry.</p>
-                <button class="item-toggle" type="button" aria-expanded="false" aria-controls="details-lemonades" data-i18n="see_details">Ver descripción</button>
-                <div class="item-details" id="details-lemonades" hidden>
-                  <p data-i18n="lemonade_selection_details">Elige una limonada clásica o frutal, preparada fría y con el toque Bobacita.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="menu-panel" id="panel-aguas" role="tabpanel" aria-labelledby="tab-aguas" data-panel="aguas" hidden>
-          <div class="category-heading">
-            <h3 data-i18n="category_aguas">Aguas Frescas</h3>
-            <p data-i18n="aguas_intro">Clásicos mexicanos, fríos y llenos de sabor.</p>
-          </div>
-          <div class="item-grid">
-            <article class="drink-card">
-              <img src="assets/aguas-frescas.jpg" alt="Agua de jamaica y horchata Bobacita" data-i18n-alt="aguas_alt">
-              <div class="drink-card-copy">
-                <p class="item-type" data-i18n="mexican_classics">Clásicos mexicanos</p>
-                <h4 data-i18n="jamaica_horchata">Jamaica y Horchata</h4>
-                <p class="item-summary" data-i18n="aguas_summary">Una opción frutal y refrescante o una opción cremosa con canela.</p>
-                <button class="item-toggle" type="button" aria-expanded="false" aria-controls="details-aguas" data-i18n="see_details">Ver descripción</button>
-                <div class="item-details" id="details-aguas" hidden>
-                  <p data-i18n="aguas_details">Jamaica con sabor vivo y refrescante; horchata tradicional, cremosa y con el toque perfecto de canela.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="menu-panel" id="panel-cafe" role="tabpanel" aria-labelledby="tab-cafe" data-panel="cafe" hidden>
-          <div class="category-heading">
-            <h3 data-i18n="category_cafe">Café</h3>
-            <p data-i18n="cafe_intro">Té y café cremosos con inspiración asiática.</p>
-          </div>
-          <div class="item-grid three-up">
-            <article class="drink-card">
-              <img src="assets/thai-tea.jpeg" alt="Sube el Thai, té tailandés de Bobacita" data-i18n-alt="thai_alt">
-              <div class="drink-card-copy">
-                <p class="item-type" data-i18n="thai_type">Té tailandés</p>
-                <h4 data-i18n="thai">Sube el Thai – Té Tailandés</h4>
-                <p class="item-summary" data-i18n="thai_summary">Auténtico, cremoso y rico.</p>
-                <button class="item-toggle" type="button" aria-expanded="false" aria-controls="details-thai" data-i18n="see_details">Ver descripción</button>
-                <div class="item-details" id="details-thai" hidden>
-                  <p data-i18n="thai_details">Té tailandés de sabor intenso mezclado con leche cremosa y servido frío. Agrega tu topping favorito.</p>
-                </div>
-              </div>
-            </article>
-            <article class="drink-card">
-              <img src="assets/boba-tea-cafe.jpg" alt="Brûlée de Azúcar Bobacita" data-i18n-alt="brulee_alt">
-              <div class="drink-card-copy">
-                <p class="item-type" data-i18n="signature_drink">Especialidad Bobacita</p>
-                <h4 data-i18n="brulee">Brûlée de Azúcar</h4>
-                <p class="item-summary" data-i18n="brulee_summary">Cremosa, caramelizada y reconfortante.</p>
-                <button class="item-toggle" type="button" aria-expanded="false" aria-controls="details-brulee" data-i18n="see_details">Ver descripción</button>
-                <div class="item-details" id="details-brulee" hidden>
-                  <p data-i18n="brulee_details">Té negro con leche, azúcar morena caramelizada estilo brûlée y un final suave y dulce.</p>
-                </div>
-              </div>
-            </article>
-            <article class="drink-card">
-              <img src="assets/sueno-saigon-cafe.jpeg" alt="Sueño Saigón, café vietnamita de Bobacita" data-i18n-alt="saigon_alt">
-              <div class="drink-card-copy">
-                <p class="item-type" data-i18n="vietnamese_coffee">Café vietnamita</p>
-                <h4 data-i18n="saigon">Sueño Saigón – Café Vietnamita</h4>
-                <p class="item-summary" data-i18n="saigon_summary">Intenso, cremoso y suave.</p>
-                <button class="item-toggle" type="button" aria-expanded="false" aria-controls="details-saigon" data-i18n="see_details">Ver descripción</button>
-                <div class="item-details" id="details-saigon" hidden>
-                  <p data-i18n="saigon_details">Café vietnamita robusto con leche condensada, servido sobre hielo para un sabor dulce e intenso.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="menu-panel" id="panel-toppings" role="tabpanel" aria-labelledby="tab-toppings" data-panel="toppings" hidden>
-          <div class="category-heading">
-            <h3 data-i18n="category_toppings">Toppings</h3>
-            <p data-i18n="toppings_intro">Personaliza tu bebida con uno de nuestros tres toppings.</p>
-          </div>
-          <div class="toppings-grid">
-            <div class="topping-item">
-              <button class="topping-card" type="button" aria-expanded="false" aria-controls="details-original-boba">
-                <span class="topping-orb original-orb" aria-hidden="true"></span>
-                <strong data-i18n="original_boba">Original Boba</strong>
-                <span data-i18n="tap_description">Toca para ver la descripción</span>
-              </button>
-              <div class="topping-details" id="details-original-boba" hidden><p data-i18n="original_boba_desc">Perlas de tapioca suaves y masticables con un delicado sabor a azúcar morena.</p></div>
+          <div class="featured-copy">
+            <div class="drink-heading">
+              <div><p class="mini-label" data-i18n="thai_tea_label">TÉ TAILANDÉS</p><h3 data-i18n="thai_name">Sube el Thai</h3></div>
             </div>
-            <div class="topping-item">
-              <button class="topping-card" type="button" aria-expanded="false" aria-controls="details-mango-boba">
-                <span class="topping-orb mango-orb" aria-hidden="true"></span>
-                <strong data-i18n="mango_boba">Mango Popping Boba</strong>
-                <span data-i18n="tap_description">Toca para ver la descripción</span>
-              </button>
-              <div class="topping-details" id="details-mango-boba" hidden><p data-i18n="mango_boba_desc">Perlas explosivas rellenas de jugo con un sabor dulce y tropical a mango.</p></div>
-            </div>
-            <div class="topping-item">
-              <button class="topping-card" type="button" aria-expanded="false" aria-controls="details-blueberry-boba">
-                <span class="topping-orb blueberry-orb" aria-hidden="true"></span>
-                <strong data-i18n="blueberry_boba">Blueberry Popping Boba</strong>
-                <span data-i18n="tap_description">Toca para ver la descripción</span>
-              </button>
-              <div class="topping-details" id="details-blueberry-boba" hidden><p data-i18n="blueberry_boba_desc">Perlas explosivas rellenas de jugo con un sabor fresco y frutal a blueberry.</p></div>
-            </div>
+            <p data-i18n="thai_short">Té tailandés cremoso, intenso y refrescante servido frío.</p>
+            <details>
+              <summary data-i18n="view_details">Ver detalles</summary>
+              <p data-i18n="thai_details">Té negro tailandés con notas especiadas y una mezcla cremosa. Recomendado con Boba Clásica. Presentación: 590 mL.</p>
+            </details>
           </div>
-        </section>
+        </article>
+
+        <article class="featured-drink saigon-card">
+          <div class="clean-photo clean-photo-saigon">
+            <img src="assets/sueno-saigon.png" alt="Vaso de café vietnamita frío junto a un filtro phin" data-i18n-alt="saigon_clean_alt">
+          </div>
+          <div class="featured-copy">
+            <div class="drink-heading">
+              <div><p class="mini-label" data-i18n="vietnamese_coffee_label">CAFÉ VIETNAMITA</p><h3 data-i18n="saigon_name">Sueño Saigón</h3></div>
+            </div>
+            <p data-i18n="saigon_short">Café vietnamita intenso, dulce y cremoso, preparado para disfrutarse bien frío.</p>
+            <details>
+              <summary data-i18n="view_details">Ver detalles</summary>
+              <p data-i18n="saigon_details">Café vietnamita robusto con leche condensada. Disfrútalo solo o agrega Boba Clásica para más textura. Presentación: 590 mL.</p>
+            </details>
+          </div>
+        </article>
+
+        <article class="featured-drink brulee-card">
+          <div class="clean-photo clean-photo-brulee">
+            <img src="assets/brulee-de-azucar.png" alt="Vaso de Brûlée de Azúcar con vetas de azúcar morena" data-i18n-alt="brulee_clean_alt">
+          </div>
+          <div class="featured-copy">
+            <div class="drink-heading">
+              <div><p class="mini-label" data-i18n="brulee_label">BROWN SUGAR CRÈME BRÛLÉE</p><h3 data-i18n="brulee_name">Brûlée de Azúcar</h3></div>
+            </div>
+            <p data-i18n="brulee_short">Té cremoso con leche, azúcar morena y un toque de crème brûlée.</p>
+            <details>
+              <summary data-i18n="view_details">Ver detalles</summary>
+              <p data-i18n="brulee_details">Una mezcla suave y caramelizada con notas de azúcar morena y flan. Recomendado con Boba Clásica. Presentación: 590 mL.</p>
+            </details>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section story" id="historia">
-      <div class="story-visual">
-        <img src="bobacita-logo.png" alt="Bobacita">
+    <section class="menu-section toppings-section" id="toppings">
+      <div class="section-title-row">
+        <div>
+          <p class="section-kicker" data-i18n="make_it_yours">HAZLA A TU GUSTO</p>
+          <h2 data-i18n="category_toppings">Toppings</h2>
+        </div>
+        <a class="back-link" href="#menu" data-i18n="all_categories">Categorías ↑</a>
       </div>
-      <div class="story-copy">
-        <p class="eyebrow" data-i18n="story_kicker">NUESTRA HISTORIA</p>
+      <p class="section-lead" data-i18n="toppings_intro">Elige una textura extra para completar tu bebida.</p>
+      <div class="topping-cards">
+        <details class="topping-card topping-classic">
+          <summary><div class="topping-photo"><img src="assets/boba-toppings.jpg" alt="Boba clásica de tapioca" data-i18n-alt="classic_boba_alt"></div><strong data-i18n="classic_boba">Boba Clásica</strong><small data-i18n="original_boba">Original Boba</small><span class="plus">+</span></summary>
+          <p data-i18n="classic_boba_details">Perlas de tapioca suaves y masticables con un delicado sabor a azúcar morena.</p>
+        </details>
+        <details class="topping-card topping-mango">
+          <summary><div class="topping-photo"><img src="assets/boba-toppings.jpg" alt="Popping boba de mango" data-i18n-alt="mango_boba_alt"></div><strong data-i18n="mango_popping_es">Popping Boba de Mango</strong><small>Mango Popping Boba</small><span class="plus">+</span></summary>
+          <p data-i18n="mango_details">Perlas explosivas rellenas de jugo con sabor dulce y tropical a mango.</p>
+        </details>
+        <details class="topping-card topping-blueberry">
+          <summary><div class="topping-photo"><img src="assets/boba-toppings.jpg" alt="Popping boba de arándano" data-i18n-alt="blueberry_boba_alt"></div><strong data-i18n="blueberry_popping_es">Popping Boba de Arándano</strong><small>Blueberry Popping Boba</small><span class="plus">+</span></summary>
+          <p data-i18n="blueberry_details">Perlas explosivas rellenas de jugo con un sabor fresco y frutal a arándano.</p>
+        </details>
+      </div>
+      <p class="tajin-note" data-i18n="tajin_note">Tajín está disponible en combinaciones seleccionadas de limonada; no es un topping de boba.</p>
+    </section>
+
+    <section class="story-section" id="historia">
+      <div class="story-logo"><img src="bobacita-logo.png" alt="Bobacita"></div>
+      <div>
+        <p class="section-kicker" data-i18n="story_kicker">NUESTRA HISTORIA</p>
         <h2 data-i18n="story_title">De nuestra familia para la tuya.</h2>
         <p data-i18n="story_p1">Hace 7 años nuestra familia se mudó a Tijuana, México. Antes habíamos comenzado nuestro camino en el mundo del boba con una tienda en el sur de California, donde aprendimos a servir a nuestra comunidad y a desarrollar nuestra pasión por las bebidas.</p>
         <p data-i18n="story_p2">Después de vender nuestro primer negocio, decidimos comenzar una nueva aventura: Bobacita. Nuestro sueño es combinar bebidas con influencia asiática con los sabores mexicanos que disfrutamos, y construir este proyecto junto a nuestros cinco hijos.</p>
-        <p class="signature" data-i18n="story_close">Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥</p>
+        <p class="story-signature" data-i18n="story_close">Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥</p>
       </div>
     </section>
 
-    <section class="section future">
-      <div class="future-card">
-        <span class="pill" data-i18n="coming_soon">Próximamente</span>
-        <h3>Uber Eats</h3>
-        <p data-i18n="uber_text">Próximamente podrás pedir tus bebidas favoritas por Uber Eats.</p>
+    <section class="social-section" id="siguenos">
+      <div class="social-copy">
+        <p class="section-kicker" data-i18n="follow_kicker">SÍGUENOS</p>
+        <h2 data-i18n="follow_title">Más sabor en @bobacita.mx</h2>
+        <p data-i18n="follow_text">Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.</p>
       </div>
-      <div class="future-card">
-        <span class="pill" data-i18n="coming_soon">Próximamente</span>
-        <h3 data-i18n="online_title">Orden en línea</h3>
-        <p data-i18n="online_text">Más adelante podrás ordenar directamente desde bobacita.com.</p>
-      </div>
-      <div class="future-card">
-        <span class="pill">Tijuana</span>
-        <h3>Baja California</h3>
-        <p data-i18n="location_text">Síguenos en redes sociales para saber dónde encontrarnos.</p>
-      </div>
-    </section>
-
-    <section class="section social" id="siguenos">
-      <div class="section-heading">
-        <p class="eyebrow" data-i18n="social_kicker">SÍGUENOS</p>
-        <h2 data-i18n="social_title">Encuentra a Bobacita en redes.</h2>
+      <div class="social-gallery">
+        <a class="social-feature social-feature-wide social-saigon" href="https://www.instagram.com/bobacita.mx/" target="_blank" rel="noopener" aria-label="Bobacita en Instagram"><img src="assets/sueno-saigon.png" alt="Sueño Saigón con filtro vietnamita phin"><span data-i18n="social_saigon">Sueño Saigón · Café Vietnamita</span></a>
+        <a class="social-feature" href="https://www.tiktok.com/@bobacita.mx" target="_blank" rel="noopener" aria-label="Bobacita en TikTok"><img src="assets/dragon-fruit-lemonade-clean.jpg" alt="Dragon Fruit Lemonade Bobacita"><span>Dragon Fruit Lemonade</span></a>
+        <a class="social-feature" href="https://www.facebook.com/bobacita.mx" target="_blank" rel="noopener" aria-label="Bobacita en Facebook"><img src="assets/jamaica.png" alt="Agua fresca de Jamaica"><span data-i18n="social_aguas">Jamaica</span></a>
       </div>
       <div class="social-links">
-        <a href="https://www.instagram.com/bobacita.mx/" target="_blank" rel="noopener">Instagram <strong>@bobacita.mx</strong></a>
-        <a href="https://www.facebook.com/bobacita.mx" target="_blank" rel="noopener">Facebook <strong>@bobacita.mx</strong></a>
-        <a href="https://www.tiktok.com/@bobacita.mx" target="_blank" rel="noopener">TikTok <strong>@bobacita.mx</strong></a>
-        <a href="https://www.youtube.com/@bobacita" target="_blank" rel="noopener">YouTube <strong>@bobacita</strong></a>
+        <a class="social-button instagram" href="https://www.instagram.com/bobacita.mx/" target="_blank" rel="noopener" aria-label="Instagram de Bobacita"><span class="platform-icon" aria-hidden="true">◎</span><span>Instagram</span></a>
+        <a class="social-button facebook" href="https://www.facebook.com/bobacita.mx" target="_blank" rel="noopener" aria-label="Facebook de Bobacita"><span class="platform-icon" aria-hidden="true">f</span><span>Facebook</span></a>
+        <a class="social-button tiktok" href="https://www.tiktok.com/@bobacita.mx" target="_blank" rel="noopener" aria-label="TikTok de Bobacita"><span class="platform-icon" aria-hidden="true">♪</span><span>TikTok</span></a>
+        <a class="social-button youtube" href="https://www.youtube.com/@bobacita" target="_blank" rel="noopener" aria-label="YouTube de Bobacita"><span class="platform-icon" aria-hidden="true">▶</span><span>YouTube</span></a>
       </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="contact-copy">
+        <p class="section-kicker" data-i18n="contact_kicker">CONTACTO</p>
+        <h2 data-i18n="contact_title">Estamos cerca de ti.</h2>
+        <p data-i18n="contact_intro">Escríbenos, llámanos o visítanos en Tijuana.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" href="tel:+525662849695">
+          <span class="contact-icon" aria-hidden="true">☎</span>
+          <span><small data-i18n="contact_phone">TELÉFONO</small><strong>566 284 9695</strong></span>
+        </a>
+        <a class="contact-card" href="mailto:bobacita.mx@gmail.com">
+          <span class="contact-icon" aria-hidden="true">✉</span>
+          <span><small data-i18n="contact_email">CORREO</small><strong>bobacita.mx@gmail.com</strong></span>
+        </a>
+        <a class="contact-card contact-location-card" href="https://www.google.com/maps/search/?api=1&amp;query=Urbiquinta%20del%20Cedro%2C%20P%C3%B3rtico%20de%20San%20Antonio%2C%2022564%20Tijuana%2C%20B.C.%2C%20M%C3%A9xico" target="_blank" rel="noopener" aria-label="Abrir ubicación de Bobacita en mapas" data-i18n-aria="open_map">
+          <span class="contact-icon" aria-hidden="true">●</span>
+          <span><small data-i18n="contact_location">UBICACIÓN</small><strong>Urbiquinta del Cedro, Pórtico de San Antonio, 22564 Tijuana, B.C., México</strong></span>
+        </a>
+      </div>
+      <div class="contact-socials">
+        <span><small data-i18n="contact_social">REDES SOCIALES</small><strong>@bobacita.mx</strong></span>
+        <span><small>YouTube</small><strong>@bobacita</strong></span>
+      </div>
+      <a class="qr-card" href="https://bobacita.com" target="_blank" rel="noopener" aria-label="bobacita.com">
+        <img src="assets/bobacita-website-qr.png" alt="Código QR de bobacita.com" data-i18n-alt="qr_alt">
+        <span><small>BOBACITA.COM</small><strong data-i18n="qr_label">Escanea y visita Bobacita</strong><em>bobacita.com</em></span>
+      </a>
     </section>
   </main>
 
-  <footer id="contacto">
-    <div>
-      <strong>Bobacita</strong>
-      <span>Tijuana, Baja California</span>
-    </div>
+  <footer>
+    <img src="bobacita-logo.png" alt="Bobacita">
+    <div><strong>Bobacita</strong><span>Tijuana, Baja California</span></div>
     <a href="mailto:bobacita.mx@gmail.com">bobacita.mx@gmail.com</a>
     <span>© 2026 Bobacita</span>
   </footer>

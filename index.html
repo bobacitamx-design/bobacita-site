@@ -74,6 +74,9 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 .section-hero-photo{position:relative;max-width:1120px;margin:0 auto 18px;overflow:hidden;border-radius:26px;background:#eaded7;box-shadow:var(--shadow)}
 .section-hero-photo img{width:100%;aspect-ratio:16/11;object-fit:cover}
 .section-hero-photo figcaption{position:absolute;right:10px;bottom:10px;left:10px;padding:11px 13px;border-radius:14px;background:rgba(35,22,17,.7);color:#fff;font-size:.83rem;font-weight:750;backdrop-filter:blur(7px)}
+.lemonade-photo-grid{display:grid;gap:14px;max-width:1120px;margin:0 auto 18px}
+.lemonade-photo-grid .section-hero-photo{width:100%;margin:0}
+.lemonade-photo-grid img{width:100%;height:320px;object-fit:cover;object-position:center 48%}
 
 .spotlight-card{display:grid;grid-template-columns:auto 1fr;gap:13px;max-width:1120px;margin:0 auto 28px;padding:20px;border:1px solid #f2bfd0;border-radius:22px;background:linear-gradient(135deg,#fff,#ffe5ee)}
 .spotlight-photo{grid-column:1/-1;margin:-20px -20px 3px;overflow:hidden;border-radius:21px 21px 13px 13px;background:#eaded7}
@@ -116,6 +119,15 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 .agua-card .details-label{display:grid;min-height:38px;place-items:center;border-radius:999px;background:var(--green);color:#fff;text-align:center}
 .agua-card>p{margin:0 10px 10px;padding:12px;border-radius:14px;background:var(--green-soft);font-size:.85rem;line-height:1.45}
 
+.weekly-special-section{padding:54px 18px;background:linear-gradient(145deg,#f3e5ff,#fff4fa)}
+.weekly-special-card{display:grid;max-width:920px;margin:auto;overflow:hidden;border:1px solid #d9b9e9;border-radius:26px;background:#fff;box-shadow:var(--shadow)}
+.weekly-special-photo{height:320px;overflow:hidden;background:#eaded7}
+.weekly-special-photo img{width:100%;height:100%;object-fit:cover;object-position:center 48%}
+.weekly-special-copy{padding:20px}
+.weekly-special-copy h2{margin:6px 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:2rem;line-height:1}
+.weekly-special-copy h3{margin:0 0 8px;color:#6d2c91;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem}
+.weekly-special-copy p:last-child{margin:0;color:var(--muted);line-height:1.5}
+
 .cafe-section{background:#fff8f1}
 .featured-drinks{display:grid;gap:18px;max-width:1120px;margin:auto}
 .featured-drink{overflow:hidden;border:1px solid #ead4c4;border-radius:26px;background:#fff;box-shadow:var(--shadow)}
@@ -131,13 +143,14 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 
 .toppings-section{background:#f8f7ff}
 .section-lead{max-width:1120px;margin:-8px auto 20px;color:var(--muted);line-height:1.5}
-.topping-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:900px;margin:auto}
+.topping-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:900px;margin:auto}
 .topping-card{min-width:0;overflow:hidden;border:1px solid #ded9ef;border-radius:20px;background:#fff;box-shadow:0 10px 22px rgba(68,54,109,.07)}
 .topping-photo{width:calc(100% + 16px);height:112px;margin:0 -8px 6px;overflow:hidden;background:#f5eee7}
 .topping-photo img{width:300%;max-width:none;height:100%;object-fit:cover}
 .topping-classic .topping-photo img{object-position:left center}
 .topping-mango .topping-photo img{margin-left:-100%;object-position:center}
 .topping-blueberry .topping-photo img{margin-left:-200%;object-position:right center}
+.topping-strawberry .topping-photo img{width:100%;max-width:100%;object-fit:cover;object-position:center 12%}
 .topping-card summary{position:relative;display:flex;min-height:112px;flex-direction:column;align-items:center;gap:4px;padding:12px 8px 40px;text-align:center}
 .topping-card summary strong{font-size:.78rem;line-height:1.15}
 .topping-card small{color:var(--muted);font-size:.68rem;line-height:1.2}
@@ -200,9 +213,11 @@ footer div{display:flex;flex-direction:column;gap:3px}
 footer span,footer a{font-size:.8rem;color:#f4dbd1}
 
 @media(max-width:619px){
+  .dragon-spotlight .spotlight-photo img{height:320px;aspect-ratio:auto;object-fit:cover;object-position:center 48%}
   .clean-photo{aspect-ratio:4/5}
   .clean-photo img{object-position:center 52%}
   .clean-photo-saigon img{object-position:center 50%}
+  .story-logo img{width:min(310px,82vw);height:auto;max-height:310px;object-fit:contain}
 }
 
 @media(max-width:350px){
@@ -225,11 +240,14 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .drink-categories{grid-template-columns:repeat(3,1fr)}
   .category-links .category-cafe{grid-column:auto}
   .section-hero-photo img{aspect-ratio:16/7}
+  .lemonade-photo-grid{grid-template-columns:1fr 1fr}.lemonade-photo-grid img{height:440px;aspect-ratio:auto}
   .flavor-chips{grid-template-columns:repeat(5,1fr)}
   .mix-grid{grid-template-columns:1fr 1fr}
   .featured-drinks{grid-template-columns:repeat(3,1fr)}
   .agua-photo{height:300px}
   .topping-photo{height:210px}
+  .topping-cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .weekly-special-card{grid-template-columns:1.1fr .9fr;align-items:center}.weekly-special-photo{height:440px}
   .clean-photo{height:auto}
   .story-section{grid-template-columns:.8fr 1.2fr;align-items:center;padding:80px 7vw}
   .contact-grid{grid-template-columns:1fr 1fr}.contact-location-card{grid-column:1/-1}
@@ -302,12 +320,16 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
         <a class="back-link" href="#menu" data-i18n="all_categories">Categorías ↑</a>
       </div>
 
-      <figure class="section-hero-photo">
-        <img src="assets/web/lemonades-fruit.webp" width="1200" height="800" alt="Limonadas Bobacita con limones, fresas, frambuesas y arándanos" data-i18n-alt="lemonades_alt" loading="lazy" decoding="async">
-        <figcaption>
-          <span data-i18n="lemonade_photo_note">Frescas, frutales y preparadas para ti.</span>
-        </figcaption>
-      </figure>
+      <div class="lemonade-photo-grid">
+        <figure class="section-hero-photo">
+          <img src="assets/web/strawberry-lemonade.webp" width="1200" height="1174" alt="Limonada de fresa Bobacita con fresas y limón" data-i18n-alt="strawberry_lemonade_alt" loading="lazy" decoding="async">
+          <figcaption><span data-i18n="strawberry_lemonade">Limonada de Fresa</span></figcaption>
+        </figure>
+        <figure class="section-hero-photo">
+          <img src="assets/web/blueberry-lemonade.webp" width="1139" height="1200" alt="Limonada de arándano Bobacita con arándanos y limón" data-i18n-alt="blueberry_lemonade_alt" loading="lazy" decoding="async">
+          <figcaption><span data-i18n="blueberry_lemonade">Limonada de Arándano</span></figcaption>
+        </figure>
+      </div>
 
       <article class="spotlight-card dragon-spotlight">
         <figure class="spotlight-photo">
@@ -398,6 +420,20 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </div>
     </section>
 
+    <!-- Weekly feature: replace this image and the three weekly_* translations to rotate the special. -->
+    <section class="weekly-special-section" id="especial-semana">
+      <article class="weekly-special-card">
+        <div class="weekly-special-photo">
+          <img src="assets/web/ube-horchata.webp" width="1139" height="1200" alt="Horchata Ube fría con hielo, canela y ube" data-i18n-alt="weekly_special_alt" loading="lazy" decoding="async">
+        </div>
+        <div class="weekly-special-copy">
+          <p class="section-kicker" data-i18n="weekly_heading">ESPECIAL DE LA SEMANA</p>
+          <h2 data-i18n="weekly_name">Horchata Ube</h2>
+          <p data-i18n="weekly_description">Nuestra horchata cremosa con un toque dulce y único de ube. Disponible esta semana.</p>
+        </div>
+      </article>
+    </section>
+
     <section class="menu-section cafe-section" id="cafe">
       <div class="section-title-row">
         <div>
@@ -478,6 +514,10 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
         <details class="topping-card topping-blueberry">
           <summary><div class="topping-photo"><img src="assets/web/boba-toppings.webp" width="1000" height="667" alt="Popping boba de arándano" data-i18n-alt="blueberry_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="blueberry_popping_es">Popping Boba de Arándano</strong><small>Blueberry Popping Boba</small><span class="plus">+</span></summary>
           <p data-i18n="blueberry_details">Perlas explosivas rellenas de jugo con un sabor fresco y frutal a arándano.</p>
+        </details>
+        <details class="topping-card topping-strawberry">
+          <summary><div class="topping-photo"><img src="assets/web/strawberry-lemonade.webp" width="1200" height="1174" alt="Popping boba de fresa" data-i18n-alt="strawberry_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="strawberry_popping">Popping Boba de Fresa</strong><small data-i18n="strawberry_popping_en">Strawberry Popping Boba</small><span class="plus">+</span></summary>
+          <p data-i18n="strawberry_details">Perlas explosivas rellenas de jugo con un sabor dulce y frutal a fresa.</p>
         </details>
       </div>
       <p class="tajin-note" data-i18n="tajin_note">Tajín está disponible en combinaciones seleccionadas de limonada; no es un topping de boba.</p>

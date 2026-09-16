@@ -135,18 +135,13 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 
 .toppings-section{background:#f8f7ff}
 .section-lead{max-width:1120px;margin:-8px auto 20px;color:var(--muted);line-height:1.5}
-.topping-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:900px;margin:auto}
+.topping-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:1120px;margin:auto}
 .topping-card{min-width:0;overflow:hidden;border:1px solid #ded9ef;border-radius:20px;background:#fff;box-shadow:0 10px 22px rgba(68,54,109,.07)}
-.topping-photo{width:calc(100% + 16px);height:112px;margin:0 -8px 6px;overflow:hidden;background:#f5eee7}
-.topping-photo img{width:300%;max-width:none;height:100%;object-fit:cover}
-.topping-classic .topping-photo img{object-position:left center}
-.topping-mango .topping-photo img{margin-left:-100%;object-position:center}
-.topping-blueberry .topping-photo img{margin-left:-200%;object-position:right center}
-.topping-strawberry .topping-photo{background:#fff}
-.topping-strawberry .topping-photo img{width:100%;max-width:100%;height:100%;padding:6px;object-fit:contain;object-position:center}
+.topping-photo{width:100%;height:112px;margin:0 0 6px;overflow:hidden;background:#fff}
+.topping-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .topping-card summary{position:relative;display:flex;min-height:112px;flex-direction:column;align-items:center;gap:4px;padding:12px 8px 40px;text-align:center}
 .topping-card summary strong{font-size:.78rem;line-height:1.15}
-.topping-card small{color:var(--muted);font-size:.68rem;line-height:1.2}
+.topping-card small{color:var(--pink-dark);font-size:.7rem;font-weight:900;line-height:1.2}
 .plus{display:grid;width:32px;height:32px;place-items:center;border-radius:50%;background:#f0edf8;color:#65528e;font-size:1.2rem;font-weight:900}
 .topping-card .plus{position:absolute;right:50%;bottom:7px;transform:translateX(50%)}
 .topping-card[open] .plus{transform:translateX(50%) rotate(45deg)}
@@ -155,7 +150,7 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 
 .story-section{display:grid;gap:28px;padding:66px 20px;background:linear-gradient(145deg,#ffe7ed,#fff9f1)}
 .story-logo{display:grid;place-items:center}
-.story-logo img{width:min(260px,72vw);filter:drop-shadow(0 14px 20px rgba(76,35,29,.12))}
+.story-logo img{width:min(310px,82vw);height:auto;max-height:360px;object-fit:contain;object-position:center;filter:drop-shadow(0 14px 20px rgba(76,35,29,.12))}
 .story-section>div:last-child{max-width:760px}
 .story-section p:not(.section-kicker){font-size:1rem;line-height:1.7}
 .story-signature{color:var(--pink-dark);font-family:Georgia,serif;font-size:1.18rem!important;font-weight:700}
@@ -216,7 +211,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .clean-photo{aspect-ratio:4/5}
   .clean-photo img{object-position:center 52%}
   .clean-photo-saigon img{object-position:center 50%}
-  .story-logo img{width:min(310px,82vw);height:auto;max-height:310px;object-fit:contain}
+  .story-logo img{max-height:310px}
 }
 
 @media(max-width:350px){
@@ -245,11 +240,15 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .featured-drinks{grid-template-columns:repeat(3,1fr)}
   .agua-photo{height:300px}
   .topping-photo{height:210px}
-  .topping-cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .topping-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
   .weekly-special-card{grid-template-columns:1.1fr .9fr;align-items:center}.weekly-special-photo{height:440px}
   .clean-photo{height:auto}
   .story-section{grid-template-columns:.8fr 1.2fr;align-items:center;padding:80px 7vw}
-  .contact-grid{grid-template-columns:1fr 1fr}.contact-location-card{grid-column:1/-1}
+  .contact-grid{grid-template-columns:1fr 1fr}.contact-grid .contact-card:last-child{grid-column:1/-1}
+}
+
+@media(min-width:1000px){
+  .topping-cards{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
 
 @media(min-width:900px){
@@ -263,4 +262,5 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .spotlight-card{grid-template-columns:auto minmax(0,1fr) 200px;align-items:center}
   .spotlight-card details{grid-column:auto}
   .social-section{padding:84px 6vw}
+  .contact-grid{grid-template-columns:repeat(3,1fr)}.contact-grid .contact-card:last-child{grid-column:auto}
 }

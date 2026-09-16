@@ -50,7 +50,7 @@ const translations = {
     mango_popping_es:"Popping Boba de Mango", mango_details:"Perlas explosivas rellenas de jugo con sabor dulce y tropical a mango.",
     blueberry_popping_es:"Popping Boba de Arándano", blueberry_details:"Perlas explosivas rellenas de jugo con un sabor fresco y frutal a arándano.",
     strawberry_popping:"Popping Boba de Fresa", strawberry_popping_en:"Strawberry Popping Boba", strawberry_boba_alt:"Popping boba de fresa",
-    strawberry_details:"Perlas explosivas rellenas de jugo con un sabor dulce y frutal a fresa.",
+    strawberry_details:"Perlas explosivas rellenas de jugo con un sabor dulce y frutal a fresa.", coffee_jelly_details:"Cubitos suaves de gelatina con sabor a café.",
     tajin_note:"Tajín está disponible en combinaciones seleccionadas de limonada; no es un topping de boba.",
     story_kicker:"NUESTRA HISTORIA", story_title:"De nuestra familia para la tuya.",
     story_p1:"Hace 7 años nuestra familia se mudó a Tijuana, México. Antes habíamos comenzado nuestro camino en el mundo del boba con una tienda en el sur de California, donde aprendimos a servir a nuestra comunidad y a desarrollar nuestra pasión por las bebidas.",
@@ -58,8 +58,8 @@ const translations = {
     story_close:"Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥",
     follow_kicker:"SÍGUENOS", follow_title:"Más sabor en @bobacita.mx", follow_text:"Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.",
     collab_heading:"COLABORACIONES LOCALES", collab_title:"También nos encuentras junto a Chica Chun Kun", collab_description:"Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.", chica_alt:"Logo de Chica Chun Kun",
-    contact_kicker:"CONTACTO", contact_title:"Estamos cerca de ti.", contact_intro:"Escríbenos, llámanos o visítanos en Tijuana.",
-    contact_phone:"TELÉFONO", contact_email:"CORREO", contact_location:"UBICACIÓN", open_map:"Abrir ubicación de Bobacita en mapas", contact_social:"REDES SOCIALES",
+    contact_kicker:"CONTACTO", contact_title:"Estamos cerca de ti.", contact_intro:"Escríbenos o llámanos en Tijuana.",
+    contact_phone:"TELÉFONO", contact_email:"CORREO", contact_social:"REDES SOCIALES",
     social_lemonades:"Limonadas llenas de fruta", social_cafe:"Café al estilo Bobacita", social_saigon:"Sueño Saigón · Café Vietnamita", social_aguas:"Jamaica", qr_label:"Escanea y visita Bobacita", qr_alt:"Código QR de bobacita.com"
   },
   en: {
@@ -113,16 +113,16 @@ const translations = {
     mango_popping_es:"Mango Popping Boba", mango_details:"Juice-filled popping pearls with sweet tropical mango flavor.",
     blueberry_popping_es:"Blueberry Popping Boba", blueberry_details:"Juice-filled popping pearls with a fresh, fruity blueberry flavor.",
     strawberry_popping:"Strawberry Popping Boba", strawberry_popping_en:"Popping Boba de Fresa", strawberry_boba_alt:"Strawberry popping boba",
-    strawberry_details:"Juice-filled popping pearls with a sweet, fruity strawberry flavor.",
-    tajin_note:"Tajín is available with selected lemonade combinations; it is not one of the four boba toppings.",
+    strawberry_details:"Juice-filled popping pearls with a sweet, fruity strawberry flavor.", coffee_jelly_details:"Soft coffee-flavored jelly cubes.",
+    tajin_note:"Tajín is available with selected lemonade combinations; it is not one of the five boba toppings.",
     story_kicker:"OUR STORY", story_title:"From our family to yours.",
     story_p1:"Seven years ago our family moved to Tijuana, Mexico. Before that, we began our boba journey with a shop in Southern California, where we learned to serve our community and build our passion for drinks.",
     story_p2:"After selling our first business, we decided to start a new adventure: Bobacita. Our dream is to combine Asian-inspired drinks with the Mexican flavors we enjoy, and to build this business together with our five children.",
     story_close:"Welcome to our family. Welcome to Bobacita. ♥",
     follow_kicker:"FOLLOW US", follow_title:"More flavor at @bobacita.mx", follow_text:"New drinks, locations, and moments from the Bobacita family.",
     collab_heading:"LOCAL COLLABORATIONS", collab_title:"Find us together with Chica Chun Kun", collab_description:"Bobacita drinks and authentic Vietnamese Chun Kun, sharing good moments in Tijuana.", chica_alt:"Chica Chun Kun logo",
-    contact_kicker:"CONTACT", contact_title:"We’re close by.", contact_intro:"Message us, call us, or visit us in Tijuana.",
-    contact_phone:"PHONE", contact_email:"EMAIL", contact_location:"LOCATION", open_map:"Open Bobacita location in maps", contact_social:"SOCIAL MEDIA",
+    contact_kicker:"CONTACT", contact_title:"We’re close by.", contact_intro:"Message or call us in Tijuana.",
+    contact_phone:"PHONE", contact_email:"EMAIL", contact_social:"SOCIAL MEDIA",
     social_lemonades:"Fruit-filled lemonades", social_cafe:"Coffee, Bobacita style", social_saigon:"Sueño Saigón · Vietnamese Coffee", social_aguas:"Jamaica", qr_label:"Scan to visit Bobacita", qr_alt:"QR code for bobacita.com"
   }
 };

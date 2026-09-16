@@ -143,18 +143,13 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 
 .toppings-section{background:#f8f7ff}
 .section-lead{max-width:1120px;margin:-8px auto 20px;color:var(--muted);line-height:1.5}
-.topping-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:900px;margin:auto}
+.topping-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:1120px;margin:auto}
 .topping-card{min-width:0;overflow:hidden;border:1px solid #ded9ef;border-radius:20px;background:#fff;box-shadow:0 10px 22px rgba(68,54,109,.07)}
-.topping-photo{width:calc(100% + 16px);height:112px;margin:0 -8px 6px;overflow:hidden;background:#f5eee7}
-.topping-photo img{width:300%;max-width:none;height:100%;object-fit:cover}
-.topping-classic .topping-photo img{object-position:left center}
-.topping-mango .topping-photo img{margin-left:-100%;object-position:center}
-.topping-blueberry .topping-photo img{margin-left:-200%;object-position:right center}
-.topping-strawberry .topping-photo{background:#fff}
-.topping-strawberry .topping-photo img{width:100%;max-width:100%;height:100%;padding:6px;object-fit:contain;object-position:center}
+.topping-photo{width:100%;height:112px;margin:0 0 6px;overflow:hidden;background:#fff}
+.topping-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .topping-card summary{position:relative;display:flex;min-height:112px;flex-direction:column;align-items:center;gap:4px;padding:12px 8px 40px;text-align:center}
 .topping-card summary strong{font-size:.78rem;line-height:1.15}
-.topping-card small{color:var(--muted);font-size:.68rem;line-height:1.2}
+.topping-card small{color:var(--pink-dark);font-size:.7rem;font-weight:900;line-height:1.2}
 .plus{display:grid;width:32px;height:32px;place-items:center;border-radius:50%;background:#f0edf8;color:#65528e;font-size:1.2rem;font-weight:900}
 .topping-card .plus{position:absolute;right:50%;bottom:7px;transform:translateX(50%)}
 .topping-card[open] .plus{transform:translateX(50%) rotate(45deg)}
@@ -163,7 +158,7 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 
 .story-section{display:grid;gap:28px;padding:66px 20px;background:linear-gradient(145deg,#ffe7ed,#fff9f1)}
 .story-logo{display:grid;place-items:center}
-.story-logo img{width:min(260px,72vw);filter:drop-shadow(0 14px 20px rgba(76,35,29,.12))}
+.story-logo img{width:min(310px,82vw);height:auto;max-height:360px;object-fit:contain;object-position:center;filter:drop-shadow(0 14px 20px rgba(76,35,29,.12))}
 .story-section>div:last-child{max-width:760px}
 .story-section p:not(.section-kicker){font-size:1rem;line-height:1.7}
 .story-signature{color:var(--pink-dark);font-family:Georgia,serif;font-size:1.18rem!important;font-weight:700}
@@ -224,7 +219,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .clean-photo{aspect-ratio:4/5}
   .clean-photo img{object-position:center 52%}
   .clean-photo-saigon img{object-position:center 50%}
-  .story-logo img{width:min(310px,82vw);height:auto;max-height:310px;object-fit:contain}
+  .story-logo img{max-height:310px}
 }
 
 @media(max-width:350px){
@@ -253,11 +248,15 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .featured-drinks{grid-template-columns:repeat(3,1fr)}
   .agua-photo{height:300px}
   .topping-photo{height:210px}
-  .topping-cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .topping-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
   .weekly-special-card{grid-template-columns:1.1fr .9fr;align-items:center}.weekly-special-photo{height:440px}
   .clean-photo{height:auto}
   .story-section{grid-template-columns:.8fr 1.2fr;align-items:center;padding:80px 7vw}
-  .contact-grid{grid-template-columns:1fr 1fr}.contact-location-card{grid-column:1/-1}
+  .contact-grid{grid-template-columns:1fr 1fr}.contact-grid .contact-card:last-child{grid-column:1/-1}
+}
+
+@media(min-width:1000px){
+  .topping-cards{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
 
 @media(min-width:900px){
@@ -271,6 +270,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .spotlight-card{grid-template-columns:auto minmax(0,1fr) 200px;align-items:center}
   .spotlight-card details{grid-column:auto}
   .social-section{padding:84px 6vw}
+  .contact-grid{grid-template-columns:repeat(3,1fr)}.contact-grid .contact-card:last-child{grid-column:auto}
 }
   </style>
 </head>
@@ -511,20 +511,24 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       <p class="section-lead" data-i18n="toppings_intro">Elige una textura extra para completar tu bebida.</p>
       <div class="topping-cards">
         <details class="topping-card topping-classic">
-          <summary><div class="topping-photo"><img src="assets/web/boba-toppings.webp" width="1000" height="667" alt="Boba clásica de tapioca" data-i18n-alt="classic_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="classic_boba">Boba Clásica</strong><small data-i18n="original_boba">Original Boba</small><span class="plus">+</span></summary>
+          <summary><div class="topping-photo"><img src="assets/web/topping-classic.webp" width="460" height="360" alt="Boba Clásica" loading="lazy" decoding="async"></div><strong>Boba Clásica</strong><small>+$20 MXN</small><span class="plus">+</span></summary>
           <p data-i18n="classic_boba_details">Perlas de tapioca suaves y masticables con un delicado sabor a azúcar morena.</p>
         </details>
         <details class="topping-card topping-mango">
-          <summary><div class="topping-photo"><img src="assets/web/boba-toppings.webp" width="1000" height="667" alt="Popping boba de mango" data-i18n-alt="mango_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="mango_popping_es">Popping Boba de Mango</strong><small>Mango Popping Boba</small><span class="plus">+</span></summary>
+          <summary><div class="topping-photo"><img src="assets/web/topping-mango.webp" width="460" height="360" alt="Popping Boba de Mango" loading="lazy" decoding="async"></div><strong>Popping Boba de Mango</strong><small>+$20 MXN</small><span class="plus">+</span></summary>
           <p data-i18n="mango_details">Perlas explosivas rellenas de jugo con sabor dulce y tropical a mango.</p>
         </details>
         <details class="topping-card topping-blueberry">
-          <summary><div class="topping-photo"><img src="assets/web/boba-toppings.webp" width="1000" height="667" alt="Popping boba de arándano" data-i18n-alt="blueberry_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="blueberry_popping_es">Popping Boba de Arándano</strong><small>Blueberry Popping Boba</small><span class="plus">+</span></summary>
+          <summary><div class="topping-photo"><img src="assets/web/topping-blueberry.webp" width="460" height="360" alt="Popping Boba de Arándano" loading="lazy" decoding="async"></div><strong>Popping Boba de Arándano</strong><small>+$20 MXN</small><span class="plus">+</span></summary>
           <p data-i18n="blueberry_details">Perlas explosivas rellenas de jugo con un sabor fresco y frutal a arándano.</p>
         </details>
         <details class="topping-card topping-strawberry">
-          <summary><div class="topping-photo"><img src="assets/web/strawberry-popping-boba.webp" width="900" height="600" alt="Popping boba de fresa" data-i18n-alt="strawberry_boba_alt" loading="lazy" decoding="async"></div><strong data-i18n="strawberry_popping">Popping Boba de Fresa</strong><small data-i18n="strawberry_popping_en">Strawberry Popping Boba</small><span class="plus">+</span></summary>
+          <summary><div class="topping-photo"><img src="assets/web/topping-strawberry.webp" width="460" height="360" alt="Popping Boba de Fresa" loading="lazy" decoding="async"></div><strong>Popping Boba de Fresa</strong><small>+$20 MXN</small><span class="plus">+</span></summary>
           <p data-i18n="strawberry_details">Perlas explosivas rellenas de jugo con un sabor dulce y frutal a fresa.</p>
+        </details>
+        <details class="topping-card topping-coffee-jelly">
+          <summary><div class="topping-photo"><img src="assets/web/topping-coffee-jelly.webp" width="460" height="360" alt="Gelatina de Café" loading="lazy" decoding="async"></div><strong>Gelatina de Café</strong><small>+$20 MXN</small><span class="plus">+</span></summary>
+          <p data-i18n="coffee_jelly_details">Cubitos suaves de gelatina con sabor a café.</p>
         </details>
       </div>
       <p class="tajin-note" data-i18n="tajin_note">Tajín está disponible en combinaciones seleccionadas de limonada; no es un topping de boba.</p>
@@ -568,7 +572,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       <div class="contact-copy">
         <p class="section-kicker" data-i18n="contact_kicker">CONTACTO</p>
         <h2 data-i18n="contact_title">Estamos cerca de ti.</h2>
-        <p data-i18n="contact_intro">Escríbenos, llámanos o visítanos en Tijuana.</p>
+        <p data-i18n="contact_intro">Escríbenos o llámanos en Tijuana.</p>
       </div>
       <div class="contact-grid">
         <a class="contact-card" href="tel:+525662849695">
@@ -579,9 +583,9 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
           <span class="contact-icon" aria-hidden="true">✉</span>
           <span><small data-i18n="contact_email">CORREO</small><strong>bobacita.mx@gmail.com</strong></span>
         </a>
-        <a class="contact-card contact-location-card" href="https://www.google.com/maps/search/?api=1&amp;query=Urbiquinta%20del%20Cedro%2C%20P%C3%B3rtico%20de%20San%20Antonio%2C%2022564%20Tijuana%2C%20B.C.%2C%20M%C3%A9xico" target="_blank" rel="noopener" aria-label="Abrir ubicación de Bobacita en mapas" data-i18n-aria="open_map">
-          <span class="contact-icon" aria-hidden="true">●</span>
-          <span><small data-i18n="contact_location">UBICACIÓN</small><strong>Urbiquinta del Cedro, Pórtico de San Antonio, 22564 Tijuana, B.C., México</strong></span>
+        <a class="contact-card" href="https://wa.me/525662849695" target="_blank" rel="noopener" aria-label="WhatsApp de Bobacita">
+          <span class="contact-icon" aria-hidden="true">◉</span>
+          <span><small>WHATSAPP</small><strong>566 284 9695</strong></span>
         </a>
       </div>
       <div class="contact-socials">

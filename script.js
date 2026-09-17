@@ -217,7 +217,7 @@ if(featuredPromo){
     control.addEventListener("click",()=>closeFeaturedPromo({remember:true}));
   });
   featuredPromo.querySelectorAll("[data-promo-target]").forEach(control=>{
-    control.addEventListener("click",()=>closeFeaturedPromo({target:control.dataset.promoTarget}));
+    control.addEventListener("click",()=>closeFeaturedPromo({remember:true,target:control.dataset.promoTarget}));
   });
   document.addEventListener("keydown",event=>{
     if(event.key === "Escape" && !featuredPromo.hidden) closeFeaturedPromo({remember:true});

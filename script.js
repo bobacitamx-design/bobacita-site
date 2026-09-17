@@ -4,6 +4,7 @@ const translations = {
     page_description:"Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.",
     main_navigation:"Navegación principal", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
     nav_menu:"Menú", nav_story:"Nuestra historia", nav_follow:"Síguenos",
+    promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     love_note:"Hecho con Amor para Ti ❤️",
     hero_title:"Bebidas únicas, sabores que te hacen sonreír.",
     hero_text:"Limonadas, aguas frescas y café con sabores mexicanos e inspiración asiática.",
@@ -67,6 +68,7 @@ const translations = {
     page_description:"Bobacita in Tijuana: lemonades, aguas frescas, coffee, and boba, made with love for you.",
     main_navigation:"Main navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
     nav_menu:"Menu", nav_story:"Our story", nav_follow:"Follow us",
+    promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     love_note:"Made with love for you ❤️",
     hero_title:"Unique drinks, flavors that make you smile.",
     hero_text:"Lemonades, aguas frescas, and coffee with Mexican flavors and Asian inspiration.",
@@ -158,3 +160,67 @@ document.querySelectorAll(".lang-switch button").forEach(button=>{
 });
 
 setLanguage(localStorage.getItem("bobacita-lang") || "es");
+
+const featuredPromo = document.getElementById("featured-promo");
+const promoDismissedKey = "bobacita-featured-promo-dismissed-at";
+const promoDismissalDuration = 24 * 60 * 60 * 1000;
+let promoTimer;
+let promoPreviousFocus;
+let previousBodyPaddingRight = "";
+
+function getPromoDismissedAt(){
+  try{
+    return Number(localStorage.getItem(promoDismissedKey)) || 0;
+  }catch(error){
+    return 0;
+  }
+}
+
+function rememberPromoDismissal(){
+  try{
+    localStorage.setItem(promoDismissedKey, String(Date.now()));
+  }catch(error){
+    // The promotion still closes when browser storage is unavailable.
+  }
+}
+
+function showFeaturedPromo(){
+  if(!featuredPromo || Date.now() - getPromoDismissedAt() < promoDismissalDuration) return;
+  promoPreviousFocus = document.activeElement;
+  previousBodyPaddingRight = document.body.style.paddingRight;
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  if(scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+  document.documentElement.classList.add("promo-open");
+  featuredPromo.hidden = false;
+  featuredPromo.setAttribute("aria-hidden", "false");
+  featuredPromo.querySelector(".promo-close").focus({preventScroll:true});
+}
+
+function closeFeaturedPromo({remember = false, target = ""} = {}){
+  if(!featuredPromo || featuredPromo.hidden) return;
+  clearTimeout(promoTimer);
+  if(remember) rememberPromoDismissal();
+  featuredPromo.hidden = true;
+  featuredPromo.setAttribute("aria-hidden", "true");
+  document.documentElement.classList.remove("promo-open");
+  document.body.style.paddingRight = previousBodyPaddingRight;
+  if(target){
+    const destination = document.querySelector(target);
+    if(destination) requestAnimationFrame(()=>destination.scrollIntoView({behavior:"smooth",block:"start"}));
+  }else if(promoPreviousFocus && typeof promoPreviousFocus.focus === "function"){
+    promoPreviousFocus.focus({preventScroll:true});
+  }
+}
+
+if(featuredPromo){
+  featuredPromo.querySelectorAll("[data-promo-dismiss]").forEach(control=>{
+    control.addEventListener("click",()=>closeFeaturedPromo({remember:true}));
+  });
+  featuredPromo.querySelectorAll("[data-promo-target]").forEach(control=>{
+    control.addEventListener("click",()=>closeFeaturedPromo({remember:true,target:control.dataset.promoTarget}));
+  });
+  document.addEventListener("keydown",event=>{
+    if(event.key === "Escape" && !featuredPromo.hidden) closeFeaturedPromo({remember:true});
+  });
+  promoTimer = setTimeout(showFeaturedPromo, 1400);
+}

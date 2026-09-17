@@ -162,7 +162,7 @@ document.querySelectorAll(".lang-switch button").forEach(button=>{
 setLanguage(localStorage.getItem("bobacita-lang") || "es");
 
 const featuredPromo = document.getElementById("featured-promo");
-const promoDismissedKey = "bobacita-featured-promo-dismissed-at";
+const promoDismissedKey = "bobacita-featured-promo-dismissed-at-v2";
 const promoDismissalDuration = 24 * 60 * 60 * 1000;
 let promoTimer;
 let promoPreviousFocus;
@@ -217,7 +217,7 @@ if(featuredPromo){
     control.addEventListener("click",()=>closeFeaturedPromo({remember:true}));
   });
   featuredPromo.querySelectorAll("[data-promo-target]").forEach(control=>{
-    control.addEventListener("click",()=>closeFeaturedPromo({remember:true,target:control.dataset.promoTarget}));
+    control.addEventListener("click",()=>closeFeaturedPromo({target:control.dataset.promoTarget}));
   });
   document.addEventListener("keydown",event=>{
     if(event.key === "Escape" && !featuredPromo.hidden) closeFeaturedPromo({remember:true});

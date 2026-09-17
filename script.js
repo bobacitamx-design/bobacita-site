@@ -162,7 +162,7 @@ document.querySelectorAll(".lang-switch button").forEach(button=>{
 setLanguage(localStorage.getItem("bobacita-lang") || "es");
 
 const featuredPromo = document.getElementById("featured-promo");
-const promoDismissedKey = "bobacita-featured-promo-dismissed-at-v2";
+const promoDismissedKey = "bobacita-featured-promo-dismissed-at-v3";
 const promoDismissalDuration = 24 * 60 * 60 * 1000;
 let promoTimer;
 let promoPreviousFocus;

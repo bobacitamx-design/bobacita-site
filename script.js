@@ -2,8 +2,8 @@ const translations = {
   es: {
     page_title:"Bobacita | Limonadas, Aguas Frescas y Café",
     page_description:"Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.",
-    main_navigation:"Navegación principal", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
-    nav_menu:"Menú", nav_story:"Nuestra historia", nav_follow:"Síguenos",
+    main_navigation:"Navegación principal", mobile_navigation:"Navegación móvil", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
+    nav_home:"Inicio", nav_menu:"Menú", nav_featured:"Bebida destacada", nav_story:"Nuestra historia", nav_catering:"Eventos & Catering", nav_follow:"Síguenos",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -67,8 +67,8 @@ const translations = {
   en: {
     page_title:"Bobacita | Lemonades, Aguas Frescas & Coffee",
     page_description:"Bobacita in Tijuana: lemonades, aguas frescas, coffee, and boba, made with love for you.",
-    main_navigation:"Main navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
-    nav_menu:"Menu", nav_story:"Our story", nav_follow:"Follow us",
+    main_navigation:"Main navigation", mobile_navigation:"Mobile navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
+    nav_home:"Home", nav_menu:"Menu", nav_featured:"Featured drink", nav_story:"Our story", nav_catering:"Events & Catering", nav_follow:"Follow us",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -162,6 +162,32 @@ document.querySelectorAll(".lang-switch button").forEach(button=>{
 });
 
 setLanguage(localStorage.getItem("bobacita-lang") || "es");
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileNav = document.getElementById("mobile-navigation");
+
+function closeMobileMenu(){
+  if(!menuToggle || !mobileNav) return;
+  mobileNav.hidden = true;
+  menuToggle.setAttribute("aria-expanded", "false");
+  document.documentElement.classList.remove("mobile-menu-open");
+}
+
+if(menuToggle && mobileNav){
+  menuToggle.addEventListener("click",()=>{
+    const willOpen = mobileNav.hidden;
+    mobileNav.hidden = !willOpen;
+    menuToggle.setAttribute("aria-expanded", String(willOpen));
+    document.documentElement.classList.toggle("mobile-menu-open", willOpen);
+  });
+  mobileNav.querySelectorAll("a").forEach(link=>link.addEventListener("click", closeMobileMenu));
+  document.addEventListener("keydown",event=>{
+    if(event.key === "Escape" && !mobileNav.hidden) closeMobileMenu();
+  });
+  window.addEventListener("resize",()=>{
+    if(window.innerWidth >= 900) closeMobileMenu();
+  });
+}
 
 const featuredPromo = document.getElementById("featured-promo");
 const promoDismissedKey = "bobacita-featured-promo-dismissed-at-v3";

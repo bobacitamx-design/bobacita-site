@@ -36,8 +36,13 @@ summary::-webkit-details-marker{display:none}
 .lang-switch{display:flex;padding:4px;border:1px solid #efb6ca;border-radius:999px;background:#fff}
 .lang-switch button{min-width:40px;min-height:38px;border:0;border-radius:999px;background:transparent;color:var(--brown);font-weight:900;cursor:pointer}
 .lang-switch button.active{background:var(--pink);color:#fff}
-.menu-toggle{display:grid;width:44px;height:44px;margin-left:8px;place-content:center;gap:5px;border-radius:13px}
+.menu-toggle{display:grid;width:44px;height:44px;margin-left:8px;place-content:center;gap:5px;border:0;border-radius:13px;background:transparent;cursor:pointer}
 .menu-toggle span{display:block;width:23px;height:2px;border-radius:999px;background:var(--brown)}
+.mobile-nav{position:fixed;inset:86px 0 auto;z-index:29;padding:12px 18px 20px;border-bottom:1px solid var(--line);background:rgba(255,253,249,.98);box-shadow:0 18px 35px rgba(59,33,24,.12);backdrop-filter:blur(16px)}
+.mobile-nav[hidden]{display:none}
+.mobile-nav a{display:flex;min-height:48px;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:850}
+.mobile-nav a:last-child{border-bottom:0;color:var(--pink-dark)}
+html.mobile-menu-open{overflow:hidden}
 .lang-switch button:focus-visible,.category-links a:focus-visible,summary:focus-visible,.menu-toggle:focus-visible{outline:3px solid rgba(37,113,80,.35);outline-offset:3px}
 
 .hero{position:relative;display:grid;gap:22px;overflow:hidden;padding:28px 18px 34px;background:var(--cream)}
@@ -299,6 +304,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .desktop-nav{display:flex;gap:28px;margin-right:26px;font-size:.9rem;font-weight:850}
   .desktop-nav a:hover{color:var(--pink)}
   .menu-toggle{display:none}
+  .mobile-nav{display:none!important}
   .menu-section{padding:90px 6vw}
   .section-title-row{margin-bottom:30px}
   .spotlight-card{grid-template-columns:auto minmax(0,1fr) 200px;align-items:center}
@@ -316,14 +322,23 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     <nav class="desktop-nav" aria-label="Navegación principal" data-i18n-aria="main_navigation">
       <a href="#menu" data-i18n="nav_menu">Menú</a>
       <a href="#historia" data-i18n="nav_story">Nuestra historia</a>
+      <a href="catering.html" data-i18n="nav_catering">Eventos &amp; Catering</a>
       <a href="#siguenos" data-i18n="nav_follow">Síguenos</a>
     </nav>
     <div class="lang-switch" aria-label="Cambiar idioma" data-i18n-aria="language_switch">
       <button class="active" type="button" data-lang="es" aria-pressed="true">ES</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <a class="menu-toggle" href="#menu" aria-label="Abrir menú" data-i18n-aria="open_menu"><span></span><span></span><span></span></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-navigation" data-i18n-aria="open_menu"><span></span><span></span><span></span></button>
   </header>
+  <nav class="mobile-nav" id="mobile-navigation" aria-label="Navegación móvil" data-i18n-aria="mobile_navigation" hidden>
+    <a href="#inicio" data-i18n="nav_home">Inicio <span aria-hidden="true">›</span></a>
+    <a href="#menu" data-i18n="nav_menu">Menú <span aria-hidden="true">›</span></a>
+    <a href="#featured-drink" data-i18n="nav_featured">Bebida destacada <span aria-hidden="true">›</span></a>
+    <a href="#historia" data-i18n="nav_story">Nuestra historia <span aria-hidden="true">›</span></a>
+    <a href="#siguenos" data-i18n="nav_follow">Síguenos <span aria-hidden="true">›</span></a>
+    <a href="catering.html" data-i18n="nav_catering">Eventos &amp; Catering <span aria-hidden="true">›</span></a>
+  </nav>
 
   <main>
     <section class="hero" id="inicio">

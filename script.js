@@ -3,7 +3,10 @@ const translations = {
     page_title:"Bobacita | Limonadas, Aguas Frescas y Café",
     page_description:"Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.",
     main_navigation:"Navegación principal", mobile_navigation:"Navegación móvil", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
-    nav_home:"Inicio", nav_menu:"Menú", nav_featured:"Bebida destacada", nav_story:"Nuestra historia", nav_catering:"Eventos & Catering", nav_follow:"Síguenos",
+    nav_home:"Inicio", nav_menu:"Menú", nav_locations:"Ubicaciones", nav_featured:"Bebida destacada", nav_story:"Nuestra historia", nav_catering:"Eventos & Catering", nav_follow:"Síguenos",
+    locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.",
+    location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"MENÚ DISPONIBLE", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
+    directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -68,7 +71,10 @@ const translations = {
     page_title:"Bobacita | Lemonades, Aguas Frescas & Coffee",
     page_description:"Bobacita in Tijuana: lemonades, aguas frescas, coffee, and boba, made with love for you.",
     main_navigation:"Main navigation", mobile_navigation:"Mobile navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
-    nav_home:"Home", nav_menu:"Menu", nav_featured:"Featured drink", nav_story:"Our story", nav_catering:"Events & Catering", nav_follow:"Follow us",
+    nav_home:"Home", nav_menu:"Menu", nav_locations:"Locations", nav_featured:"Featured drink", nav_story:"Our story", nav_catering:"Events & Catering", nav_follow:"Follow us",
+    locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"Find your Bobacita and see the menu available at each location.",
+    location_choice:"Choose your location to see the available menu.", location_menu_kicker:"AVAILABLE MENU", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
+    directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -131,6 +137,97 @@ const translations = {
   }
 };
 
+const locations = window.BobacitaLocations || [];
+const selectedSlug = new URLSearchParams(window.location.search).get("location");
+let selectedLocation = locations.find(location => location.slug === selectedSlug) || null;
+
+function locationURL(location){
+  const url = new URL(window.location.pathname, window.location.origin);
+  url.searchParams.set("location", location.slug);
+  url.hash = "location-menu-heading";
+  return url.pathname + url.search + url.hash;
+}
+
+function renderLocations(lang){
+  const dictionary = translations[lang] || translations.es;
+  const cards = document.getElementById("location-cards");
+  cards.replaceChildren();
+  for(const location of locations){
+    const card = document.createElement("article");
+    card.className = "location-card";
+    if(location === selectedLocation) card.setAttribute("aria-current", "location");
+    const title = document.createElement("h3");
+    title.textContent = location.name[lang] || location.name.es;
+    const description = document.createElement("p");
+    description.textContent = location.address?.[lang] || location.address?.es || dictionary.location_choice;
+    const actions = document.createElement("div");
+    actions.className = "location-actions";
+    const view = document.createElement("a");
+    view.className = "view-menu";
+    view.href = locationURL(location);
+    view.textContent = dictionary.location_view;
+    const directions = document.createElement("a");
+    directions.href = location.maps;
+    directions.target = "_blank";
+    directions.rel = "noopener";
+    directions.textContent = dictionary.directions;
+    actions.append(view, directions);
+    if(location.assetsReady){
+      const download = document.createElement("a");
+      download.className = "download-menu";
+      download.href = location.pdf;
+      download.download = location.pdf.split("/").pop();
+      download.textContent = dictionary.location_download;
+      actions.append(download);
+    }
+    card.append(title, description, actions);
+    cards.append(card);
+  }
+  const heading = document.getElementById("location-menu-heading");
+  const official = document.getElementById("official-artwork");
+  const municipal = document.getElementById("municipal-menu");
+  const gallery = document.getElementById("municipal-artwork");
+  heading.hidden = !selectedLocation;
+  official.hidden = true;
+  municipal.hidden = true;
+  official.replaceChildren();
+  gallery.replaceChildren();
+  document.querySelectorAll('[data-location-menu="santa-fe"]').forEach(section=>{
+    section.hidden = !selectedLocation || selectedLocation.onlineMenu !== "santa-fe";
+  });
+  document.querySelectorAll('[data-i18n="nav_menu"]').forEach(link=>{
+    link.href = selectedLocation?.onlineMenu === "santa-fe" ? "#menu" : selectedLocation ? "#location-menu-heading" : "#ubicaciones";
+  });
+  document.querySelectorAll('[data-i18n="nav_featured"]').forEach(link=>{
+    link.href = selectedLocation?.onlineMenu === "santa-fe" ? "#featured-drink" : "#ubicaciones";
+  });
+  const featuredButton = document.querySelector(".featured-section-button");
+  if(featuredButton) featuredButton.href = selectedLocation?.onlineMenu === "santa-fe" ? "#brown-sugar-brulee" : "#ubicaciones";
+  if(!selectedLocation) return;
+  document.getElementById("selected-menu-title").textContent = dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es);
+  if(selectedLocation.assetsReady){
+    const target = selectedLocation.onlineMenu === "santa-fe" ? official : gallery;
+    selectedLocation.artwork.forEach((source, index)=>{
+      const figure = document.createElement("figure");
+      const img = document.createElement("img");
+      img.src = source;
+      img.alt = `${selectedLocation.name[lang] || selectedLocation.name.es} — ${dictionary.menu_page} ${index + 1}`;
+      img.loading = index ? "lazy" : "eager";
+      img.decoding = "async";
+      figure.append(img);
+      target.append(figure);
+    });
+    const download = document.createElement("a");
+    download.className = "menu-download";
+    download.href = selectedLocation.pdf;
+    download.download = selectedLocation.pdf.split("/").pop();
+    download.textContent = dictionary.location_download;
+    target.append(download);
+    official.hidden = selectedLocation.onlineMenu !== "santa-fe";
+    municipal.hidden = selectedLocation.onlineMenu === "santa-fe";
+  }
+}
+
 function setLanguage(lang){
   const dictionary = translations[lang] || translations.es;
   document.documentElement.lang = lang;
@@ -155,6 +252,7 @@ function setLanguage(lang){
     button.setAttribute("aria-pressed", String(active));
   });
   localStorage.setItem("bobacita-lang", lang);
+  renderLocations(lang);
 }
 
 document.querySelectorAll(".lang-switch button").forEach(button=>{
@@ -162,6 +260,25 @@ document.querySelectorAll(".lang-switch button").forEach(button=>{
 });
 
 setLanguage(localStorage.getItem("bobacita-lang") || "es");
+
+document.getElementById("change-location")?.addEventListener("click", event=>{
+  event.preventDefault();
+  selectedLocation = null;
+  const url = new URL(window.location.href);
+  url.searchParams.delete("location");
+  url.hash = "ubicaciones";
+  history.pushState({}, "", url);
+  renderLocations(document.documentElement.lang);
+  document.getElementById("ubicaciones").scrollIntoView({behavior:"smooth"});
+});
+window.addEventListener("popstate",()=>{
+  const slug = new URLSearchParams(window.location.search).get("location");
+  selectedLocation = locations.find(location=>location.slug === slug) || null;
+  renderLocations(document.documentElement.lang);
+});
+if(selectedLocation && window.location.hash === "#location-menu-heading"){
+  requestAnimationFrame(()=>document.getElementById("location-menu-heading").scrollIntoView());
+}
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileNav = document.getElementById("mobile-navigation");
@@ -250,5 +367,5 @@ if(featuredPromo){
   document.addEventListener("keydown",event=>{
     if(event.key === "Escape" && !featuredPromo.hidden) closeFeaturedPromo({remember:true});
   });
-  promoTimer = setTimeout(showFeaturedPromo, 1400);
+  if(selectedLocation?.onlineMenu === "santa-fe") promoTimer = setTimeout(showFeaturedPromo, 1400);
 }

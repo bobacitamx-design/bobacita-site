@@ -1,5 +1,6 @@
 [hidden]{display:none!important}
 .locations-section{padding:48px 18px 56px;background:linear-gradient(160deg,#fff2e8 0%,#ffe6ee 54%,#f0f9f1 100%);scroll-margin-top:86px}
+.locations-section.has-selection{padding-bottom:24px}
 .locations-heading{max-width:760px;margin:0 auto 24px;text-align:center}
 .locations-heading h2,.location-menu-heading h2{margin:8px 0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,8vw,3.5rem);line-height:1.08}
 .locations-heading p:last-child{margin:8px auto 0;color:#5e4c45;line-height:1.55}
@@ -14,6 +15,7 @@
 .location-actions .download-menu{grid-column:1/-1;min-height:38px;border:0;background:transparent;text-decoration:underline;text-underline-offset:3px}
 .location-actions a:focus-visible,.location-menu-heading a:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .location-menu-heading{padding:32px 18px 18px;text-align:center;scroll-margin-top:86px}
+.has-selection+.location-menu-heading{padding-top:20px}
 .location-menu-heading h2{font-size:clamp(1.8rem,6vw,3rem)}
 .current-location-name{margin:6px 0;color:var(--pink-dark);font-size:clamp(1.5rem,5vw,2.4rem);font-weight:900;letter-spacing:.04em}
 .location-menu-heading h2{margin-top:2px;font-size:clamp(1.15rem,3.8vw,1.65rem)}
@@ -35,3 +37,4 @@
 .menu-download{width:max-content;max-width:100%;margin:20px auto 0;background:#fff}
 @media(min-width:680px){.location-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.municipal-products{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:900px) and (max-width:1149px){.desktop-nav{gap:12px;margin-right:12px;font-size:.78rem}.site-header{padding-inline:2vw}}
+@media(max-width:679px){.locations-section{padding-top:36px}.location-cards{gap:12px}.location-card{padding:18px}.location-card p{margin-bottom:12px}.location-menu-heading{padding-top:20px}}

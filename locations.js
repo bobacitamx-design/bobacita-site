@@ -11,7 +11,6 @@ window.BobacitaLocations = [
     artwork: ["assets/menus/santa-fe.png"],
     assetsReady: true,
     onlineMenu: "santa-fe",
-    collaboration: "chica-chun-kun",
     hours: null, announcements: [], featuredProducts: []
   },
   {
@@ -27,7 +26,6 @@ window.BobacitaLocations = [
     ],
     assetsReady: true,
     onlineMenu: "artwork",
-    collaboration: "chica-chun-kun",
     hours: null, announcements: [], featuredProducts: [],
     groups: [
       { heading: {es:"Limonadas",en:"Lemonades"}, items: {es:["Original","Fresa","Mango","Arándano"],en:["Original","Strawberry","Mango","Blueberry"]} },

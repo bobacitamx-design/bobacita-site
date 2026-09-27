@@ -38,8 +38,8 @@ const translations = {
     mexican_classics:"CLÁSICOS MEXICANOS", aguas_alt:"Agua de Jamaica y Horchata Bobacita", jamaica_alt:"Agua de Jamaica Bobacita", horchata_alt:"Horchata Bobacita",
     jamaica_short:"Floral, frutal y refrescante.", jamaica_details:"Agua fresca de flor de jamaica con un sabor vivo, ligeramente ácido y muy refrescante.",
     horchata_short:"Cremosa, suave y con canela.", horchata_details:"Horchata tradicional, cremosa y suave, terminada con el toque perfecto de canela.",
-    weekly_heading:"ESPECIAL DE LA SEMANA", weekly_name:"Horchata Ube",
-    weekly_description:"Nuestra horchata cremosa con un toque dulce y único de ube. Disponible esta semana.",
+    weekly_heading:"AGUAS FRESCAS", weekly_name:"Horchata Ube",
+    weekly_description:"Nuestra horchata cremosa con un toque dulce y único de ube.",
     weekly_special_alt:"Horchata Ube fría con hielo, canela y ube",
     cold_creamy:"FRÍO · CREMOSO · INTENSO", thai_clean_alt:"Vaso de té tailandés frío con boba",
     thai_tea_label:"TÉ TAILANDÉS", thai_name:"Sube el Thai", thai_short:"Té tailandés cremoso, intenso y refrescante servido frío.",
@@ -62,7 +62,7 @@ const translations = {
     story_p2:"Después de vender nuestro primer negocio, decidimos comenzar una nueva aventura: Bobacita. Nuestro sueño es combinar bebidas con influencia asiática con los sabores mexicanos que disfrutamos, y construir este proyecto junto a nuestros cinco hijos.",
     story_close:"Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥",
     follow_kicker:"SÍGUENOS", follow_title:"Más sabor en @bobacita.mx", follow_text:"Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.",
-    collab_heading:"COLABORACIÓN LOCAL", collab_title:"Bobacita + Chica Chun Kun", collab_description:"Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.", chica_alt:"Logo de Chica Chun Kun",
+    collab_heading:"COLABORACIÓN", collab_title:"Bobacita + Chica Chun Kun", collab_description:"Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.", chica_alt:"Logo de Chica Chun Kun",
     contact_kicker:"CONTACTO", contact_title:"Estamos cerca de ti.", contact_intro:"Escríbenos o llámanos en Tijuana.",
     contact_phone:"TELÉFONO", contact_email:"CORREO", contact_social:"REDES SOCIALES",
     social_lemonades:"Limonadas llenas de fruta", social_cafe:"Café al estilo Bobacita", social_saigon:"Sueño Saigón · Café Vietnamita", social_aguas:"Jamaica", qr_label:"Escanea y visita Bobacita", qr_alt:"Código QR de bobacita.com"
@@ -106,8 +106,8 @@ const translations = {
     mexican_classics:"MEXICAN CLASSICS", aguas_alt:"Bobacita hibiscus agua fresca and horchata", jamaica_alt:"Bobacita hibiscus agua fresca", horchata_alt:"Bobacita horchata",
     jamaica_short:"Floral, fruity, and refreshing.", jamaica_details:"Hibiscus agua fresca with a bright, lightly tart, and refreshing flavor.",
     horchata_short:"Creamy, smooth, and cinnamon-spiced.", horchata_details:"Traditional creamy horchata finished with the perfect touch of cinnamon.",
-    weekly_heading:"SPECIAL OF THE WEEK", weekly_name:"Ube Horchata",
-    weekly_description:"Our creamy horchata with a sweet and unique touch of ube. Available this week.",
+    weekly_heading:"AGUAS FRESCAS", weekly_name:"Ube Horchata",
+    weekly_description:"Our creamy horchata with a sweet and unique touch of ube.",
     weekly_special_alt:"Iced ube horchata with cinnamon and ube",
     cold_creamy:"COLD · CREAMY · BOLD", thai_clean_alt:"Cold Thai tea with boba",
     thai_tea_label:"THAI TEA", thai_name:"Sube el Thai", thai_short:"Creamy, bold, and refreshing Thai tea served cold.",
@@ -130,7 +130,7 @@ const translations = {
     story_p2:"After selling our first business, we decided to start a new adventure: Bobacita. Our dream is to combine Asian-inspired drinks with the Mexican flavors we enjoy, and to build this business together with our five children.",
     story_close:"Welcome to our family. Welcome to Bobacita. ♥",
     follow_kicker:"FOLLOW US", follow_title:"More flavor at @bobacita.mx", follow_text:"New drinks, locations, and moments from the Bobacita family.",
-    collab_heading:"LOCAL COLLABORATION", collab_title:"Bobacita + Chica Chun Kun", collab_description:"Bobacita drinks and authentic Vietnamese Chun Kun, sharing good moments in Tijuana.", chica_alt:"Chica Chun Kun logo",
+    collab_heading:"COLLABORATION", collab_title:"Bobacita + Chica Chun Kun", collab_description:"Bobacita drinks and authentic Vietnamese Chun Kun, sharing good moments in Tijuana.", chica_alt:"Chica Chun Kun logo",
     contact_kicker:"CONTACT", contact_title:"We’re close by.", contact_intro:"Message or call us in Tijuana.",
     contact_phone:"PHONE", contact_email:"EMAIL", contact_social:"SOCIAL MEDIA",
     social_lemonades:"Fruit-filled lemonades", social_cafe:"Coffee, Bobacita style", social_saigon:"Sueño Saigón · Vietnamese Coffee", social_aguas:"Jamaica", qr_label:"Scan to visit Bobacita", qr_alt:"QR code for bobacita.com"
@@ -197,8 +197,7 @@ function renderLocations(lang){
   const municipal = document.getElementById("municipal-menu");
   const gallery = document.getElementById("municipal-artwork");
   const products = document.getElementById("municipal-products");
-  const collaboration = document.getElementById("location-collaboration");
-  if(collaboration) collaboration.hidden = selectedLocation?.collaboration !== "chica-chun-kun";
+  document.getElementById("ubicaciones").classList.toggle("has-selection", Boolean(selectedLocation));
   heading.hidden = !selectedLocation;
   official.hidden = true;
   municipal.hidden = true;

@@ -313,6 +313,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .contact-grid{grid-template-columns:repeat(3,1fr)}.contact-grid .contact-card:last-child{grid-column:auto}
 }
   </style>
+  <link rel="stylesheet" href="locations.css">
 </head>
 <body>
   <header class="site-header">
@@ -321,6 +322,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal" data-i18n-aria="main_navigation">
       <a href="#menu" data-i18n="nav_menu">Menú</a>
+      <a href="#ubicaciones" data-i18n="nav_locations">Ubicaciones</a>
       <a href="#historia" data-i18n="nav_story">Nuestra historia</a>
       <a href="catering.html" data-i18n="nav_catering">Eventos &amp; Catering</a>
       <a href="#siguenos" data-i18n="nav_follow">Síguenos</a>
@@ -334,6 +336,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   <nav class="mobile-nav" id="mobile-navigation" aria-label="Navegación móvil" data-i18n-aria="mobile_navigation" hidden>
     <a href="#inicio" data-i18n="nav_home">Inicio <span aria-hidden="true">›</span></a>
     <a href="#menu" data-i18n="nav_menu">Menú <span aria-hidden="true">›</span></a>
+    <a href="#ubicaciones" data-i18n="nav_locations">Ubicaciones <span aria-hidden="true">›</span></a>
     <a href="#featured-drink" data-i18n="nav_featured">Bebida destacada <span aria-hidden="true">›</span></a>
     <a href="#historia" data-i18n="nav_story">Nuestra historia <span aria-hidden="true">›</span></a>
     <a href="#siguenos" data-i18n="nav_follow">Síguenos <span aria-hidden="true">›</span></a>
@@ -352,7 +355,26 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </figure>
     </section>
 
-    <section class="category-dock" id="menu" aria-labelledby="menu-title">
+    <section class="locations-section" id="ubicaciones" aria-labelledby="locations-title">
+      <div class="locations-heading">
+        <p class="section-kicker" data-i18n="locations_prompt">¿DÓNDE NOS VISITAS?</p>
+        <h2 id="locations-title" data-i18n="locations_title">Nuestras ubicaciones</h2>
+        <p data-i18n="locations_subtitle">Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.</p>
+      </div>
+      <div class="location-cards" id="location-cards"></div>
+    </section>
+
+    <section class="location-menu-heading" id="location-menu-heading" hidden aria-live="polite">
+      <p class="section-kicker" data-i18n="location_menu_kicker">MENÚ DISPONIBLE</p>
+      <h2 id="selected-menu-title"></h2>
+      <a href="#ubicaciones" id="change-location" data-i18n="change_location">CAMBIAR UBICACIÓN</a>
+    </section>
+    <div class="official-artwork" id="official-artwork" hidden></div>
+    <section class="municipal-menu" id="municipal-menu" hidden aria-labelledby="selected-menu-title">
+      <div id="municipal-artwork" class="municipal-artwork"></div>
+    </section>
+
+    <section class="category-dock" id="menu" aria-labelledby="menu-title" data-location-menu="santa-fe" hidden>
       <div class="menu-intro">
         <p class="section-kicker" data-i18n="menu_kicker">ENCUENTRA TU FAVORITA</p>
         <h2 id="menu-title" data-i18n="menu_title">¿Qué se te antoja?</h2>
@@ -367,7 +389,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </nav>
     </section>
 
-    <section class="featured-promotion-section" id="featured-drink" aria-labelledby="featured-drink-title">
+    <section class="featured-promotion-section" id="featured-drink" aria-labelledby="featured-drink-title" data-location-menu="santa-fe" hidden>
       <article class="featured-promotion-card">
         <div class="featured-promotion-art">
           <img src="assets/web/brown-sugar-promo-logo-2026.jpg" width="1145" height="1374" alt="Promoción Bobacita Azúcar Brown Sugar Crème Brûlée con bebida completa, crème brûlée, azúcar morena y boba" loading="lazy" decoding="async">
@@ -382,7 +404,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </article>
     </section>
 
-    <section class="menu-section lemonades-section" id="limonadas">
+    <section class="menu-section lemonades-section" id="limonadas" data-location-menu="santa-fe" hidden>
       <div class="section-title-row">
         <div>
           <p class="section-kicker" data-i18n="fresh_real_lemons">LIMONES REALES · HECHAS AL MOMENTO</p>
@@ -463,7 +485,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </details>
     </section>
 
-    <section class="menu-section aguas-section" id="aguas">
+    <section class="menu-section aguas-section" id="aguas" data-location-menu="santa-fe" hidden>
       <div class="section-title-row">
         <div>
           <p class="section-kicker" data-i18n="mexican_classics">CLÁSICOS MEXICANOS</p>
@@ -492,7 +514,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
 
     <!-- Weekly feature: replace this image and the three weekly_* translations to rotate the special. -->
-    <section class="weekly-special-section" id="especial-semana">
+    <section class="weekly-special-section" id="especial-semana" data-location-menu="santa-fe" hidden>
       <article class="weekly-special-card">
         <div class="weekly-special-photo">
           <img src="assets/web/ube-horchata-logo-2026.webp" width="1139" height="1200" alt="Horchata Ube fría con hielo, canela y ube" data-i18n-alt="weekly_special_alt" loading="lazy" decoding="async">
@@ -505,7 +527,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </article>
     </section>
 
-    <section class="menu-section cafe-section" id="cafe">
+    <section class="menu-section cafe-section" id="cafe" data-location-menu="santa-fe" hidden>
       <div class="section-title-row">
         <div>
           <p class="section-kicker" data-i18n="cold_creamy">FRÍO · CREMOSO · INTENSO</p>
@@ -564,7 +586,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       </div>
     </section>
 
-    <section class="menu-section toppings-section" id="toppings">
+    <section class="menu-section toppings-section" id="toppings" data-location-menu="santa-fe" hidden>
       <div class="section-title-row">
         <div>
           <p class="section-kicker" data-i18n="make_it_yours">HAZLA A TU GUSTO</p>
@@ -686,6 +708,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
   </div>
 
-  <script src="script.js?v=featured-20260917-1" defer></script>
+  <script src="locations.js" defer></script>
+  <script src="script.js?v=locations-20260927-1" defer></script>
 </body>
 </html>

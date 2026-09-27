@@ -4,16 +4,20 @@ window.BobacitaLocations = [
   {
     slug: "santa-fe",
     name: { es: "SANTA FE", en: "SANTA FE" },
+    description: { es: "Menú completo de Bobacita.", en: "Bobacita's full menu." },
     maps: "https://maps.app.goo.gl/7Yb2uDG3mNyXJkx16?g_st=ic",
     address: null, // Display only after verification against the supplied pin.
     pdf: "assets/menus/bobacita-menu-santa-fe.pdf",
     artwork: ["assets/menus/santa-fe.png"],
     assetsReady: true,
-    onlineMenu: "santa-fe"
+    onlineMenu: "santa-fe",
+    collaboration: "chica-chun-kun",
+    hours: null, announcements: [], featuredProducts: []
   },
   {
     slug: "palacio-municipal",
     name: { es: "PALACIO MUNICIPAL", en: "CITY HALL" },
+    description: { es: "Menú especial disponible en Palacio Municipal.", en: "Special menu available at City Hall." },
     maps: "https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic",
     address: null,
     pdf: "assets/menus/bobacita-menu-palacio-municipal.pdf",
@@ -23,6 +27,8 @@ window.BobacitaLocations = [
     ],
     assetsReady: true,
     onlineMenu: "artwork",
+    collaboration: "chica-chun-kun",
+    hours: null, announcements: [], featuredProducts: [],
     groups: [
       { heading: {es:"Limonadas",en:"Lemonades"}, items: {es:["Original","Fresa","Mango","Arándano"],en:["Original","Strawberry","Mango","Blueberry"]} },
       { heading: {es:"Bebidas embotelladas",en:"Bottled drinks"}, items: {es:["Sueño Saigón · Café Vietnamita","Sube el Thai · Té Tailandés","Horchata de Ube","Mango Juice Pop","Strawberry Matcha Pop"],en:["Sueño Saigón · Vietnamese Coffee","Sube el Thai · Thai Tea","Ube Horchata","Mango Juice Pop","Strawberry Matcha Pop"]} },

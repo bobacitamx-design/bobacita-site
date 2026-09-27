@@ -5,7 +5,7 @@ const translations = {
     main_navigation:"Navegación principal", mobile_navigation:"Navegación móvil", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
     nav_home:"Inicio", nav_menu:"Menú", nav_locations:"Ubicaciones", nav_featured:"Bebida destacada", nav_story:"Nuestra historia", nav_catering:"Eventos & Catering", nav_follow:"Síguenos",
     locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.",
-    location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"MENÚ DISPONIBLE", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
+    location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"📍 ESTÁS VIENDO:", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
     directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
@@ -62,7 +62,7 @@ const translations = {
     story_p2:"Después de vender nuestro primer negocio, decidimos comenzar una nueva aventura: Bobacita. Nuestro sueño es combinar bebidas con influencia asiática con los sabores mexicanos que disfrutamos, y construir este proyecto junto a nuestros cinco hijos.",
     story_close:"Bienvenidos a nuestra familia. Bienvenidos a Bobacita. ♥",
     follow_kicker:"SÍGUENOS", follow_title:"Más sabor en @bobacita.mx", follow_text:"Nuevas bebidas, ubicaciones y momentos de la familia Bobacita.",
-    collab_heading:"COLABORACIONES LOCALES", collab_title:"También nos encuentras junto a Chica Chun Kun", collab_description:"Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.", chica_alt:"Logo de Chica Chun Kun",
+    collab_heading:"COLABORACIÓN LOCAL", collab_title:"Bobacita + Chica Chun Kun", collab_description:"Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.", chica_alt:"Logo de Chica Chun Kun",
     contact_kicker:"CONTACTO", contact_title:"Estamos cerca de ti.", contact_intro:"Escríbenos o llámanos en Tijuana.",
     contact_phone:"TELÉFONO", contact_email:"CORREO", contact_social:"REDES SOCIALES",
     social_lemonades:"Limonadas llenas de fruta", social_cafe:"Café al estilo Bobacita", social_saigon:"Sueño Saigón · Café Vietnamita", social_aguas:"Jamaica", qr_label:"Escanea y visita Bobacita", qr_alt:"Código QR de bobacita.com"
@@ -73,7 +73,7 @@ const translations = {
     main_navigation:"Main navigation", mobile_navigation:"Mobile navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
     nav_home:"Home", nav_menu:"Menu", nav_locations:"Locations", nav_featured:"Featured drink", nav_story:"Our story", nav_catering:"Events & Catering", nav_follow:"Follow us",
     locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"Find your Bobacita and see the menu available at each location.",
-    location_choice:"Choose your location to see the available menu.", location_menu_kicker:"AVAILABLE MENU", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
+    location_choice:"Choose your location to see the available menu.", location_menu_kicker:"📍 YOU'RE VIEWING:", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
     directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
@@ -130,7 +130,7 @@ const translations = {
     story_p2:"After selling our first business, we decided to start a new adventure: Bobacita. Our dream is to combine Asian-inspired drinks with the Mexican flavors we enjoy, and to build this business together with our five children.",
     story_close:"Welcome to our family. Welcome to Bobacita. ♥",
     follow_kicker:"FOLLOW US", follow_title:"More flavor at @bobacita.mx", follow_text:"New drinks, locations, and moments from the Bobacita family.",
-    collab_heading:"LOCAL COLLABORATIONS", collab_title:"Find us together with Chica Chun Kun", collab_description:"Bobacita drinks and authentic Vietnamese Chun Kun, sharing good moments in Tijuana.", chica_alt:"Chica Chun Kun logo",
+    collab_heading:"LOCAL COLLABORATION", collab_title:"Bobacita + Chica Chun Kun", collab_description:"Bobacita drinks and authentic Vietnamese Chun Kun, sharing good moments in Tijuana.", chica_alt:"Chica Chun Kun logo",
     contact_kicker:"CONTACT", contact_title:"We’re close by.", contact_intro:"Message or call us in Tijuana.",
     contact_phone:"PHONE", contact_email:"EMAIL", contact_social:"SOCIAL MEDIA",
     social_lemonades:"Fruit-filled lemonades", social_cafe:"Coffee, Bobacita style", social_saigon:"Sueño Saigón · Vietnamese Coffee", social_aguas:"Jamaica", qr_label:"Scan to visit Bobacita", qr_alt:"QR code for bobacita.com"
@@ -139,7 +139,15 @@ const translations = {
 
 const locations = window.BobacitaLocations || [];
 const selectedSlug = new URLSearchParams(window.location.search).get("location");
-let selectedLocation = locations.find(location => location.slug === selectedSlug) || null;
+const locationStorageKey = "bobacita-selected-location";
+function storedLocation(){
+  try { return sessionStorage.getItem(locationStorageKey); } catch { return null; }
+}
+function rememberLocation(slug){
+  try { if(slug) sessionStorage.setItem(locationStorageKey, slug); else sessionStorage.removeItem(locationStorageKey); } catch {}
+}
+let selectedLocation = locations.find(location => location.slug === (selectedSlug || storedLocation())) || null;
+if(selectedSlug && selectedLocation) rememberLocation(selectedSlug);
 
 function locationURL(location){
   const url = new URL(window.location.pathname, window.location.origin);
@@ -159,7 +167,8 @@ function renderLocations(lang){
     const title = document.createElement("h3");
     title.textContent = location.name[lang] || location.name.es;
     const description = document.createElement("p");
-    description.textContent = location.address?.[lang] || location.address?.es || dictionary.location_choice;
+    description.textContent = location.description?.[lang] || location.description?.es || dictionary.location_choice;
+    if(location.address) description.textContent += " " + (location.address[lang] || location.address.es);
     const actions = document.createElement("div");
     actions.className = "location-actions";
     const view = document.createElement("a");
@@ -188,6 +197,8 @@ function renderLocations(lang){
   const municipal = document.getElementById("municipal-menu");
   const gallery = document.getElementById("municipal-artwork");
   const products = document.getElementById("municipal-products");
+  const collaboration = document.getElementById("location-collaboration");
+  if(collaboration) collaboration.hidden = selectedLocation?.collaboration !== "chica-chun-kun";
   heading.hidden = !selectedLocation;
   official.hidden = true;
   municipal.hidden = true;
@@ -206,6 +217,7 @@ function renderLocations(lang){
   const featuredButton = document.querySelector(".featured-section-button");
   if(featuredButton) featuredButton.href = selectedLocation?.onlineMenu === "santa-fe" ? "#brown-sugar-brulee" : "#ubicaciones";
   if(!selectedLocation) return;
+  document.getElementById("current-location-name").textContent = selectedLocation.name[lang] || selectedLocation.name.es;
   document.getElementById("selected-menu-title").textContent = dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es);
   for(const group of selectedLocation.groups || []){
     const section = document.createElement("section");
@@ -279,6 +291,7 @@ setLanguage(localStorage.getItem("bobacita-lang") || "es");
 document.getElementById("change-location")?.addEventListener("click", event=>{
   event.preventDefault();
   selectedLocation = null;
+  rememberLocation(null);
   const url = new URL(window.location.href);
   url.searchParams.delete("location");
   url.hash = "ubicaciones";
@@ -288,7 +301,8 @@ document.getElementById("change-location")?.addEventListener("click", event=>{
 });
 window.addEventListener("popstate",()=>{
   const slug = new URLSearchParams(window.location.search).get("location");
-  selectedLocation = locations.find(location=>location.slug === slug) || null;
+  selectedLocation = locations.find(location=>location.slug === (slug || storedLocation())) || null;
+  if(slug && selectedLocation) rememberLocation(slug);
   renderLocations(document.documentElement.lang);
 });
 if(selectedLocation && window.location.hash === "#location-menu-heading"){

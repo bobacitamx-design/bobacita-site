@@ -313,7 +313,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .contact-grid{grid-template-columns:repeat(3,1fr)}.contact-grid .contact-card:last-child{grid-column:auto}
 }
   </style>
-  <link rel="stylesheet" href="locations.css">
+  <link rel="stylesheet" href="locations.css?v=20260927-2">
 </head>
 <body>
   <header class="site-header">
@@ -365,7 +365,8 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
 
     <section class="location-menu-heading" id="location-menu-heading" hidden aria-live="polite">
-      <p class="section-kicker" data-i18n="location_menu_kicker">MENÚ DISPONIBLE</p>
+      <p class="section-kicker" data-i18n="location_menu_kicker">📍 ESTÁS VIENDO:</p>
+      <p class="current-location-name" id="current-location-name"></p>
       <h2 id="selected-menu-title"></h2>
       <a href="#ubicaciones" id="change-location" data-i18n="change_location">CAMBIAR UBICACIÓN</a>
     </section>
@@ -650,11 +651,11 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
         <a class="social-button tiktok" href="https://www.tiktok.com/@bobacita.mx" target="_blank" rel="noopener" aria-label="TikTok de Bobacita"><span class="platform-icon" aria-hidden="true">♪</span><span>TikTok</span></a>
         <a class="social-button youtube" href="https://www.youtube.com/@bobacita" target="_blank" rel="noopener" aria-label="YouTube de Bobacita"><span class="platform-icon" aria-hidden="true">▶</span><span>YouTube</span></a>
       </div>
-      <article class="collaboration-card">
+      <article class="collaboration-card" id="location-collaboration" hidden>
         <img src="assets/web/chica-chun-kun.webp" width="360" height="360" alt="Logo de Chica Chun Kun" data-i18n-alt="chica_alt" loading="lazy" decoding="async">
         <div>
-          <p class="section-kicker" data-i18n="collab_heading">COLABORACIONES LOCALES</p>
-          <h3 data-i18n="collab_title">También nos encuentras junto a Chica Chun Kun</h3>
+          <p class="section-kicker" data-i18n="collab_heading">COLABORACIÓN LOCAL</p>
+          <h3 data-i18n="collab_title">Bobacita + Chica Chun Kun</h3>
           <p data-i18n="collab_description">Sabores de Bobacita y el auténtico Chun Kun Vietnamita, compartiendo buenos momentos en Tijuana.</p>
           <a href="https://www.instagram.com/chicachunkun/" target="_blank" rel="noopener">@chicachunkun</a>
         </div>
@@ -715,7 +716,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
   </div>
 
-  <script src="locations.js" defer></script>
-  <script src="script.js?v=locations-20260927-1" defer></script>
+  <script src="locations.js?v=20260927-2" defer></script>
+  <script src="script.js?v=locations-20260927-2" defer></script>
 </body>
 </html>

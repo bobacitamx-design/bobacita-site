@@ -25,7 +25,7 @@ const translations = {
     lemonade_photo_note:"Frescas, frutales y preparadas para ti.", featured:"DESTACADA",
     dragon_short:"Pitahaya, limón y un sabor tropical de color vibrante.", view_details:"Ver detalles",
     dragon_details:"Limonada cítrica con sabor tropical a pitahaya, servida bien fría. Combínala con popping boba de mango o arándano.",
-    base_flavors:"Sabores base", nine_flavors:"9 sabores", flavor_original:"Original", flavor_blueberry:"Arándano",
+    base_flavors:"Sabores base", ten_flavors:"10 sabores", matcha_menu_description:"Té matcha cremoso y refrescante.", flavor_original:"Original", flavor_blueberry:"Arándano",
     flavor_strawberry:"Fresa", flavor_lavender:"Lavanda", flavor_vanilla:"Vainilla", flavor_raspberry:"Frambuesa", flavor_coconut:"Coco", flavor_pineapple:"Piña",
     our_combinations:"NUESTRAS COMBINACIONES", special_mixes:"Mezclas especiales", view_fourteen:"Ver 14",
     mix_fresa_tropical:"fresa + mango + limonada", mix_berry_azul:"arándano + frambuesa + limonada",
@@ -93,7 +93,7 @@ const translations = {
     lemonade_photo_note:"Fresh, fruity, and made for you.", featured:"FEATURED",
     dragon_short:"Dragon fruit, lemon, and vibrant tropical flavor.", view_details:"View details",
     dragon_details:"Citrusy lemonade with tropical dragon fruit flavor, served ice cold. Pair it with mango or blueberry popping boba.",
-    base_flavors:"Base flavors", nine_flavors:"9 flavors", flavor_original:"Original", flavor_blueberry:"Blueberry",
+    base_flavors:"Base flavors", ten_flavors:"10 flavors", matcha_menu_description:"Creamy, refreshing matcha tea.", flavor_original:"Original", flavor_blueberry:"Blueberry",
     flavor_strawberry:"Strawberry", flavor_lavender:"Lavender", flavor_vanilla:"Vanilla", flavor_raspberry:"Raspberry", flavor_coconut:"Coconut", flavor_pineapple:"Pineapple",
     our_combinations:"OUR COMBINATIONS", special_mixes:"Special mixes", view_fourteen:"View 14",
     mix_fresa_tropical:"strawberry + mango + lemonade", mix_berry_azul:"blueberry + raspberry + lemonade",
@@ -187,11 +187,13 @@ function renderLocations(lang){
   const official = document.getElementById("official-artwork");
   const municipal = document.getElementById("municipal-menu");
   const gallery = document.getElementById("municipal-artwork");
+  const products = document.getElementById("municipal-products");
   heading.hidden = !selectedLocation;
   official.hidden = true;
   municipal.hidden = true;
   official.replaceChildren();
   gallery.replaceChildren();
+  products.replaceChildren();
   document.querySelectorAll('[data-location-menu="santa-fe"]').forEach(section=>{
     section.hidden = !selectedLocation || selectedLocation.onlineMenu !== "santa-fe";
   });
@@ -205,6 +207,19 @@ function renderLocations(lang){
   if(featuredButton) featuredButton.href = selectedLocation?.onlineMenu === "santa-fe" ? "#brown-sugar-brulee" : "#ubicaciones";
   if(!selectedLocation) return;
   document.getElementById("selected-menu-title").textContent = dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es);
+  for(const group of selectedLocation.groups || []){
+    const section = document.createElement("section");
+    const title = document.createElement("h3");
+    title.textContent = group.heading[lang] || group.heading.es;
+    const list = document.createElement("ul");
+    for(const name of group.items[lang] || group.items.es){
+      const item = document.createElement("li");
+      item.textContent = name;
+      list.append(item);
+    }
+    section.append(title,list);
+    products.append(section);
+  }
   if(selectedLocation.assetsReady){
     const target = selectedLocation.onlineMenu === "santa-fe" ? official : gallery;
     selectedLocation.artwork.forEach((source, index)=>{

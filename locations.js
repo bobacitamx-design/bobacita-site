@@ -20,8 +20,9 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic",
     address: null,
     pdf: "assets/menus/bobacita-menu-palacio-municipal.pdf",
+    pdfVersion: "20260927-4",
     artwork: [
-      "assets/menus/palacio-municipal-1.png",
+      "assets/menus/palacio-municipal-bottled-20260927.jpeg",
       "assets/menus/palacio-municipal-2.png"
     ],
     assetsReady: true,
@@ -29,7 +30,7 @@ window.BobacitaLocations = [
     hours: null, announcements: [], featuredProducts: [],
     groups: [
       { heading: {es:"Limonadas",en:"Lemonades"}, items: {es:["Original","Fresa","Mango","Arándano"],en:["Original","Strawberry","Mango","Blueberry"]} },
-      { heading: {es:"Bebidas embotelladas",en:"Bottled drinks"}, items: {es:["Sueño Saigón · Café Vietnamita","Sube el Thai · Té Tailandés","Horchata de Ube","Mango Juice Pop","Strawberry Matcha Pop"],en:["Sueño Saigón · Vietnamese Coffee","Sube el Thai · Thai Tea","Ube Horchata","Mango Juice Pop","Strawberry Matcha Pop"]} },
+      { heading: {es:"Bebidas embotelladas",en:"Bottled drinks"}, items: {es:["Sueño Saigón · Café Vietnamita","Sube el Thai · Té Tailandés","Horchata de Ube","Mango Juice Pop","Strawberry Juice Pop","Jamaica Blueberry Pop"],en:["Sueño Saigón · Vietnamese Coffee","Sube el Thai · Thai Tea","Ube Horchata","Mango Juice Pop","Strawberry Juice Pop","Jamaica Blueberry Pop"]} },
       { heading: {es:"Toppings disponibles para limonadas",en:"Lemonade toppings"}, items: {es:["Popping Boba de Mango","Popping Boba de Fresa","Popping Boba de Arándano"],en:["Mango Popping Boba","Strawberry Popping Boba","Blueberry Popping Boba"]} }
     ]
   }

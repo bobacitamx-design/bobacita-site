@@ -184,7 +184,7 @@ function renderLocations(lang){
     if(location.assetsReady){
       const download = document.createElement("a");
       download.className = "download-menu";
-      download.href = location.pdf;
+      download.href = location.pdf + (location.pdfVersion ? `?v=${location.pdfVersion}` : "");
       download.download = location.pdf.split("/").pop();
       download.textContent = dictionary.location_download;
       actions.append(download);
@@ -245,7 +245,7 @@ function renderLocations(lang){
     });
     const download = document.createElement("a");
     download.className = "menu-download";
-    download.href = selectedLocation.pdf;
+    download.href = selectedLocation.pdf + (selectedLocation.pdfVersion ? `?v=${selectedLocation.pdfVersion}` : "");
     download.download = selectedLocation.pdf.split("/").pop();
     download.textContent = dictionary.location_download;
     target.append(download);

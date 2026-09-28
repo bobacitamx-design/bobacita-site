@@ -20,9 +20,9 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic",
     address: null,
     pdf: "assets/menus/bobacita-menu-palacio-municipal.pdf",
-    pdfVersion: "20260927-4",
+    pdfVersion: "20260928-1",
     artwork: [
-      "assets/menus/palacio-municipal-bottled-20260927.jpeg",
+      "assets/menus/palacio-municipal-bottled-20260928.jpeg",
       "assets/menus/palacio-municipal-2.png"
     ],
     assetsReady: true,

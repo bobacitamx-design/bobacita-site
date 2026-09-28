@@ -31,9 +31,13 @@
 .municipal-product-photo{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:11px;background:#fff7f9}
 .municipal-products .priced-products strong{font-size:.96rem;color:var(--brown)}
 .municipal-products .priced-products li>span:not(.product-details){color:var(--muted);font-weight:600}
+.municipal-products .priced-products li>span:not(.product-details){font-size:.78rem;line-height:1.35}
 .product-details{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:3px;margin-top:auto;padding-top:7px}
 .product-details small{font-size:.78rem;color:var(--muted)}
 .product-details b{font-size:1.05rem;color:var(--pink-dark);white-space:nowrap}
+.municipal-product-order{align-self:flex-start;margin-top:6px;padding:5px 12px;border:1px solid var(--pink);border-radius:999px;color:var(--pink-dark);font-size:.75rem;font-weight:900;text-decoration:none}
+.municipal-product-order:focus-visible,.municipal-sticky-order:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.municipal-sticky-order{display:none}
 .municipal-order-hero{padding:22px 18px 20px;background:linear-gradient(145deg,#fff2e8,#ffe3ee 57%,#eaf6ed)}
 .municipal-order-inner{max-width:1040px;margin:auto;text-align:center}
 .municipal-order-brand{margin:0;color:var(--pink-dark);font-size:.77rem;font-weight:950;letter-spacing:.18em}
@@ -60,4 +64,4 @@ html.municipal-direct .municipal-menu{padding-top:18px}
 @media(min-width:680px){.location-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.municipal-products{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:680px){.municipal-order-actions,.municipal-order-again{grid-template-columns:repeat(2,minmax(0,1fr))}html.municipal-direct .municipal-products{grid-template-columns:1.4fr 1fr}html.municipal-direct .municipal-products section:last-child{grid-column:1/-1}}
 @media(min-width:900px) and (max-width:1149px){.desktop-nav{gap:12px;margin-right:12px;font-size:.78rem}.site-header{padding-inline:2vw}}
-@media(max-width:679px){.locations-section{padding-top:36px}.location-cards{gap:12px}.location-card{padding:18px}.location-card p{margin-bottom:12px}.location-menu-heading{padding-top:20px}}
+@media(max-width:679px){.locations-section{padding-top:36px}.location-cards{gap:12px}.location-card{padding:18px}.location-card p{margin-bottom:12px}.location-menu-heading{padding-top:20px}html.municipal-direct body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}html.municipal-direct .municipal-sticky-order{position:fixed;z-index:20;right:16px;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:16px;display:flex;max-width:330px;min-height:44px;align-items:center;justify-content:center;margin:auto;padding:8px 16px;border-radius:999px;background:var(--pink);box-shadow:0 5px 18px rgba(80,26,49,.24);color:#fff;font-size:.82rem;font-weight:900;text-align:center;text-decoration:none}html.municipal-direct .municipal-sticky-order[hidden]{display:none}}

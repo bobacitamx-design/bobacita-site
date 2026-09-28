@@ -7,7 +7,7 @@ const translations = {
     locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.",
     location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"📍 ESTÁS VIENDO:", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
     directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
-    municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ",
+    municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_order_product:"PEDIR", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -76,7 +76,7 @@ const translations = {
     locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"Find your Bobacita and see the menu available at each location.",
     location_choice:"Choose your location to see the available menu.", location_menu_kicker:"📍 YOU'RE VIEWING:", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
     directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
-    municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU",
+    municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_order_product:"ORDER", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -204,6 +204,7 @@ function renderLocations(lang){
   document.documentElement.classList.toggle("municipal-direct", directOrder);
   document.getElementById("municipal-order-hero").hidden = !directOrder;
   document.getElementById("municipal-order-again").hidden = !directOrder;
+  document.getElementById("municipal-sticky-order").hidden = !directOrder;
   municipal.setAttribute("aria-labelledby", directOrder ? "municipal-page-title" : "selected-menu-title");
   if(directOrder){
     const ordering = selectedLocation.ordering;
@@ -254,11 +255,12 @@ function renderLocations(lang){
       const item = document.createElement("li");
       if(typeof product === "string") item.textContent = product;
       else{
+        const productName = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
         if(product.image){
           const photo = document.createElement("img");
           photo.className = "municipal-product-photo";
           photo.src = product.image;
-          photo.alt = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
+          photo.alt = productName;
           photo.width = 400;
           photo.height = 400;
           photo.loading = "lazy";
@@ -266,7 +268,7 @@ function renderLocations(lang){
           item.append(photo);
         }
         const name = document.createElement("strong");
-        name.textContent = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
+        name.textContent = productName;
         item.append(name);
         if(product.description){
           const description = document.createElement("span");
@@ -281,6 +283,20 @@ function renderLocations(lang){
         price.textContent = `$${product.price} MXN`;
         details.append(size, price);
         item.append(details);
+        if(selectedLocation.ordering){
+          const phone = selectedLocation.ordering.countryCode + selectedLocation.ordering.phone;
+          const order = document.createElement("a");
+          order.className = "municipal-product-order";
+          order.textContent = dictionary.municipal_order_product;
+          const message = lang === "en"
+            ? `Hello Bobacita 👋\nI would like to order:\n1 × ${productName} — ${product.size} — $${product.price} MXN\n\nPickup at City Hall.`
+            : `Hola Bobacita 👋\nQuiero ordenar:\n1 × ${productName} — ${product.size} — $${product.price} MXN\n\nPara recoger en Palacio Municipal.`;
+          order.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+          order.target = "_blank";
+          order.rel = "noopener";
+          order.setAttribute("aria-label", `${dictionary.municipal_order_product}: ${productName}`);
+          item.append(order);
+        }
       }
       list.append(item);
     }

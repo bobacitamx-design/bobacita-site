@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Bobacita | Limonadas, Aguas Frescas y Café</title>
   <meta name="description" content="Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.">
+  <script>if(new URLSearchParams(location.search).get("location") === "palacio-municipal") document.documentElement.classList.add("municipal-direct");</script>
   <style>
 :root{
   --pink:#ed2d72;
@@ -313,7 +314,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .contact-grid{grid-template-columns:repeat(3,1fr)}.contact-grid .contact-card:last-child{grid-column:auto}
 }
   </style>
-  <link rel="stylesheet" href="locations.css?v=20260927-3">
+  <link rel="stylesheet" href="locations.css?v=20260928-order-1">
 </head>
 <body>
   <header class="site-header">
@@ -344,6 +345,22 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   </nav>
 
   <main>
+    <section class="municipal-order-hero" id="municipal-order-hero" hidden aria-labelledby="municipal-page-title">
+      <div class="municipal-order-inner">
+        <p class="municipal-order-brand">BOBACITA</p>
+        <h1 id="municipal-page-title" data-i18n="municipal_page_title">📍 PALACIO MUNICIPAL</h1>
+        <p class="municipal-order-status" data-i18n="municipal_current_menu">MENÚ Y PRECIOS ACTUALIZADOS</p>
+        <div class="municipal-order-actions">
+          <a class="municipal-whatsapp" data-municipal-whatsapp href="#municipal-menu" data-i18n="municipal_order_whatsapp">ORDENAR POR WHATSAPP</a>
+          <a class="municipal-call" data-municipal-call href="tel:+525662849695" data-i18n="municipal_call">LLAMAR PARA ORDENAR</a>
+        </div>
+        <div class="municipal-order-secondary">
+          <a href="#municipal-menu" data-i18n="municipal_view_menu">VER MENÚ</a>
+          <a data-municipal-directions href="https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic" target="_blank" rel="noopener" data-i18n="directions">CÓMO LLEGAR</a>
+          <a href="/#ubicaciones" data-i18n="change_location">CAMBIAR UBICACIÓN</a>
+        </div>
+      </div>
+    </section>
     <section class="hero" id="inicio">
       <div class="hero-copy">
         <p class="love-note" data-i18n="love_note">Hecho con Amor para Ti ❤️</p>
@@ -373,6 +390,10 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     <div class="official-artwork" id="official-artwork" hidden></div>
     <section class="municipal-menu" id="municipal-menu" hidden aria-labelledby="selected-menu-title">
       <div id="municipal-products" class="municipal-products"></div>
+      <div class="municipal-order-again" id="municipal-order-again" hidden>
+        <a class="municipal-whatsapp" data-municipal-whatsapp href="#municipal-menu" data-i18n="municipal_order_whatsapp">ORDENAR POR WHATSAPP</a>
+        <a data-municipal-directions href="https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic" target="_blank" rel="noopener" data-i18n="directions">CÓMO LLEGAR</a>
+      </div>
       <div id="municipal-artwork" class="municipal-artwork"></div>
     </section>
 
@@ -715,7 +736,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
   </div>
 
-  <script src="locations.js?v=20260928-1" defer></script>
-  <script src="script.js?v=locations-20260928-1" defer></script>
+  <script src="locations.js?v=20260928-order-1" defer></script>
+  <script src="script.js?v=locations-20260928-order-1" defer></script>
 </body>
 </html>

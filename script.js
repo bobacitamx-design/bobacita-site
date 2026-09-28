@@ -7,6 +7,7 @@ const translations = {
     locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.",
     location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"📍 ESTÁS VIENDO:", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
     directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
+    municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -75,6 +76,7 @@ const translations = {
     locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"Find your Bobacita and see the menu available at each location.",
     location_choice:"Choose your location to see the available menu.", location_menu_kicker:"📍 YOU'RE VIEWING:", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
     directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
+    municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -148,11 +150,12 @@ function rememberLocation(slug){
 }
 let selectedLocation = locations.find(location => location.slug === (selectedSlug || storedLocation())) || null;
 if(selectedSlug && selectedLocation) rememberLocation(selectedSlug);
+const isMunicipalDirect = () => new URLSearchParams(window.location.search).get("location") === "palacio-municipal";
 
 function locationURL(location){
   const url = new URL(window.location.pathname, window.location.origin);
   url.searchParams.set("location", location.slug);
-  url.hash = "location-menu-heading";
+  if(location.slug !== "palacio-municipal") url.hash = "location-menu-heading";
   return url.pathname + url.search + url.hash;
 }
 
@@ -197,6 +200,23 @@ function renderLocations(lang){
   const municipal = document.getElementById("municipal-menu");
   const gallery = document.getElementById("municipal-artwork");
   const products = document.getElementById("municipal-products");
+  const directOrder = isMunicipalDirect() && selectedLocation?.slug === "palacio-municipal";
+  document.documentElement.classList.toggle("municipal-direct", directOrder);
+  document.getElementById("municipal-order-hero").hidden = !directOrder;
+  document.getElementById("municipal-order-again").hidden = !directOrder;
+  municipal.setAttribute("aria-labelledby", directOrder ? "municipal-page-title" : "selected-menu-title");
+  if(directOrder){
+    const ordering = selectedLocation.ordering;
+    const phone = ordering.countryCode + ordering.phone;
+    const message = ordering.message[lang] || ordering.message.es;
+    document.querySelectorAll("[data-municipal-whatsapp]").forEach(link=>{
+      link.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+    document.querySelectorAll("[data-municipal-call]").forEach(link=>link.href = `tel:+${phone}`);
+    document.querySelectorAll("[data-municipal-directions]").forEach(link=>link.href = selectedLocation.maps);
+  }
   document.getElementById("ubicaciones").classList.toggle("has-selection", Boolean(selectedLocation));
   heading.hidden = !selectedLocation;
   official.hidden = true;
@@ -208,10 +228,16 @@ function renderLocations(lang){
     section.hidden = !selectedLocation || selectedLocation.onlineMenu !== "santa-fe";
   });
   document.querySelectorAll('[data-i18n="nav_menu"]').forEach(link=>{
-    link.href = selectedLocation?.onlineMenu === "santa-fe" ? "#menu" : selectedLocation ? "#location-menu-heading" : "#ubicaciones";
+    link.href = directOrder ? "#municipal-menu" : selectedLocation?.onlineMenu === "santa-fe" ? "#menu" : selectedLocation ? "#location-menu-heading" : "#ubicaciones";
+  });
+  document.querySelectorAll('[data-i18n="nav_locations"]').forEach(link=>{
+    link.href = directOrder ? "/#ubicaciones" : "#ubicaciones";
+  });
+  document.querySelectorAll('.brand, [data-i18n="nav_home"]').forEach(link=>{
+    link.href = directOrder ? "/" : "#inicio";
   });
   document.querySelectorAll('[data-i18n="nav_featured"]').forEach(link=>{
-    link.href = selectedLocation?.onlineMenu === "santa-fe" ? "#featured-drink" : "#ubicaciones";
+    link.href = directOrder ? "/#ubicaciones" : selectedLocation?.onlineMenu === "santa-fe" ? "#featured-drink" : "#ubicaciones";
   });
   const featuredButton = document.querySelector(".featured-section-button");
   if(featuredButton) featuredButton.href = selectedLocation?.onlineMenu === "santa-fe" ? "#brown-sugar-brulee" : "#ubicaciones";
@@ -223,9 +249,28 @@ function renderLocations(lang){
     const title = document.createElement("h3");
     title.textContent = group.heading[lang] || group.heading.es;
     const list = document.createElement("ul");
-    for(const name of group.items[lang] || group.items.es){
+    if(group.products) list.className = "priced-products";
+    for(const product of group.products || group.items[lang] || group.items.es){
       const item = document.createElement("li");
-      item.textContent = name;
+      if(typeof product === "string") item.textContent = product;
+      else{
+        const name = document.createElement("strong");
+        name.textContent = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
+        item.append(name);
+        if(product.description){
+          const description = document.createElement("span");
+          description.textContent = product.description[lang] || product.description.es;
+          item.append(description);
+        }
+        const details = document.createElement("span");
+        details.className = "product-details";
+        const size = document.createElement("small");
+        size.textContent = product.size;
+        const price = document.createElement("b");
+        price.textContent = `$${product.price} MXN`;
+        details.append(size, price);
+        item.append(details);
+      }
       list.append(item);
     }
     section.append(title,list);
@@ -304,7 +349,10 @@ window.addEventListener("popstate",()=>{
   if(slug && selectedLocation) rememberLocation(slug);
   renderLocations(document.documentElement.lang);
 });
-if(selectedLocation && window.location.hash === "#location-menu-heading"){
+if(isMunicipalDirect() && window.location.hash === "#location-menu-heading"){
+  history.replaceState({}, "", window.location.pathname + window.location.search);
+  window.scrollTo(0, 0);
+}else if(selectedLocation && window.location.hash === "#location-menu-heading"){
   requestAnimationFrame(()=>document.getElementById("location-menu-heading").scrollIntoView());
 }
 

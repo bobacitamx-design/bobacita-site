@@ -27,10 +27,30 @@ window.BobacitaLocations = [
     ],
     assetsReady: true,
     onlineMenu: "artwork",
+    ordering: {
+      phone: "5662849695",
+      countryCode: "52",
+      message: {
+        es: "Hola Bobacita 👋\nQuiero hacer un pedido para recoger en Palacio Municipal.\n\nMi pedido:\n________________\n\nNombre:\n________________",
+        en: "Hello Bobacita 👋\nI would like to place an order for pickup at City Hall.\n\nMy order:\n________________\n\nName:\n________________"
+      }
+    },
     hours: null, announcements: [], featuredProducts: [],
     groups: [
-      { heading: {es:"Limonadas",en:"Lemonades"}, items: {es:["Original","Fresa","Mango","Arándano"],en:["Original","Strawberry","Mango","Blueberry"]} },
-      { heading: {es:"Bebidas embotelladas",en:"Bottled drinks"}, items: {es:["Sueño Saigón · Café Vietnamita","Sube el Thai · Té Tailandés","Horchata de Ube","Mango Juice Pop","Strawberry Juice Pop","Jamaica Blueberry Pop"],en:["Sueño Saigón · Vietnamese Coffee","Sube el Thai · Thai Tea","Ube Horchata","Mango Juice Pop","Strawberry Juice Pop","Jamaica Blueberry Pop"]} },
+      { heading: {es:"Bebidas embotelladas",en:"Bottled drinks"}, products: [
+        {name:"Sueño Saigón", description:{es:"Café Vietnamita",en:"Vietnamese Coffee"}, size:"240 mL", price:80},
+        {name:"Sube el Thai", description:{es:"Té Tailandés",en:"Thai Tea"}, size:"500 mL", price:80},
+        {name:"Horchata de Ube", size:"500 mL", price:80},
+        {name:"Mango Juice Pop", size:"500 mL", price:80},
+        {name:"Strawberry Juice Pop", size:"500 mL", price:80},
+        {name:"Jamaica Blueberry Pop", size:"500 mL", price:80}
+      ] },
+      { heading: {es:"Limonadas",en:"Lemonades"}, products: [
+        {name:{es:"Original",en:"Original"},size:"1 L",price:100},
+        {name:{es:"Fresa",en:"Strawberry"},size:"1 L",price:100},
+        {name:{es:"Mango",en:"Mango"},size:"1 L",price:100},
+        {name:{es:"Arándano",en:"Blueberry"},size:"1 L",price:100}
+      ] },
       { heading: {es:"Toppings disponibles para limonadas",en:"Lemonade toppings"}, items: {es:["Popping Boba de Mango","Popping Boba de Fresa","Popping Boba de Arándano"],en:["Mango Popping Boba","Strawberry Popping Boba","Blueberry Popping Boba"]} }
     ]
   }

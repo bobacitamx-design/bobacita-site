@@ -20,12 +20,33 @@
 .current-location-name{margin:6px 0;color:var(--pink-dark);font-size:clamp(1.5rem,5vw,2.4rem);font-weight:900;letter-spacing:.04em}
 .location-menu-heading h2{margin-top:2px;font-size:clamp(1.15rem,3.8vw,1.65rem)}
 .location-menu-heading a{margin-top:12px;background:#fff;min-width:190px}
-.municipal-menu{padding:10px 18px 55px;background:#fff9f1}
+.municipal-menu{padding:10px 18px 55px;background:#fff9f1;scroll-margin-top:86px}
 .municipal-products{display:grid;gap:14px;max-width:1040px;margin:0 auto 26px}
 .municipal-products section,.location-menu-addition{padding:18px;border:1px solid #edced8;border-radius:20px;background:#fff;box-shadow:0 9px 23px rgba(77,38,27,.06)}
 .municipal-products h3,.location-menu-addition h3{margin:0 0 10px;color:var(--pink-dark);font-family:Georgia,"Times New Roman",serif;font-size:1.3rem}
 .municipal-products ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .municipal-products li{padding:9px 12px;border-radius:999px;background:#fff0f5;font-size:.88rem;font-weight:750}
+.municipal-products .priced-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.municipal-products .priced-products li{display:flex;min-width:0;flex-direction:column;gap:3px;border:1px solid #f4d5df;border-radius:15px;background:#fff7f9;line-height:1.3}
+.municipal-products .priced-products strong{font-size:.96rem;color:var(--brown)}
+.municipal-products .priced-products li>span:not(.product-details){color:var(--muted);font-weight:600}
+.product-details{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:3px;margin-top:auto;padding-top:7px}
+.product-details small{font-size:.78rem;color:var(--muted)}
+.product-details b{font-size:1.05rem;color:var(--pink-dark);white-space:nowrap}
+.municipal-order-hero{padding:22px 18px 20px;background:linear-gradient(145deg,#fff2e8,#ffe3ee 57%,#eaf6ed)}
+.municipal-order-inner{max-width:1040px;margin:auto;text-align:center}
+.municipal-order-brand{margin:0;color:var(--pink-dark);font-size:.77rem;font-weight:950;letter-spacing:.18em}
+.municipal-order-hero h1{margin:5px 0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.7rem,7.3vw,3rem);line-height:1.12;color:var(--brown)}
+.municipal-order-status{margin:0 0 15px;color:var(--pink-dark);font-size:.82rem;font-weight:900;letter-spacing:.06em}
+.municipal-order-actions{display:grid;gap:9px;max-width:550px;margin:auto}
+.municipal-order-actions a,.municipal-order-again a{display:flex;min-height:52px;align-items:center;justify-content:center;padding:10px 16px;border:1px solid var(--pink);border-radius:999px;background:#fff;color:var(--pink-dark);font-size:.92rem;font-weight:900;text-align:center}
+.municipal-order-actions .municipal-whatsapp,.municipal-order-again .municipal-whatsapp{background:var(--pink);color:#fff}
+.municipal-order-secondary{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 17px;margin-top:13px}
+.municipal-order-secondary a{padding:5px 0;color:var(--green);font-size:.8rem;font-weight:850;text-decoration:underline;text-underline-offset:3px}
+.municipal-order-again{display:grid;gap:9px;max-width:550px;margin:2px auto 26px}
+.municipal-order-actions a:focus-visible,.municipal-order-secondary a:focus-visible,.municipal-order-again a:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+html.municipal-direct .hero,html.municipal-direct .locations-section,html.municipal-direct .location-menu-heading{display:none}
+html.municipal-direct .municipal-menu{padding-top:18px}
 .location-menu-addition{max-width:1120px;margin:20px auto 0}
 .location-menu-addition p:last-child{margin:0;color:var(--muted)}
 .official-artwork{max-width:860px;margin:0 auto;padding:8px 18px 20px}
@@ -36,5 +57,6 @@
 .municipal-artwork figcaption{padding:8px;text-align:center;color:var(--muted);font-weight:750}
 .menu-download{width:max-content;max-width:100%;margin:20px auto 0;background:#fff}
 @media(min-width:680px){.location-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.municipal-products{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:680px){.municipal-order-actions,.municipal-order-again{grid-template-columns:repeat(2,minmax(0,1fr))}html.municipal-direct .municipal-products{grid-template-columns:1.4fr 1fr}html.municipal-direct .municipal-products section:last-child{grid-column:1/-1}}
 @media(min-width:900px) and (max-width:1149px){.desktop-nav{gap:12px;margin-right:12px;font-size:.78rem}.site-header{padding-inline:2vw}}
 @media(max-width:679px){.locations-section{padding-top:36px}.location-cards{gap:12px}.location-card{padding:18px}.location-card p{margin-bottom:12px}.location-menu-heading{padding-top:20px}}

@@ -39,8 +39,8 @@ window.BobacitaLocations = [
     groups: [
       { heading: {es:"Bebidas embotelladas",en:"Bottled drinks"}, products: [
         {name:{es:"Sueño Saigón",en:"Sueño Saigón"}, description:{es:"Café Vietnamita",en:"Vietnamese Coffee"}, size:"240 mL", price:95, image:"assets/web/municipal/sueno-saigon.webp"},
-        {name:{es:"Sube el Thai",en:"Sube el Thai"}, description:{es:"Té Tailandés",en:"Thai Tea"}, size:"500 mL", price:95, image:"assets/web/municipal/sube-el-thai-smooth-20260928.webp"},
-        {name:{es:"Horchata de Ube",en:"Ube Horchata"}, description:{es:"Horchata cremosa con ube",en:"Creamy horchata with ube"}, size:"500 mL", price:95, image:"assets/web/municipal/horchata-de-ube-smooth-20260928.webp"},
+        {name:{es:"Sube el Thai",en:"Sube el Thai"}, description:{es:"Té Tailandés",en:"Thai Tea"}, size:"500 mL", price:95, image:"assets/web/municipal/sube-el-thai-clean-20260928.webp"},
+        {name:{es:"Horchata de Ube",en:"Ube Horchata"}, description:{es:"Horchata cremosa con ube",en:"Creamy horchata with ube"}, size:"500 mL", price:95, image:"assets/web/municipal/horchata-de-ube-clean-20260928.webp"},
         {name:{es:"Jugo de Mango Pop",en:"Mango Juice Pop"}, description:{es:"Jugo de mango con popping boba de mango",en:"Mango juice with mango popping boba"}, size:"500 mL", price:95, image:"assets/web/municipal/mango-juice-pop-smooth-20260928.webp"},
         {name:{es:"Jugo de Fresa Pop",en:"Strawberry Juice Pop"}, description:{es:"Jugo de fresa con popping boba de fresa",en:"Strawberry juice with strawberry popping boba"}, size:"500 mL", price:95, image:"assets/web/municipal/strawberry-juice-pop-smooth-20260928.webp"},
         {name:{es:"Jamaica con Arándano Pop",en:"Jamaica Blueberry Pop"}, description:{es:"Jamaica con popping boba de arándano",en:"Jamaica with blueberry popping boba"}, size:"500 mL", price:95, image:"assets/web/municipal/jamaica-blueberry-pop-smooth-20260928.webp"}

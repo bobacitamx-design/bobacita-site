@@ -254,6 +254,17 @@ function renderLocations(lang){
       const item = document.createElement("li");
       if(typeof product === "string") item.textContent = product;
       else{
+        if(product.image){
+          const photo = document.createElement("img");
+          photo.className = "municipal-product-photo";
+          photo.src = product.image;
+          photo.alt = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
+          photo.width = 400;
+          photo.height = 400;
+          photo.loading = "lazy";
+          photo.decoding = "async";
+          item.append(photo);
+        }
         const name = document.createElement("strong");
         name.textContent = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
         item.append(name);

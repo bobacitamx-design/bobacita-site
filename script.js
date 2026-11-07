@@ -7,7 +7,7 @@ const translations = {
     locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.",
     location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"📍 ESTÁS VIENDO:", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
     directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
-    municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_order_product:"PEDIR", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ",
+    municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_order_product:"PEDIR", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ", municipal_favorites:"FAVORITAS", municipal_favorite_action:"Ver bebida", municipal_show_drinks:"bebidas · tocar para ver",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -76,7 +76,7 @@ const translations = {
     locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"Find your Bobacita and see the menu available at each location.",
     location_choice:"Choose your location to see the available menu.", location_menu_kicker:"📍 YOU'RE VIEWING:", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
     directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
-    municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_order_product:"ORDER", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU",
+    municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_order_product:"ORDER", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU", municipal_favorites:"FAVORITES", municipal_favorite_action:"View drink", municipal_show_drinks:"drinks · tap to view",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -207,6 +207,9 @@ function renderLocations(lang){
   const municipal = document.getElementById("municipal-menu");
   const gallery = document.getElementById("municipal-artwork");
   const products = document.getElementById("municipal-products");
+  const favorites = document.getElementById("municipal-favorites");
+  const hadPanels = Boolean(products.querySelector("details"));
+  const expandedGroups = new Set([...products.querySelectorAll("details[open]")].map(panel=>panel.id));
   const directOrder = isMunicipalDirect() && selectedLocation?.slug === "palacio-municipal";
   document.documentElement.classList.toggle("municipal-direct", directOrder);
   document.getElementById("municipal-order-hero").hidden = !directOrder;
@@ -232,6 +235,8 @@ function renderLocations(lang){
   official.replaceChildren();
   gallery.replaceChildren();
   products.replaceChildren();
+  favorites.replaceChildren();
+  favorites.hidden = true;
   document.querySelectorAll('[data-location-menu="santa-fe"]').forEach(section=>{
     section.hidden = !selectedLocation || selectedLocation.onlineMenu !== "santa-fe";
   });
@@ -252,16 +257,57 @@ function renderLocations(lang){
   if(!selectedLocation) return;
   document.getElementById("current-location-name").textContent = selectedLocation.name[lang] || selectedLocation.name.es;
   document.getElementById("selected-menu-title").textContent = dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es);
+  if(selectedLocation.favoritePhotos?.length){
+    const title = document.createElement("h2");
+    title.textContent = dictionary.municipal_favorites;
+    const photos = document.createElement("div");
+    photos.className = "municipal-favorite-photos";
+    for(const favorite of selectedLocation.favoritePhotos){
+      const name = favorite.name[lang] || favorite.name.es;
+      const link = document.createElement("a");
+      link.href = `#${favorite.product}`;
+      link.setAttribute("aria-label", `${dictionary.municipal_favorite_action}: ${name}`);
+      const photo = document.createElement("img");
+      photo.src = favorite.image;
+      photo.alt = name;
+      photo.width = 320;
+      photo.height = 320;
+      photo.decoding = "async";
+      photos.append(link);
+      link.append(photo);
+      link.addEventListener("click",event=>{
+        event.preventDefault();
+        const panel = document.getElementById(favorite.group);
+        if(panel) panel.open = true;
+        document.getElementById(favorite.product)?.scrollIntoView({behavior:"smooth",block:"center"});
+      });
+    }
+    favorites.append(title,photos);
+    favorites.hidden = false;
+  }
   for(const group of selectedLocation.groups || []){
     const section = document.createElement("section");
-    const title = document.createElement("h3");
+    const panel = group.expandable ? document.createElement("details") : section;
+    if(group.expandable){
+      panel.id = group.id;
+      panel.open = hadPanels ? expandedGroups.has(group.id) : Boolean(group.defaultOpen);
+      section.append(panel);
+    }
+    const title = document.createElement(group.expandable ? "summary" : "h3");
     title.textContent = group.heading[lang] || group.heading.es;
+    if(group.expandable){
+      const count = document.createElement("small");
+      count.textContent = `${group.products.length} ${dictionary.municipal_show_drinks}`;
+      title.append(count);
+      panel.append(title);
+    }
     const list = document.createElement("ul");
     if(group.products) list.className = "priced-products";
     for(const product of group.products || group.items[lang] || group.items.es){
       const item = document.createElement("li");
       if(typeof product === "string") item.textContent = product;
       else{
+        if(product.id) item.id = product.id;
         const productName = typeof product.name === "string" ? product.name : (product.name[lang] || product.name.es);
         if(product.image){
           const photo = document.createElement("img");
@@ -285,19 +331,21 @@ function renderLocations(lang){
         const details = document.createElement("span");
         details.className = "product-details";
         const size = document.createElement("small");
-        size.textContent = product.size;
+        if(product.size) size.textContent = product.size;
         const price = document.createElement("b");
         price.textContent = `$${product.price} MXN`;
-        details.append(size, price);
+        if(product.size) details.append(size);
+        details.append(price);
         item.append(details);
         if(selectedLocation.ordering){
           const phone = selectedLocation.ordering.countryCode + selectedLocation.ordering.phone;
           const order = document.createElement("a");
           order.className = "municipal-product-order";
           order.textContent = dictionary.municipal_order_product;
+          const orderLine = `1 × ${productName}${product.size ? ` — ${product.size}` : ""} — $${product.price} MXN`;
           const message = lang === "en"
-            ? `Hello Bobacita 👋\nI would like to order:\n1 × ${productName} — ${product.size} — $${product.price} MXN\n\nPickup at City Hall.`
-            : `Hola Bobacita 👋\nQuiero ordenar:\n1 × ${productName} — ${product.size} — $${product.price} MXN\n\nPara recoger en Palacio Municipal.`;
+            ? `Hello Bobacita 👋\nI would like to order:\n${orderLine}\n\nPickup at City Hall.`
+            : `Hola Bobacita 👋\nQuiero ordenar:\n${orderLine}\n\nPara recoger en Palacio Municipal.`;
           order.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
           order.target = "_blank";
           order.rel = "noopener";
@@ -307,7 +355,8 @@ function renderLocations(lang){
       }
       list.append(item);
     }
-    section.append(title,list);
+    if(!group.expandable) section.append(title);
+    panel.append(list);
     products.append(section);
   }
   if(selectedLocation.assetsReady){

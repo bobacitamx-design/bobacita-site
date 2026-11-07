@@ -58,7 +58,7 @@ window.BobacitaLocations = [
         {name:{es:"Jugo de Fresa Pop",en:"Strawberry Juice Pop"}, description:{es:"Jugo de fresa con popping boba de fresa",en:"Strawberry juice with strawberry popping boba"}, size:"500 mL", price:95, image:"assets/web/municipal/strawberry-juice-pop-smooth-20260928.webp"},
         {name:{es:"Jamaica con Arándano Pop",en:"Jamaica Blueberry Pop"}, description:{es:"Jamaica con popping boba de arándano",en:"Jamaica with blueberry popping boba"}, size:"500 mL", price:95, image:"assets/web/municipal/jamaica-blueberry-pop-smooth-20260928.webp"}
       ] },
-      { id:"municipal-base", expandable:true, heading:{es:"Limonadas · Sabores base",en:"Lemonades · Base flavors"}, products:[
+      { id:"municipal-base", expandable:true, heading:{es:"Limonadas · Sabores base",en:"Lemonades · Base flavors"}, additionalSize:"700 mL", products:[
         {id:"municipal-original",name:{es:"Original",en:"Original"},size:"1 L",price:125,image:"assets/web/municipal/menu/original.webp"},
         {id:"municipal-frambuesa-azul",name:{es:"Frambuesa Azul",en:"Blue Raspberry"},size:"1 L",price:125,image:"assets/web/municipal/menu/frambuesa-azul.webp"},
         {id:"municipal-fresa",name:{es:"Fresa",en:"Strawberry"},size:"1 L",price:125,image:"assets/web/municipal/menu/fresa.webp"},
@@ -70,7 +70,7 @@ window.BobacitaLocations = [
         {id:"municipal-dragon-fruit",name:{es:"Dragon Fruit (Pitahaya)",en:"Dragon Fruit (Pitahaya)"},size:"1 L",price:125,image:"assets/web/municipal/menu/dragon-fruit.webp"},
         {id:"municipal-frambuesa",name:{es:"Frambuesa",en:"Raspberry"},size:"1 L",price:125,image:"assets/web/municipal/menu/frambuesa.webp"}
       ]},
-      { id:"municipal-mixes", expandable:true, heading:{es:"Mezclas especiales de limonadas",en:"Special lemonade mixes"}, products:[
+      { id:"municipal-mixes", expandable:true, heading:{es:"Mezclas especiales de limonadas",en:"Special lemonade mixes"}, additionalSize:"700 mL", products:[
         {name:{es:"Fresa Tropical",en:"Tropical Strawberry"},description:{es:"Fresa + mango",en:"Strawberry + mango"},image:"assets/web/municipal/menu/fresa-tropical.webp"},
         {name:{es:"Berry Azul",en:"Blue Berry Mix"},description:{es:"Fresa + frambuesa azul",en:"Strawberry + blue raspberry"},image:"assets/web/municipal/menu/berry-azul.webp"},
         {name:{es:"Lavanda Berry",en:"Lavender Berry"},description:{es:"Lavanda + frambuesa azul",en:"Lavender + blue raspberry"},image:"assets/web/municipal/menu/lavanda-berry.webp"},

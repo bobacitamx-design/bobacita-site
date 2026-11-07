@@ -8,6 +8,7 @@ const translations = {
     location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"📍 ESTÁS VIENDO:", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
     directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
     municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_order_product:"PEDIR", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ", municipal_favorites:"FAVORITAS", municipal_favorite_action:"Ver bebida", municipal_show_drinks:"bebidas · tocar para ver",
+    municipal_also_available_in:"También disponibles en",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -77,6 +78,7 @@ const translations = {
     location_choice:"Choose your location to see the available menu.", location_menu_kicker:"📍 YOU'RE VIEWING:", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
     directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
     municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_order_product:"ORDER", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU", municipal_favorites:"FAVORITES", municipal_favorite_action:"View drink", municipal_show_drinks:"drinks · tap to view",
+    municipal_also_available_in:"Also available in",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -297,7 +299,15 @@ function renderLocations(lang){
       section.append(panel);
     }
     const title = document.createElement(group.expandable ? "summary" : "h3");
-    title.textContent = group.heading[lang] || group.heading.es;
+    const heading = document.createElement("span");
+    heading.textContent = group.heading[lang] || group.heading.es;
+    if(group.additionalSize){
+      const note = document.createElement("span");
+      note.className = "municipal-group-note";
+      note.textContent = `${dictionary.municipal_also_available_in} ${group.additionalSize}.`;
+      heading.append(note);
+    }
+    title.append(heading);
     if(group.expandable){
       const count = document.createElement("small");
       count.textContent = `${group.products.length} ${dictionary.municipal_show_drinks}`;

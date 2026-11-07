@@ -269,12 +269,15 @@ function renderLocations(lang){
       link.setAttribute("aria-label", `${dictionary.municipal_favorite_action}: ${name}`);
       const photo = document.createElement("img");
       photo.src = favorite.image;
-      photo.alt = name;
+      photo.alt = "";
       photo.width = 320;
       photo.height = 320;
       photo.decoding = "async";
+      const caption = document.createElement("span");
+      caption.className = "municipal-favorite-name";
+      caption.textContent = name;
+      link.append(photo, caption);
       photos.append(link);
-      link.append(photo);
       link.addEventListener("click",event=>{
         event.preventDefault();
         const panel = document.getElementById(favorite.group);

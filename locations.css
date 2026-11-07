@@ -24,8 +24,9 @@
 .municipal-favorites{max-width:1040px;margin:0 auto 18px}
 .municipal-favorites h2{margin:0 0 10px;color:var(--pink-dark);font-size:.85rem;font-weight:950;letter-spacing:.13em;text-align:center}
 .municipal-favorite-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.municipal-favorite-photos a{display:block;min-width:0;overflow:hidden;border:1px solid #f4d5df;border-radius:17px;background:#fff;box-shadow:0 6px 17px rgba(77,38,27,.08)}
+.municipal-favorite-photos a{position:relative;display:block;min-width:0;overflow:hidden;border:1px solid #f4d5df;border-radius:17px;background:#fff;box-shadow:0 6px 17px rgba(77,38,27,.08)}
 .municipal-favorite-photos img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.municipal-favorite-name{position:absolute;inset:auto 6px 6px;display:block;padding:6px 5px;border:1px solid #f4d5df;border-radius:10px;background:rgba(255,253,249,.96);color:var(--brown);font-size:clamp(.78rem,1.7vw,.95rem);font-weight:850;line-height:1.2;text-align:center;text-wrap:balance}
 .municipal-favorite-photos a:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .municipal-products{display:grid;gap:14px;max-width:1040px;margin:0 auto 26px}
 .municipal-products section,.location-menu-addition{padding:18px;border:1px solid #edced8;border-radius:20px;background:#fff;box-shadow:0 9px 23px rgba(77,38,27,.06)}

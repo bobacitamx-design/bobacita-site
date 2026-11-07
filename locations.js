@@ -20,10 +20,17 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic",
     address: null,
     pdf: "assets/menus/bobacita-menu-palacio-municipal.pdf",
-    pdfVersion: "20260928-95-120",
+    pdfVersion: "20261107-drinks-125",
+    downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: [
-      "assets/menus/palacio-municipal-bottled-95-20260928.jpeg",
-      "assets/menus/palacio-municipal-lemonades-120-20260928.jpeg"
+      "assets/menus/palacio-municipal-bebidas-20261107.jpeg"
+    ],
+    extraDownloads: [
+      {
+        pdf: "assets/menus/chica-chun-kun-menu-palacio-municipal.pdf",
+        pdfVersion: "20261107-food",
+        label: { es: "DESCARGAR MENÚ DE COMIDA", en: "DOWNLOAD FOOD MENU" }
+      }
     ],
     assetsReady: true,
     onlineMenu: "artwork",
@@ -46,10 +53,10 @@ window.BobacitaLocations = [
         {name:{es:"Jamaica con Arándano Pop",en:"Jamaica Blueberry Pop"}, description:{es:"Jamaica con popping boba de arándano",en:"Jamaica with blueberry popping boba"}, size:"500 mL", price:95, image:"assets/web/municipal/jamaica-blueberry-pop-smooth-20260928.webp"}
       ] },
       { heading: {es:"Limonadas",en:"Lemonades"}, products: [
-        {name:{es:"Original",en:"Original"},description:{es:"Limonada clásica y refrescante",en:"Classic, refreshing lemonade"},size:"1 L",price:120,image:"assets/web/municipal/limonada-original.webp"},
-        {name:{es:"Fresa",en:"Strawberry"},description:{es:"Limonada de fresa con popping boba de fresa",en:"Strawberry lemonade with strawberry popping boba"},size:"1 L",price:120,image:"assets/web/municipal/limonada-fresa.webp"},
-        {name:{es:"Mango",en:"Mango"},description:{es:"Limonada de mango con popping boba de mango",en:"Mango lemonade with mango popping boba"},size:"1 L",price:120,image:"assets/web/municipal/limonada-mango.webp"},
-        {name:{es:"Arándano",en:"Blueberry"},description:{es:"Limonada de arándano con popping boba de arándano",en:"Blueberry lemonade with blueberry popping boba"},size:"1 L",price:120,image:"assets/web/municipal/limonada-arandano.webp"}
+        {name:{es:"Original",en:"Original"},description:{es:"Limonada clásica y refrescante",en:"Classic, refreshing lemonade"},size:"1 L",price:125,image:"assets/web/municipal/limonada-original.webp"},
+        {name:{es:"Fresa",en:"Strawberry"},description:{es:"Limonada de fresa con popping boba de fresa",en:"Strawberry lemonade with strawberry popping boba"},size:"1 L",price:125,image:"assets/web/municipal/limonada-fresa.webp"},
+        {name:{es:"Mango",en:"Mango"},description:{es:"Limonada de mango con popping boba de mango",en:"Mango lemonade with mango popping boba"},size:"1 L",price:125,image:"assets/web/municipal/limonada-mango.webp"},
+        {name:{es:"Arándano",en:"Blueberry"},description:{es:"Limonada de arándano con popping boba de arándano",en:"Blueberry lemonade with blueberry popping boba"},size:"1 L",price:125,image:"assets/web/municipal/limonada-arandano.webp"}
       ] },
       { heading: {es:"Toppings disponibles para limonadas",en:"Lemonade toppings"}, items: {es:["Popping Boba de Mango","Popping Boba de Fresa","Popping Boba de Arándano"],en:["Mango Popping Boba","Strawberry Popping Boba","Blueberry Popping Boba"]} }
     ]

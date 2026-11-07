@@ -159,6 +159,15 @@ function locationURL(location){
   return url.pathname + url.search + url.hash;
 }
 
+function menuDownload(menu, label, className){
+  const link = document.createElement("a");
+  link.className = className;
+  link.href = menu.pdf + (menu.pdfVersion ? `?v=${menu.pdfVersion}` : "");
+  link.download = menu.pdf.split("/").pop();
+  link.textContent = label;
+  return link;
+}
+
 function renderLocations(lang){
   const dictionary = translations[lang] || translations.es;
   const cards = document.getElementById("location-cards");
@@ -185,12 +194,10 @@ function renderLocations(lang){
     directions.textContent = dictionary.directions;
     actions.append(view, directions);
     if(location.assetsReady){
-      const download = document.createElement("a");
-      download.className = "download-menu";
-      download.href = location.pdf + (location.pdfVersion ? `?v=${location.pdfVersion}` : "");
-      download.download = location.pdf.split("/").pop();
-      download.textContent = dictionary.location_download;
-      actions.append(download);
+      actions.append(menuDownload(location, location.downloadLabel?.[lang] || dictionary.location_download, "download-menu"));
+      for(const menu of location.extraDownloads || []){
+        actions.append(menuDownload(menu, menu.label[lang] || menu.label.es, "download-menu"));
+      }
     }
     card.append(title, description, actions);
     cards.append(card);
@@ -315,12 +322,13 @@ function renderLocations(lang){
       figure.append(img);
       target.append(figure);
     });
-    const download = document.createElement("a");
-    download.className = "menu-download";
-    download.href = selectedLocation.pdf + (selectedLocation.pdfVersion ? `?v=${selectedLocation.pdfVersion}` : "");
-    download.download = selectedLocation.pdf.split("/").pop();
-    download.textContent = dictionary.location_download;
-    target.append(download);
+    const downloads = document.createElement("div");
+    downloads.className = "menu-downloads";
+    downloads.append(menuDownload(selectedLocation, selectedLocation.downloadLabel?.[lang] || dictionary.location_download, "menu-download"));
+    for(const menu of selectedLocation.extraDownloads || []){
+      downloads.append(menuDownload(menu, menu.label[lang] || menu.label.es, "menu-download"));
+    }
+    target.append(downloads);
     official.hidden = selectedLocation.onlineMenu !== "santa-fe";
     municipal.hidden = selectedLocation.onlineMenu === "santa-fe";
   }

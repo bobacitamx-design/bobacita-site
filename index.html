@@ -319,7 +319,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
   .contact-grid{grid-template-columns:repeat(3,1fr)}.contact-grid .contact-card:last-child{grid-column:auto}
 }
   </style>
-  <link rel="stylesheet" href="locations.css?v=20261107-lemonade-size">
+<link rel="stylesheet" href="locations.css?v=20261108-shared-menu">
 </head>
 <body>
   <header class="site-header">
@@ -394,6 +394,10 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
     <div class="official-artwork" id="official-artwork" hidden></div>
     <section class="municipal-menu" id="municipal-menu" hidden aria-labelledby="selected-menu-title">
+      <div class="shared-order-callout">
+        <p data-i18n="pickup_intro">Explora las bebidas y elige dónde recoger al ordenar.</p>
+        <button type="button" id="choose-pickup" data-i18n="municipal_order_whatsapp">ORDENAR POR WHATSAPP</button>
+      </div>
       <div id="municipal-favorites" class="municipal-favorites" hidden></div>
       <div id="municipal-products" class="municipal-products"></div>
       <div class="municipal-order-again" id="municipal-order-again" hidden>
@@ -403,6 +407,13 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
       <div id="municipal-artwork" class="municipal-artwork"></div>
     </section>
     <a class="municipal-sticky-order municipal-whatsapp" id="municipal-sticky-order" data-municipal-whatsapp data-i18n="municipal_order_whatsapp" href="#municipal-menu" hidden>ORDENAR POR WHATSAPP</a>
+
+    <dialog class="pickup-dialog" id="pickup-dialog" aria-labelledby="pickup-dialog-title">
+      <form method="dialog"><button class="pickup-close" aria-label="Cerrar" data-i18n-aria="pickup_close">×</button></form>
+      <h2 id="pickup-dialog-title" data-i18n="pickup_title">¿Dónde recoges tu pedido?</h2>
+      <p data-i18n="pickup_description">Elige tu ubicación para continuar por WhatsApp.</p>
+      <div class="pickup-options" id="pickup-options"></div>
+    </dialog>
 
     <section class="category-dock" id="menu" aria-labelledby="menu-title" data-location-menu="santa-fe" hidden>
       <div class="menu-intro">
@@ -743,7 +754,7 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     </section>
   </div>
 
-  <script src="locations.js?v=20261107-lemonade-size" defer></script>
-  <script src="script.js?v=20261107-lemonade-size" defer></script>
+  <script src="locations.js?v=20261108-shared-menu" defer></script>
+  <script src="script.js?v=20261108-shared-menu" defer></script>
 </body>
 </html>

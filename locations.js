@@ -8,9 +8,12 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/7Yb2uDG3mNyXJkx16?g_st=ic",
     address: null, // Display only after verification against the supplied pin.
     pdf: "assets/menus/bobacita-menu-santa-fe.pdf",
+    pdfVersion: "20261108-shared-drinks",
+    downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: ["assets/menus/santa-fe.png"],
     assetsReady: true,
-    onlineMenu: "santa-fe",
+    onlineMenu: "shared",
+    ordering: { countryCode: "52", phone: "5662849695" },
     hours: null, announcements: [], featuredProducts: []
   },
   {
@@ -33,7 +36,7 @@ window.BobacitaLocations = [
       }
     ],
     assetsReady: true,
-    onlineMenu: "artwork",
+    onlineMenu: "shared",
     ordering: {
       phone: "5662849695",
       countryCode: "52",
@@ -100,3 +103,7 @@ window.BobacitaLocations = [
     ]
   }
 ];
+
+// Both branches display the same drinks. Each keeps its own location details and downloads.
+window.BobacitaLocations[0].favoritePhotos = window.BobacitaLocations[1].favoritePhotos;
+window.BobacitaLocations[0].groups = window.BobacitaLocations[1].groups;

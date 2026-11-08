@@ -21,6 +21,17 @@
 .location-menu-heading h2{margin-top:2px;font-size:clamp(1.15rem,3.8vw,1.65rem)}
 .location-menu-heading a{margin-top:12px;background:#fff;min-width:190px}
 .municipal-menu{padding:10px 18px 55px;background:#fff9f1;scroll-margin-top:86px}
+.shared-order-callout{max-width:1040px;margin:0 auto 18px;padding:17px;border:1px solid #edced8;border-radius:20px;background:#fff;text-align:center}
+.shared-order-callout p{margin:0 0 12px;color:var(--brown);font-weight:750}
+.shared-order-callout button,.pickup-options a{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:10px 20px;border:1px solid var(--pink);border-radius:999px;background:var(--pink);color:#fff;font:inherit;font-weight:900;cursor:pointer;text-decoration:none}
+.pickup-dialog{width:min(92vw,440px);padding:28px;border:1px solid #edced8;border-radius:24px;background:#fffdf9;color:var(--brown);box-shadow:0 24px 70px rgba(48,23,17,.25);text-align:center}
+.pickup-dialog::backdrop{background:rgba(35,22,17,.55)}
+.pickup-dialog h2{margin:8px 0;font-family:Georgia,"Times New Roman",serif}
+.pickup-dialog p{line-height:1.45}
+.pickup-dialog form{display:flex;justify-content:flex-end}
+.pickup-close{width:40px;height:40px;border:0;border-radius:50%;background:#fff0f5;color:var(--brown);font-size:1.6rem;cursor:pointer}
+.pickup-options{display:grid;gap:10px;margin-top:20px}
+.shared-order-callout button:focus-visible,.pickup-options a:focus-visible,.pickup-close:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .municipal-favorites{max-width:1040px;margin:0 auto 18px}
 .municipal-favorites h2{margin:0 0 10px;color:var(--pink-dark);font-size:.85rem;font-weight:950;letter-spacing:.13em;text-align:center}
 .municipal-favorite-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}

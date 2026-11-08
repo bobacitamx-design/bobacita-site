@@ -4,11 +4,12 @@ const translations = {
     page_description:"Bobacita en Tijuana: limonadas, aguas frescas, café y boba, hechos con amor para ti.",
     main_navigation:"Navegación principal", mobile_navigation:"Navegación móvil", language_switch:"Cambiar idioma", menu_categories:"Categorías del menú", open_menu:"Abrir menú",
     nav_home:"Inicio", nav_menu:"Menú", nav_locations:"Ubicaciones", nav_featured:"Bebida destacada", nav_story:"Nuestra historia", nav_catering:"Eventos & Catering", nav_follow:"Síguenos",
-    locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"Encuentra tu Bobacita y descubre el menú disponible en cada ubicación.",
+    locations_prompt:"¿DÓNDE NOS VISITAS?", locations_title:"Nuestras ubicaciones", locations_subtitle:"El mismo menú de bebidas en Santa Fe y Palacio Municipal. Elige dónde recoger al ordenar.",
     location_choice:"Elige tu ubicación para ver el menú disponible.", location_menu_kicker:"📍 ESTÁS VIENDO:", location_menu_title:"MENÚ — ", change_location:"CAMBIAR UBICACIÓN",
     directions:"CÓMO LLEGAR", location_view:"VER MENÚ", location_download:"DESCARGAR MENÚ", menu_page:"Página",
     municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_order_product:"PEDIR", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ", municipal_favorites:"FAVORITAS", municipal_favorite_action:"Ver bebida", municipal_show_drinks:"bebidas · tocar para ver",
     municipal_also_available_in:"También disponibles en",
+    shared_menu_title:"MENÚ DE BEBIDAS BOBACITA", pickup_intro:"Explora las bebidas y elige dónde recoger al ordenar.", pickup_title:"¿Dónde recoges tu pedido?", pickup_description:"Elige tu ubicación para continuar por WhatsApp.", pickup_close:"Cerrar", pickup_at:"Para recoger en",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
@@ -74,11 +75,12 @@ const translations = {
     page_description:"Bobacita in Tijuana: lemonades, aguas frescas, coffee, and boba, made with love for you.",
     main_navigation:"Main navigation", mobile_navigation:"Mobile navigation", language_switch:"Change language", menu_categories:"Menu categories", open_menu:"Open menu",
     nav_home:"Home", nav_menu:"Menu", nav_locations:"Locations", nav_featured:"Featured drink", nav_story:"Our story", nav_catering:"Events & Catering", nav_follow:"Follow us",
-    locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"Find your Bobacita and see the menu available at each location.",
+    locations_prompt:"WHERE ARE YOU VISITING US?", locations_title:"Our locations", locations_subtitle:"The same drinks menu at Santa Fe and City Hall. Choose pickup when ordering.",
     location_choice:"Choose your location to see the available menu.", location_menu_kicker:"📍 YOU'RE VIEWING:", location_menu_title:"MENU — ", change_location:"CHANGE LOCATION",
     directions:"GET DIRECTIONS", location_view:"VIEW MENU", location_download:"DOWNLOAD MENU", menu_page:"Page",
     municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_order_product:"ORDER", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU", municipal_favorites:"FAVORITES", municipal_favorite_action:"View drink", municipal_show_drinks:"drinks · tap to view",
     municipal_also_available_in:"Also available in",
+    shared_menu_title:"BOBACITA DRINKS MENU", pickup_intro:"Browse the drinks, then choose your pickup location when ordering.", pickup_title:"Where will you pick up?", pickup_description:"Choose your location to continue on WhatsApp.", pickup_close:"Close", pickup_at:"Pickup at",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
@@ -157,7 +159,7 @@ const isMunicipalDirect = () => new URLSearchParams(window.location.search).get(
 function locationURL(location){
   const url = new URL(window.location.pathname, window.location.origin);
   url.searchParams.set("location", location.slug);
-  if(location.slug !== "palacio-municipal") url.hash = "location-menu-heading";
+  url.hash = "municipal-menu";
   return url.pathname + url.search + url.hash;
 }
 
@@ -212,6 +214,7 @@ function renderLocations(lang){
   const favorites = document.getElementById("municipal-favorites");
   const hadPanels = Boolean(products.querySelector("details"));
   const expandedGroups = new Set([...products.querySelectorAll("details[open]")].map(panel=>panel.id));
+  const menuLocation = selectedLocation || locations.find(location=>location.slug === "palacio-municipal");
   const directOrder = isMunicipalDirect() && selectedLocation?.slug === "palacio-municipal";
   document.documentElement.classList.toggle("municipal-direct", directOrder);
   document.getElementById("municipal-order-hero").hidden = !directOrder;
@@ -231,7 +234,7 @@ function renderLocations(lang){
     document.querySelectorAll("[data-municipal-directions]").forEach(link=>link.href = selectedLocation.maps);
   }
   document.getElementById("ubicaciones").classList.toggle("has-selection", Boolean(selectedLocation));
-  heading.hidden = !selectedLocation;
+  heading.hidden = false;
   official.hidden = true;
   municipal.hidden = true;
   official.replaceChildren();
@@ -239,11 +242,9 @@ function renderLocations(lang){
   products.replaceChildren();
   favorites.replaceChildren();
   favorites.hidden = true;
-  document.querySelectorAll('[data-location-menu="santa-fe"]').forEach(section=>{
-    section.hidden = !selectedLocation || selectedLocation.onlineMenu !== "santa-fe";
-  });
+  document.querySelectorAll('[data-location-menu="santa-fe"]').forEach(section=>section.hidden = true);
   document.querySelectorAll('[data-i18n="nav_menu"]').forEach(link=>{
-    link.href = directOrder ? "#municipal-menu" : selectedLocation?.onlineMenu === "santa-fe" ? "#menu" : selectedLocation ? "#location-menu-heading" : "#ubicaciones";
+    link.href = "#municipal-menu";
   });
   document.querySelectorAll('[data-i18n="nav_locations"]').forEach(link=>{
     link.href = directOrder ? "/#ubicaciones" : "#ubicaciones";
@@ -252,19 +253,24 @@ function renderLocations(lang){
     link.href = directOrder ? "/" : "#inicio";
   });
   document.querySelectorAll('[data-i18n="nav_featured"]').forEach(link=>{
-    link.href = directOrder ? "/#ubicaciones" : selectedLocation?.onlineMenu === "santa-fe" ? "#featured-drink" : "#ubicaciones";
+    link.href = "#municipal-favorites";
   });
   const featuredButton = document.querySelector(".featured-section-button");
-  if(featuredButton) featuredButton.href = selectedLocation?.onlineMenu === "santa-fe" ? "#brown-sugar-brulee" : "#ubicaciones";
-  if(!selectedLocation) return;
-  document.getElementById("current-location-name").textContent = selectedLocation.name[lang] || selectedLocation.name.es;
-  document.getElementById("selected-menu-title").textContent = dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es);
-  if(selectedLocation.favoritePhotos?.length){
+  if(featuredButton) featuredButton.href = "#municipal-favorites";
+  const locationName = document.getElementById("current-location-name");
+  locationName.hidden = !selectedLocation;
+  locationName.textContent = selectedLocation?.name[lang] || selectedLocation?.name.es || "";
+  document.getElementById("change-location").hidden = !selectedLocation;
+  document.getElementById("selected-menu-title").textContent = selectedLocation
+    ? dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es)
+    : dictionary.shared_menu_title;
+  municipal.hidden = false;
+  if(menuLocation?.favoritePhotos?.length){
     const title = document.createElement("h2");
     title.textContent = dictionary.municipal_favorites;
     const photos = document.createElement("div");
     photos.className = "municipal-favorite-photos";
-    for(const favorite of selectedLocation.favoritePhotos){
+    for(const favorite of menuLocation.favoritePhotos){
       const name = favorite.name[lang] || favorite.name.es;
       const link = document.createElement("a");
       link.href = `#${favorite.product}`;
@@ -290,7 +296,7 @@ function renderLocations(lang){
     favorites.append(title,photos);
     favorites.hidden = false;
   }
-  for(const group of selectedLocation.groups || []){
+  for(const group of menuLocation?.groups || []){
     const section = document.createElement("section");
     const panel = group.expandable ? document.createElement("details") : section;
     if(group.expandable){
@@ -350,18 +356,13 @@ function renderLocations(lang){
         if(product.size) details.append(size);
         details.append(price);
         item.append(details);
-        if(selectedLocation.ordering){
-          const phone = selectedLocation.ordering.countryCode + selectedLocation.ordering.phone;
+        if(menuLocation.ordering){
           const order = document.createElement("a");
           order.className = "municipal-product-order";
           order.textContent = dictionary.municipal_order_product;
           const orderLine = `1 × ${productName}${product.size ? ` — ${product.size}` : ""} — $${product.price} MXN`;
-          const message = lang === "en"
-            ? `Hello Bobacita 👋\nI would like to order:\n${orderLine}\n\nPickup at City Hall.`
-            : `Hola Bobacita 👋\nQuiero ordenar:\n${orderLine}\n\nPara recoger en Palacio Municipal.`;
-          order.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-          order.target = "_blank";
-          order.rel = "noopener";
+          order.href = "#pickup-dialog";
+          order.dataset.orderLine = orderLine;
           order.setAttribute("aria-label", `${dictionary.municipal_order_product}: ${productName}`);
           item.append(order);
         }
@@ -372,9 +373,9 @@ function renderLocations(lang){
     panel.append(list);
     products.append(section);
   }
-  if(selectedLocation.assetsReady){
-    const target = selectedLocation.onlineMenu === "santa-fe" ? official : gallery;
-    selectedLocation.artwork.forEach((source, index)=>{
+  if(selectedLocation?.assetsReady){
+    const target = gallery;
+    (selectedLocation.slug === "palacio-municipal" ? selectedLocation.artwork : []).forEach((source, index)=>{
       const figure = document.createElement("figure");
       const img = document.createElement("img");
       img.src = source;
@@ -391,8 +392,7 @@ function renderLocations(lang){
       downloads.append(menuDownload(menu, menu.label[lang] || menu.label.es, "menu-download"));
     }
     target.append(downloads);
-    official.hidden = selectedLocation.onlineMenu !== "santa-fe";
-    municipal.hidden = selectedLocation.onlineMenu === "santa-fe";
+    official.hidden = true;
   }
 }
 
@@ -428,6 +428,36 @@ document.querySelectorAll(".lang-switch button").forEach(button=>{
 });
 
 setLanguage(localStorage.getItem("bobacita-lang") || "es");
+
+const pickupDialog = document.getElementById("pickup-dialog");
+document.addEventListener("click", event=>{
+  const orderLink = event.target.closest(".municipal-product-order, [data-municipal-whatsapp], #choose-pickup");
+  if(!orderLink) return;
+  event.preventDefault();
+  const lang = document.documentElement.lang;
+  const dictionary = translations[lang] || translations.es;
+  const options = document.getElementById("pickup-options");
+  options.replaceChildren();
+  for(const location of locations){
+    const name = location.name[lang] || location.name.es;
+    const line = orderLink.dataset.orderLine;
+    const message = lang === "en"
+      ? `Hello Bobacita 👋\nI would like to order${line ? `:\n${line}` : ":\n________________"}\n\n${dictionary.pickup_at} ${name}.\n\nName: ________________`
+      : `Hola Bobacita 👋\nQuiero ordenar${line ? `:\n${line}` : ":\n________________"}\n\n${dictionary.pickup_at} ${name}.\n\nNombre: ________________`;
+    const phone = location.ordering.countryCode + location.ordering.phone;
+    const option = document.createElement("a");
+    option.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    option.target = "_blank";
+    option.rel = "noopener";
+    option.textContent = name;
+    option.addEventListener("click",()=>pickupDialog.close());
+    options.append(option);
+  }
+  pickupDialog.showModal();
+});
+pickupDialog.addEventListener("click",event=>{
+  if(event.target === pickupDialog) pickupDialog.close();
+});
 
 document.getElementById("change-location")?.addEventListener("click", event=>{
   event.preventDefault();

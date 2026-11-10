@@ -8,7 +8,7 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/7Yb2uDG3mNyXJkx16?g_st=ic",
     address: null, // Display only after verification against the supplied pin.
     pdf: "assets/menus/bobacita-menu-santa-fe.pdf",
-    pdfVersion: "20261110-drinks-berry-azul",
+    pdfVersion: "20261110-drinks-berry-azul-santa-fe",
     downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: ["assets/menus/santa-fe.png"],
     assetsReady: true,

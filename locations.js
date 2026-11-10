@@ -8,7 +8,7 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/7Yb2uDG3mNyXJkx16?g_st=ic",
     address: null, // Display only after verification against the supplied pin.
     pdf: "assets/menus/bobacita-menu-santa-fe.pdf",
-    pdfVersion: "20261110-drinks-berry-azul-santa-fe",
+    pdfVersion: "20261110-blue-raspberry-santa-fe",
     downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: ["assets/menus/santa-fe.png"],
     assetsReady: true,
@@ -23,10 +23,10 @@ window.BobacitaLocations = [
     maps: "https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic",
     address: null,
     pdf: "assets/menus/bobacita-menu-palacio-municipal.pdf",
-    pdfVersion: "20261110-drinks-berry-azul",
+    pdfVersion: "20261110-blue-raspberry-palacio",
     downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: [
-      "assets/menus/palacio-municipal-bebidas-20261110.jpeg"
+      "assets/menus/palacio-municipal-bebidas-blue-raspberry.jpeg"
     ],
     extraDownloads: [
       {
@@ -75,7 +75,7 @@ window.BobacitaLocations = [
       ]},
       { id:"municipal-mixes", expandable:true, heading:{es:"Mezclas especiales de limonadas",en:"Special lemonade mixes"}, additionalSize:"700 mL", products:[
         {name:{es:"Fresa Tropical",en:"Tropical Strawberry"},description:{es:"Fresa + mango",en:"Strawberry + mango"},image:"assets/web/municipal/menu/fresa-tropical.webp"},
-        {name:{es:"Berry Azul",en:"Blue Berry Mix"},description:{es:"Arándano + frambuesa",en:"Blueberry + raspberry"},image:"assets/web/municipal/menu/berry-azul.webp"},
+        {name:{es:"Berry Azul",en:"Blue Berry Mix"},description:{es:"Frambuesa azul + frambuesa",en:"Blue raspberry + raspberry"},image:"assets/web/municipal/menu/berry-azul.webp"},
         {name:{es:"Lavanda Berry",en:"Lavender Berry"},description:{es:"Lavanda + frambuesa azul",en:"Lavender + blue raspberry"},image:"assets/web/municipal/menu/lavanda-berry.webp"},
         {name:{es:"Mango Fresco",en:"Fresh Mango"},description:{es:"Mango + Tajín",en:"Mango + Tajín"},image:"assets/web/municipal/menu/mango-fresco.webp"},
         {name:{es:"Berry Rosa",en:"Pink Berry Mix"},description:{es:"Fresa + frambuesa",en:"Strawberry + raspberry"},image:"assets/web/municipal/menu/berry-rosa.webp"},

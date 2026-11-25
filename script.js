@@ -10,7 +10,7 @@ const translations = {
     municipal_page_title:"📍 PALACIO MUNICIPAL", municipal_current_menu:"MENÚ Y PRECIOS ACTUALIZADOS", municipal_order_whatsapp:"ORDENAR POR WHATSAPP", municipal_order_product:"PEDIR", municipal_call:"LLAMAR PARA ORDENAR", municipal_view_menu:"VER MENÚ", municipal_favorites:"FAVORITAS", municipal_favorite_action:"Ver bebida", municipal_show_drinks:"bebidas · tocar para ver",
     municipal_also_available_in:"También disponibles en",
     shared_menu_title:"MENÚ DE BEBIDAS BOBACITA", pickup_intro:"Explora las bebidas y elige dónde recoger al ordenar.", pickup_title:"¿Dónde recoges tu pedido?", pickup_description:"Elige tu ubicación para continuar por WhatsApp.", pickup_close:"Cerrar", pickup_at:"Para recoger en",
-    promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER BEBIDA", promo_view_menu:"VER MENÚ COMPLETO",
+    promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER ESPECIAL", promo_view_menu:"VER MENÚ", limited_kicker:"EDICIÓN LIMITADA · PALACIO MUNICIPAL", limited_title:"Matcha Latte + Strawberry Matcha", limited_description:"Dos bebidas cremosas y refrescantes para disfrutar en Palacio Municipal.",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
     hero_title:"Bebidas únicas, sabores que te hacen sonreír.",
@@ -81,7 +81,7 @@ const translations = {
     municipal_page_title:"📍 CITY HALL", municipal_current_menu:"CURRENT MENU & PRICES", municipal_order_whatsapp:"ORDER ON WHATSAPP", municipal_order_product:"ORDER", municipal_call:"CALL TO ORDER", municipal_view_menu:"VIEW MENU", municipal_favorites:"FAVORITES", municipal_favorite_action:"View drink", municipal_show_drinks:"drinks · tap to view",
     municipal_also_available_in:"Also available in",
     shared_menu_title:"BOBACITA DRINKS MENU", pickup_intro:"Browse the drinks, then choose your pickup location when ordering.", pickup_title:"Where will you pick up?", pickup_description:"Choose your location to continue on WhatsApp.", pickup_close:"Close", pickup_at:"Pickup at",
-    promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW DRINK", promo_view_menu:"VIEW FULL MENU",
+    promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW SPECIAL", promo_view_menu:"VIEW MENU", limited_kicker:"LIMITED EDITION · CITY HALL", limited_title:"Matcha Latte + Strawberry Matcha", limited_description:"Two creamy, refreshing drinks to enjoy at City Hall.",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
     hero_title:"Unique drinks, flavors that make you smile.",
@@ -265,6 +265,7 @@ function renderLocations(lang){
     ? dictionary.location_menu_title + (selectedLocation.name[lang] || selectedLocation.name.es)
     : dictionary.shared_menu_title;
   municipal.hidden = false;
+  document.getElementById("city-limited").hidden = selectedLocation?.slug !== "palacio-municipal";
   if(menuLocation?.favoritePhotos?.length){
     const title = document.createElement("h2");
     title.textContent = dictionary.municipal_favorites;
@@ -510,7 +511,7 @@ if(menuToggle && mobileNav){
 }
 
 const featuredPromo = document.getElementById("featured-promo");
-const promoDismissedKey = "bobacita-featured-promo-dismissed-at-v3";
+const promoDismissedKey = "bobacita-matcha-city-hall-dismissed-at-v1";
 const promoDismissalDuration = 24 * 60 * 60 * 1000;
 let promoTimer;
 let promoPreviousFocus;
@@ -570,5 +571,5 @@ if(featuredPromo){
   document.addEventListener("keydown",event=>{
     if(event.key === "Escape" && !featuredPromo.hidden) closeFeaturedPromo({remember:true});
   });
-  if(selectedLocation?.onlineMenu === "santa-fe") promoTimer = setTimeout(showFeaturedPromo, 1400);
+  if(selectedLocation?.slug === "palacio-municipal") promoTimer = setTimeout(showFeaturedPromo, 1400);
 }

@@ -182,16 +182,23 @@ h1{max-width:520px;margin:12px auto 9px;font-family:Georgia,"Times New Roman",se
 .tajin-note{max-width:820px;margin:14px auto 0;color:var(--muted);font-size:.78rem;line-height:1.45}
 
 .promo-modal[hidden]{display:none}
+.city-limited[hidden]{display:none}
+.city-limited{display:grid;grid-template-columns:minmax(0,250px) 1fr;gap:22px;align-items:center;max-width:920px;margin:22px auto;padding:16px;border:1px solid #efb5ca;border-radius:24px;background:linear-gradient(130deg,#f6ffe9,#fff0f5);box-shadow:var(--shadow);scroll-margin-top:104px}
+.city-limited img{width:100%;max-height:310px;object-fit:contain;border-radius:16px}
+.city-limited-copy p:first-child{color:var(--pink-dark);font-size:.78rem;font-weight:950;letter-spacing:.06em}
+.city-limited-copy h2{margin:6px 0 10px;font-family:Georgia,serif;font-size:clamp(1.65rem,4vw,2.6rem);line-height:1.08}
+.city-limited-copy p:last-child{line-height:1.5}
+@media(max-width:620px){.city-limited{grid-template-columns:1fr;text-align:center}.city-limited img{max-height:400px}}
 .promo-modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:16px}
 .promo-backdrop{position:absolute;inset:0;background:rgba(44,24,18,.62);backdrop-filter:blur(5px)}
-.promo-dialog{position:relative;width:min(92vw,520px);max-height:calc(100dvh - 32px);overflow:hidden;border:1px solid rgba(237,45,114,.24);border-radius:26px;background:#2d1a14;box-shadow:0 24px 70px rgba(48,23,17,.3)}
+.promo-dialog{position:relative;width:min(92vw,520px);max-height:calc(100dvh - 32px);overflow:auto;border:1px solid rgba(237,45,114,.24);border-radius:26px;background:#fff9f1;box-shadow:0 24px 70px rgba(48,23,17,.3)}
 .promo-image{display:grid;min-height:0;place-items:center;overflow:hidden;background:#2d1a14}
-.promo-image img{width:100%;height:auto;max-height:calc(100dvh - 32px);object-fit:contain}
+.promo-image img{width:100%;height:auto;max-height:calc(100dvh - 115px);object-fit:contain}
 .promo-close{position:absolute;z-index:2;top:10px;right:10px;display:grid;width:44px;height:44px;place-items:center;border:1px solid rgba(59,33,24,.12);border-radius:50%;background:rgba(255,253,249,.96);color:var(--brown);box-shadow:0 5px 15px rgba(59,33,24,.14);font-size:1.55rem;line-height:1;cursor:pointer}
-.promo-actions{position:absolute;z-index:1;inset:0;pointer-events:none}
-.promo-primary,.promo-secondary{position:absolute;left:30%;width:40%;height:8.2%;padding:0;border:0;border-radius:999px;background:transparent;color:transparent;font-size:0;cursor:pointer;pointer-events:auto}
-.promo-primary{top:79.5%}
-.promo-secondary{top:87.7%}
+.promo-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:12px}
+.promo-actions .promo-label{width:100%;margin:0;color:var(--pink-dark);font-size:.78rem;font-weight:950;letter-spacing:.06em;text-align:center}
+.promo-primary,.promo-secondary{min-height:44px;padding:0 16px;border:1px solid var(--pink);border-radius:999px;background:var(--pink);color:white;font-size:.82rem;font-weight:900;cursor:pointer}
+.promo-secondary{background:white;color:var(--pink-dark)}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .promo-close:focus-visible,.promo-primary:focus-visible,.promo-secondary:focus-visible{outline:3px solid rgba(37,113,80,.4);outline-offset:3px}
 html.promo-open,html.promo-open body{overflow:hidden;overscroll-behavior:none}
@@ -398,6 +405,14 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
         <p data-i18n="pickup_intro">Explora las bebidas y elige dónde recoger al ordenar.</p>
         <button type="button" id="choose-pickup" data-i18n="municipal_order_whatsapp">ORDENAR POR WHATSAPP</button>
       </div>
+      <section class="city-limited" id="city-limited" hidden aria-labelledby="city-limited-title">
+        <img src="assets/web/matcha-limited-city-hall-20261125.jpeg" width="1103" height="1426" alt="Bobacita Matcha Latte y Strawberry Matcha" loading="lazy" decoding="async">
+        <div class="city-limited-copy">
+          <p data-i18n="limited_kicker">EDICIÓN LIMITADA · PALACIO MUNICIPAL</p>
+          <h2 id="city-limited-title" data-i18n="limited_title">Matcha Latte + Strawberry Matcha</h2>
+          <p data-i18n="limited_description">Dos bebidas cremosas y refrescantes para disfrutar en Palacio Municipal.</p>
+        </div>
+      </section>
       <div id="municipal-favorites" class="municipal-favorites" hidden></div>
       <div id="municipal-products" class="municipal-products"></div>
       <div class="municipal-order-again" id="municipal-order-again" hidden>
@@ -743,18 +758,19 @@ footer span,footer a{font-size:.8rem;color:#f4dbd1}
     <section class="promo-dialog" role="dialog" aria-modal="true" aria-labelledby="promo-title" aria-describedby="promo-description">
       <button class="promo-close" type="button" data-promo-dismiss="dismiss" aria-label="Cerrar promoción" data-i18n-aria="promo_close">×</button>
       <div class="promo-image">
-        <img src="assets/web/brown-sugar-promo-logo-2026.jpg" width="1145" height="1374" alt="Promoción Bobacita Azúcar Brown Sugar Crème Brûlée con bebida completa, crème brûlée, azúcar morena y boba" decoding="async">
+        <img src="assets/web/matcha-limited-city-hall-20261125.jpeg" width="1103" height="1426" alt="Bobacita Matcha Latte y Strawberry Matcha, especial por tiempo limitado en Palacio Municipal" decoding="async">
       </div>
       <div class="promo-actions">
-        <h2 class="visually-hidden" id="promo-title">Brown Sugar Crème Brûlée</h2>
-        <p class="visually-hidden" id="promo-description" data-i18n="promo_description">Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎</p>
-        <button class="promo-primary" type="button" data-promo-target="#featured-drink" data-i18n="promo_view_drink">VER BEBIDA</button>
-        <button class="promo-secondary" type="button" data-promo-target="#menu" data-i18n="promo_view_menu">VER MENÚ COMPLETO</button>
+        <h2 class="visually-hidden" id="promo-title" data-i18n="limited_title">Matcha Latte + Strawberry Matcha</h2>
+        <p class="visually-hidden" id="promo-description" data-i18n="limited_description">Dos bebidas cremosas y refrescantes para disfrutar en Palacio Municipal.</p>
+        <p class="promo-label" data-i18n="limited_kicker">EDICIÓN LIMITADA · PALACIO MUNICIPAL</p>
+        <button class="promo-primary" type="button" data-promo-target="#city-limited" data-i18n="promo_view_drink">VER ESPECIAL</button>
+        <button class="promo-secondary" type="button" data-promo-target="#municipal-menu" data-i18n="promo_view_menu">VER MENÚ</button>
       </div>
     </section>
   </div>
 
   <script src="locations.js?v=20261110-blue-raspberry" defer></script>
-  <script src="script.js?v=20261110-blue-raspberry" defer></script>
+  <script src="script.js?v=20261125-city-matcha" defer></script>
 </body>
 </html>

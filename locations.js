@@ -7,8 +7,8 @@ window.BobacitaLocations = [
     description: { es: "Menú completo de Bobacita.", en: "Bobacita's full menu." },
     maps: "https://maps.app.goo.gl/7Yb2uDG3mNyXJkx16?g_st=ic",
     address: null, // Display only after verification against the supplied pin.
-    pdf: "assets/menus/bobacita-menu-santa-fe.pdf",
-    pdfVersion: "20261110-blue-raspberry-santa-fe",
+    pdf: "assets/menus/bobacita-menu-both-locations.pdf",
+    pdfVersion: "20261125-shared-drinks",
     downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: ["assets/menus/santa-fe.png"],
     assetsReady: true,
@@ -19,11 +19,11 @@ window.BobacitaLocations = [
   {
     slug: "palacio-municipal",
     name: { es: "PALACIO MUNICIPAL", en: "CITY HALL" },
-    description: { es: "Menú especial disponible en Palacio Municipal.", en: "Special menu available at City Hall." },
+    description: { es: "El mismo menú de bebidas Bobacita; menú de comida Chica Chun Kun disponible aquí.", en: "The same Bobacita drinks menu; Chica Chun Kun food menu available here." },
     maps: "https://maps.app.goo.gl/sFQaknf4Np5rZkrQ9?g_st=ic",
     address: null,
-    pdf: "assets/menus/bobacita-menu-palacio-municipal.pdf",
-    pdfVersion: "20261110-blue-raspberry-palacio",
+    pdf: "assets/menus/bobacita-menu-both-locations.pdf",
+    pdfVersion: "20261125-shared-drinks",
     downloadLabel: { es: "DESCARGAR MENÚ DE BEBIDAS", en: "DOWNLOAD DRINK MENU" },
     artwork: [
       "assets/menus/palacio-municipal-bebidas-blue-raspberry.jpeg"
@@ -75,7 +75,7 @@ window.BobacitaLocations = [
       ]},
       { id:"municipal-mixes", expandable:true, heading:{es:"Mezclas especiales de limonadas",en:"Special lemonade mixes"}, additionalSize:"700 mL", products:[
         {name:{es:"Fresa Tropical",en:"Tropical Strawberry"},description:{es:"Fresa + mango",en:"Strawberry + mango"},image:"assets/web/municipal/menu/fresa-tropical.webp"},
-        {name:{es:"Berry Azul",en:"Blue Berry Mix"},description:{es:"Frambuesa azul + frambuesa",en:"Blue raspberry + raspberry"},image:"assets/web/municipal/menu/berry-azul.webp"},
+        {name:{es:"Berry Azul",en:"Blue Raspberry & Raspberry"},description:{es:"Frambuesa azul + frambuesa",en:"Blue raspberry + raspberry"},image:"assets/web/municipal/menu/berry-azul.webp"},
         {name:{es:"Lavanda Berry",en:"Lavender Berry"},description:{es:"Lavanda + frambuesa azul",en:"Lavender + blue raspberry"},image:"assets/web/municipal/menu/lavanda-berry.webp"},
         {name:{es:"Mango Fresco",en:"Fresh Mango"},description:{es:"Mango + Tajín",en:"Mango + Tajín"},image:"assets/web/municipal/menu/mango-fresco.webp"},
         {name:{es:"Berry Rosa",en:"Pink Berry Mix"},description:{es:"Fresa + frambuesa",en:"Strawberry + raspberry"},image:"assets/web/municipal/menu/berry-rosa.webp"},

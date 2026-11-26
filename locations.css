@@ -90,6 +90,21 @@ html.municipal-direct .municipal-menu{padding-top:18px}
 .menu-download{width:max-content;max-width:100%;margin:20px auto 0;background:#fff}
 .menu-downloads{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
 .menu-downloads .menu-download{margin:8px 0 0}
+.menu-artwork-section{display:grid;gap:10px;scroll-margin-top:100px}
+.menu-artwork-section h2{margin:12px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.6rem,4vw,2.4rem);text-align:center}
+.menu-artwork-section .menu-download{margin:4px auto 16px}
+.holiday-special[hidden]{display:none}
+.holiday-special{max-width:960px;margin:38px auto 10px;padding:22px;border:1px solid #e9b8c8;border-radius:26px;background:linear-gradient(145deg,#fff8ef,#ffedf3);box-shadow:var(--shadow);scroll-margin-top:100px}
+.holiday-special-heading{text-align:center}
+.holiday-special-heading h2{margin:7px 0 10px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1}
+.holiday-special-heading p:last-child{max-width:680px;margin:0 auto 22px;line-height:1.55}
+.holiday-special-art{display:grid;gap:14px;align-items:start}
+.holiday-special-art figure{margin:0;padding:7px;border:1px solid #edced8;border-radius:18px;background:#fff}
+.holiday-special-art img{display:block;width:100%;height:auto;border-radius:12px}
+.holiday-special-zoom{margin:12px 0 0;color:var(--muted);font-size:.85rem;text-align:center}
+.holiday-special-follow,.holiday-special-review{margin:16px 0 0;line-height:1.5;text-align:center}
+.holiday-special a{color:var(--pink-dark);font-weight:850;text-underline-offset:3px}
+@media(min-width:760px){.holiday-special-art{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:680px){.location-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.municipal-favorite-photos{grid-template-columns:repeat(4,minmax(0,1fr))}.municipal-products .priced-products{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:680px){.municipal-order-actions,.municipal-order-again{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:1000px){.municipal-products .priced-products{grid-template-columns:repeat(4,minmax(0,1fr))}}

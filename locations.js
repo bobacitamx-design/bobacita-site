@@ -32,6 +32,7 @@ window.BobacitaLocations = [
       {
         pdf: "assets/menus/chica-chun-kun-menu-palacio-municipal.pdf",
         pdfVersion: "20261107-food",
+        image: "assets/menus/palacio-municipal-comida-20261107.jpeg",
         label: { es: "DESCARGAR MENÚ DE COMIDA", en: "DOWNLOAD FOOD MENU" }
       }
     ],

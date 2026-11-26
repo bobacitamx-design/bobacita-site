@@ -11,6 +11,8 @@ const translations = {
     municipal_also_available_in:"También disponibles en",
     shared_menu_title:"MENÚ DE BEBIDAS BOBACITA", pickup_intro:"Explora las bebidas y elige dónde recoger al ordenar.", pickup_title:"¿Dónde recoges tu pedido?", pickup_description:"Elige tu ubicación para continuar por WhatsApp.", pickup_close:"Cerrar", pickup_at:"Para recoger en",
     promo_close:"Cerrar promoción", promo_kicker:"NUESTRA ESPECIALIDAD", promo_description:"Cremoso, dulce y con ese irresistible sabor a azúcar morena y crème brûlée. 🤎", promo_view_drink:"VER ESPECIAL", promo_view_menu:"VER MENÚ", limited_kicker:"EDICIÓN LIMITADA · PALACIO MUNICIPAL", limited_title:"Matcha Latte + Strawberry Matcha", limited_description:"Dos bebidas cremosas y refrescantes para disfrutar en Palacio Municipal.",
+    drinks_artwork_title:"Menú de bebidas · Bobacita", food_artwork_title:"Menú de comida · Chica Chun Kun", food_artwork_alt:"Menú de comida Chica Chun Kun con pho vaso, chun kun, combos y cajas de arroz", enlarge_artwork:"Toca la imagen para verla más grande",
+    holiday_kicker:"ESPECIAL DE TEMPORADA · PALACIO MUNICIPAL", holiday_title:"¡2×1 en bebidas participantes!", holiday_description:"Paga una y llévate otra gratis. Síguenos en redes y muéstranos que nos sigues al pedir. Consulta las bebidas participantes en el cartel.", holiday_front_alt:"Bobacita y Chica Chun Kun: bebidas, comida vietnamita y código QR del menú", holiday_offer_alt:"Cartel de promoción 2×1 con las cinco bebidas participantes", holiday_follow:"Síguenos para ver ofertas semanales:", holiday_review:"¿Ya nos visitaste? Comparte tu experiencia en una reseña honesta.", holiday_review_link:"Ver Bobacita en Google Maps",
     featured_section_kicker:"BEBIDA DESTACADA", featured_section_name:"Azúcar", featured_section_specialty:"Nuestro especial de la casa 🤎", featured_section_description:"Cremoso, dulce y con capas de azúcar morena, leche, crème brûlée y boba.", featured_section_view:"VER BEBIDA",
     love_note:"Hecho con Amor para Ti ❤️",
     hero_title:"Bebidas únicas, sabores que te hacen sonreír.",
@@ -82,6 +84,8 @@ const translations = {
     municipal_also_available_in:"Also available in",
     shared_menu_title:"BOBACITA DRINKS MENU", pickup_intro:"Browse the drinks, then choose your pickup location when ordering.", pickup_title:"Where will you pick up?", pickup_description:"Choose your location to continue on WhatsApp.", pickup_close:"Close", pickup_at:"Pickup at",
     promo_close:"Close promotion", promo_kicker:"FEATURED DRINK", promo_description:"Creamy, sweet, with an irresistible brown sugar and crème brûlée flavor.", promo_view_drink:"VIEW SPECIAL", promo_view_menu:"VIEW MENU", limited_kicker:"LIMITED EDITION · CITY HALL", limited_title:"Matcha Latte + Strawberry Matcha", limited_description:"Two creamy, refreshing drinks to enjoy at City Hall.",
+    drinks_artwork_title:"Drinks menu · Bobacita", food_artwork_title:"Food menu · Chica Chun Kun", food_artwork_alt:"Chica Chun Kun food menu with pho vaso, egg rolls, combos and rice boxes", enlarge_artwork:"Tap the image to view it larger",
+    holiday_kicker:"HOLIDAY SEASON SPECIAL · CITY HALL", holiday_title:"Buy one, get one on selected drinks!", holiday_description:"Pay for one and get another free. Follow us on social media and show us when you order. See the poster for participating drinks.", holiday_front_alt:"Bobacita and Chica Chun Kun: drinks, Vietnamese food and a menu QR code", holiday_offer_alt:"Buy-one-get-one poster with five participating drinks", holiday_follow:"Follow us for weekly offers:", holiday_review:"Visited us already? Share your experience in an honest review.", holiday_review_link:"View Bobacita on Google Maps",
     featured_section_kicker:"FEATURED DRINK", featured_section_name:"Azúcar", featured_section_specialty:"House specialty 🤎", featured_section_description:"Creamy and sweet with layers of brown sugar, milk, crème brûlée and boba.", featured_section_view:"VIEW DRINK",
     love_note:"Made with love for you ❤️",
     hero_title:"Unique drinks, flavors that make you smile.",
@@ -266,6 +270,7 @@ function renderLocations(lang){
     : dictionary.shared_menu_title;
   municipal.hidden = false;
   document.getElementById("city-limited").hidden = selectedLocation?.slug !== "palacio-municipal";
+  document.getElementById("holiday-special").hidden = selectedLocation?.slug !== "palacio-municipal";
   if(menuLocation?.favoritePhotos?.length){
     const title = document.createElement("h2");
     title.textContent = dictionary.municipal_favorites;
@@ -375,24 +380,58 @@ function renderLocations(lang){
     products.append(section);
   }
   if(selectedLocation?.assetsReady){
-    const target = gallery;
-    (selectedLocation.slug === "palacio-municipal" ? selectedLocation.artwork : []).forEach((source, index)=>{
+    const drinks = document.createElement("section");
+    drinks.className = "menu-artwork-section";
+    const drinksHeading = document.createElement("h2");
+    drinksHeading.textContent = dictionary.drinks_artwork_title;
+    drinks.append(drinksHeading);
+    ["assets/menus/bobacita-menu-both-locations.jpg"].forEach((source, index)=>{
       const figure = document.createElement("figure");
       const img = document.createElement("img");
       img.src = source;
-      img.alt = `${selectedLocation.name[lang] || selectedLocation.name.es} — ${dictionary.menu_page} ${index + 1}`;
+      img.alt = `${dictionary.drinks_artwork_title} — ${dictionary.menu_page} ${index + 1}`;
       img.loading = index ? "lazy" : "eager";
       img.decoding = "async";
-      figure.append(img);
-      target.append(figure);
+      const fullSize = document.createElement("a");
+      fullSize.href = source;
+      fullSize.target = "_blank";
+      fullSize.rel = "noopener";
+      fullSize.setAttribute("aria-label", dictionary.enlarge_artwork + ": " + dictionary.drinks_artwork_title);
+      fullSize.append(img);
+      const caption = document.createElement("figcaption");
+      caption.textContent = dictionary.enlarge_artwork;
+      figure.append(fullSize, caption);
+      drinks.append(figure);
     });
-    const downloads = document.createElement("div");
-    downloads.className = "menu-downloads";
-    downloads.append(menuDownload(selectedLocation, selectedLocation.downloadLabel?.[lang] || dictionary.location_download, "menu-download"));
+    drinks.append(menuDownload(selectedLocation, selectedLocation.downloadLabel?.[lang] || dictionary.location_download, "menu-download"));
+    gallery.append(drinks);
     for(const menu of selectedLocation.extraDownloads || []){
-      downloads.append(menuDownload(menu, menu.label[lang] || menu.label.es, "menu-download"));
+      const section = document.createElement("section");
+      section.className = "menu-artwork-section";
+      const heading = document.createElement("h2");
+      heading.textContent = dictionary.food_artwork_title;
+      section.append(heading);
+      if(menu.image){
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        img.src = menu.image;
+        img.alt = dictionary.food_artwork_alt;
+        img.loading = "lazy";
+        img.decoding = "async";
+        const fullSize = document.createElement("a");
+        fullSize.href = menu.image;
+        fullSize.target = "_blank";
+        fullSize.rel = "noopener";
+        fullSize.setAttribute("aria-label", dictionary.enlarge_artwork + ": " + dictionary.food_artwork_title);
+        fullSize.append(img);
+        const caption = document.createElement("figcaption");
+        caption.textContent = dictionary.enlarge_artwork;
+        figure.append(fullSize, caption);
+        section.append(figure);
+      }
+      section.append(menuDownload(menu, menu.label[lang] || menu.label.es, "menu-download"));
+      gallery.append(section);
     }
-    target.append(downloads);
     official.hidden = true;
   }
 }
